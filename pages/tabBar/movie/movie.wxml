@@ -1,0 +1,3 @@
+<view>
+<navigator url='../../subPages/city-select/city-select'>{{city}}</navigator>
+</view>

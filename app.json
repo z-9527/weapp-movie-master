@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/tabBar/movie/movie",
+    "pages/tabBar/cinema/cinema",
+    "pages/tabBar/user/user",
+    "pages/subPages/city-select/city-select"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e54847",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#696969",
+    "selectedColor": "#e54847",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/movie/movie",
+        "text": "电影"
+      },
+      {
+        "pagePath": "pages/tabBar/cinema/cinema",
+        "text": "影院"
+      },
+      {
+        "pagePath": "pages/tabBar/user/user",
+        "text": "我的"
+      }
+    ]
+  }
+}
