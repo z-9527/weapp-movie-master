@@ -4880,28 +4880,75 @@ const citys = [{
     'count': '1'
   }
 ]
+
+let startTime = new Date();
+let curTime = 0;
+let mustRun = 100
+let timeout = 0
+
 Page({
   data: {
     citylist: [],
-    scrollPosition:0 //文档滚动条的位置
+    navTop: 0, //侧边导航距离窗口顶部的距离,
+    navItemHeight: 0, //侧边导航项的高度
+    sections: [], //所有section，保存每个section的节点在文档的位置信息
+    inNavbar: false //手指是否在侧边导航，主要是区别后面wx.pageScrollTo触发的滚动还是直接触发的滚动
   },
   onLoad() {
     this.normalizeCityList(citys)
   },
-  onPageScroll(e) { 
-    this.setData({
-      scrollPosition: e.scrollTop
-    })
-    wx.createSelectorQuery().selectAll('.section').boundingClientRect((res)=>{
-      res.forEach(item=>{
-        if(item.top>=-(item.height-95) && item.top<=95){
-          wx.showToast({
-            icon: 'none',
-            title: item.dataset.index
-          })
-        }
+  onReady() {
+    const query = wx.createSelectorQuery()
+    query.select('.citylist-nav').boundingClientRect();
+    query.select('.citylist-nav-item').boundingClientRect();
+    query.selectAll('.section').fields({
+      dataset: true,
+      size: true,
+      rect: true
+    });
+    query.exec((res) => {
+      let sections = []
+      let Y = 0
+      res[2].forEach(item => {
+        sections.push({
+          top: Y,
+          height: item.height,
+          title: item.dataset.title
+        })
+        Y += item.height
       })
-    }).exec()
+      this.setData({
+        navTop: res[0].top,
+        navItemHeight: res[1].height,
+        sections
+      })
+    })
+  },
+  onPageScroll(e) {
+    const sections = this.data.sections
+    const scrollTop = e.scrollTop
+    curTime = new Date();
+    clearTimeout(timeout);
+    if (this.data.inNavbar || curTime - startTime <= mustRun) {
+      timeout = setTimeout(() => {
+        this.handlePageScroll(sections, scrollTop)
+      }, mustRun);
+      return
+    }
+    startTime = curTime;
+    this.handlePageScroll(sections, scrollTop)
+  },
+  //页面滚动的处理程序
+  handlePageScroll(sections, scrollTop) {
+    for (let item of sections) {
+      if (scrollTop >= item.top && scrollTop <= item.top + item.height) {
+        wx.showToast({
+          title: item.title,
+          icon: 'none'
+        })
+        break;
+      }
+    }
   },
   //处理API返回的城市列表数据
   normalizeCityList(citys) {
@@ -4927,7 +4974,7 @@ Page({
     const hot = {
       title: '热门城市',
       index: '热门',
-      style:'inline',
+      style: 'inline',
       items: citys.slice(0, 10)
     }
     list.unshift(hot)
@@ -4936,45 +4983,94 @@ Page({
     for (let item of citys) {
       if (item.city_name === app.globalData.userLocation.city) {
         current = {
-          title:'当前定位城市',
-          index:'定位',
+          title: '当前定位城市',
+          index: '定位',
           style: 'inline',
-          items:[item]
+          items: [item]
         }
         break;
       }
     }
     list.unshift(current)
     this.setData({
-      citylist:list
+      citylist: list
     })
   },
   //点击城市的事件处理程序
-  selectCity(e){
+  selectCity(e) {
     app.globalData.city = e.currentTarget.dataset.city
     wx.switchTab({
-      url:'/pages/tabBar/movie/movie'
+      url: '/pages/tabBar/movie/movie'
     })
   },
-  //侧边栏导航的点击事件
-  navSelect(e){
+  //侧边栏导航的点击事件处理
+  navSelect(e) {
+    const {
+      citylist,
+      sections
+    } = this.data
+    const index = e.currentTarget.dataset.index
     wx.showToast({
-      icon:'none',
-      title: e.currentTarget.dataset.index
+      icon: 'none',
+      title: citylist[index].title
     })
-    wx.createSelectorQuery().selectAll('.section-title').fields({
-      dataset: true,
-      size: true,
-      rect: true
-    }, (res)=> {
-      res.forEach(item=>{
-        if (e.currentTarget.dataset.index === item.dataset.index){
-          wx.pageScrollTo({
-            scrollTop: item.top + this.data.scrollPosition,
-            duration: 0
-          })
-        }
-      })
-    }).exec();
+    wx.pageScrollTo({
+      scrollTop: sections[index].top,
+      duration: 0
+    })
+  },
+  //在侧边栏上滑动的事件处理
+  handleTouchmove(e) {
+    //对于频繁触发的事件，如touchmove进行函数节流
+    const {
+      navTop,
+      navItemHeight,
+      citylist,
+      sections
+    } = this.data
+    let index = Math.floor((e.changedTouches[0].clientY - navTop) / navItemHeight)
+    if (index < 0 || index > citylist.length - 1) {
+      return
+    }
+    curTime = new Date();
+    clearTimeout(timeout);
+    if (curTime - startTime <= mustRun) {
+      timeout = setTimeout(() => {
+        wx.showToast({
+          icon: 'none',
+          title: citylist[index].title
+        })
+        wx.pageScrollTo({
+          scrollTop: sections[index].top,
+          duration: 0
+        })
+      }, mustRun);
+      return
+    }
+    startTime = curTime;
+    wx.showToast({
+      icon: 'none',
+      title: citylist[index].title
+    })
+    wx.pageScrollTo({
+      scrollTop: sections[index].top,
+      duration: 0
+    })
+  },
+  //input框输入是的查询事件
+  search(e) {
+    console.log(e)
+  },
+  //设置手指在侧边导航中
+  handleTouchstart() {
+    this.setData({
+      inNavbar: true
+    })
+  },
+  //设置手指离开侧边导航中
+  handleTouchend() {
+    this.setData({
+      inNavbar: false
+    })
   }
 })
