@@ -1,8 +1,9 @@
 <view class='container'>
   <view class='search-city'>
-    <input placeholder='输入城市名或拼音查询' class='search-input' bindinput='search'></input>
+    <input placeholder='输入城市名或拼音查询' class='search-input' bindinput='search' placeholder-class="phcolor"></input>
+    <view class='iconfont icon-sousuo'></view>
   </view>
-  <view class='citylist-content'>
+  <view class='citylist-content' style='{{searchValue?"display:none":""}}'>
     <view wx:for='{{citylist}}' wx:for-item='section' wx:key='{{section.title}}' data-title='{{section.title}}' class='section'>
       <view class='section-title'>{{section.title}}</view>
       <view class='{{section.style==="inline"?"section-body-inline":"section-body"}}'>
@@ -10,7 +11,7 @@
       </view>
     </view>
   </view>
-  <view class='citylist-nav' id='test' catchtouchmove='handleTouchmove' bindtouchstart='handleTouchstart' bindtouchend='handleTouchend'>
+  <view class='citylist-nav' id='test' catchtouchmove='handleTouchmove' bindtouchstart='handleTouchstart' bindtouchend='handleTouchend' style='{{searchValue?"display:none":"display:block"}}'>
     <view wx:for='{{citylist}}' wx:key='{{item.title}}' class='citylist-nav-item' bindtap='navSelect' data-index='{{index}}'>{{item.style==='inline'?item.index:item.title}}</view>
   </view>
 </view>

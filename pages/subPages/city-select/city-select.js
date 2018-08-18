@@ -4892,12 +4892,15 @@ Page({
     navTop: 0, //侧边导航距离窗口顶部的距离,
     navItemHeight: 0, //侧边导航项的高度
     sections: [], //所有section，保存每个section的节点在文档的位置信息
-    inNavbar: false //手指是否在侧边导航，主要是区别后面wx.pageScrollTo触发的滚动还是直接触发的滚动
+    inNavbar: false, //手指是否在侧边导航，主要是区别后面wx.pageScrollTo触发的滚动还是直接触发的滚动
+    searchValue:'', //查询值
+    result:[]    //城市查询结果列表
   },
   onLoad() {
     this.normalizeCityList(citys)
   },
   onReady() {
+    console.log(citys)
     const query = wx.createSelectorQuery()
     query.select('.citylist-nav').boundingClientRect();
     query.select('.citylist-nav-item').boundingClientRect();
@@ -5059,7 +5062,19 @@ Page({
   },
   //input框输入是的查询事件
   search(e) {
-    console.log(e)
+    const value = e.detail.value.trim().toUpperCase()
+    console.log(value)    
+    const result = citys.filter(item=>{
+      if(value.length===1 && value>='A' && value<='Z'){
+        return value === item.city_pre.toUpperCase()
+      }
+      return item.city_name.includes(value) || item.city_pinyin.toUpperCase().includes(value) || item.city_short.toUpperCase().includes(value)
+    })
+    console.log(result)
+    this.setData({
+      searchValue:value,
+      result,
+    })
   },
   //设置手指在侧边导航中
   handleTouchstart() {

@@ -14,7 +14,19 @@
 .search-input{
   height: 2em;
   background: #fff;
-  padding-left: 40rpx;
+  padding-left: 60rpx;
+  color: #999;
+}
+.phcolor{
+  color:#999;
+}
+.icon-sousuo{
+  position: absolute;
+  z-index: 10;
+  top:50%;
+  left: 50rpx;
+  transform: translateY(-50%);
+  color:#999;
 }
 .section:first-child{
   margin-top: 100rpx;

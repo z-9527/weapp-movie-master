@@ -1,3 +1,5 @@
+@import './assets/font/icon.wxss';
+
 view{
   font-size: 28rpx;
 }
