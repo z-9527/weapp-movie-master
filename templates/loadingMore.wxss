@@ -1,0 +1,11 @@
+.loadingMore{
+  text-align: center;
+}
+.loading-img{
+  width: 54rpx;
+  height: 54rpx;
+}
+.lading-text{
+  margin-top: 8rpx;
+  color: #666;
+}

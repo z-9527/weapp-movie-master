@@ -1,5 +1,11 @@
 @import './assets/font/icon.wxss';
-
-view{
+@import './templates/loadingMore.wxss';
+view {
   font-size: 28rpx;
+}
+
+.line-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

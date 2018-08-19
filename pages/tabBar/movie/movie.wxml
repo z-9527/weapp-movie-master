@@ -1,3 +1,44 @@
+<import src='../../../templates/loadingMore.wxml' />
+
 <view>
-<navigator url='../../subPages/city-select/city-select'>{{city}}</navigator>
+  <view class='topbar'>
+    <navigator class='city-entry' url='../../subPages/city-select/city-select'>
+      <text class='city-name'>{{city}}</text>
+      <text class='city-entry-arrow'></text>
+    </navigator>
+    <view class='switch-hot'>
+      <view class='hot-item {{switchItem===0 ? "active" :""}}' bindtap='selectItem' data-item='{{0}}'>正在热映</view>
+      <view class='hot-item {{switchItem===1 ? "active" :""}}' bindtap='selectItem' data-item='{{1}}'>即将上映</view>
+    </view>
+    <view class='search-entry'>
+      <text class='iconfont icon-sousuo'></text>
+    </view>
+  </view>
+  <view class='switch-content'>
+    <view hidden="{{switchItem===1}}">
+      <view wx:for='{{movieList}}' wx:for-item='movie' wx:key='{{movie.id}}' class='movie-section'>
+        <image class='movie-img' src='{{movie.img}}'></image>
+        <view class='movie-info'>
+          <view class='movie-name line-ellipsis'>{{movie.nm}}
+            <text class='version {{movie.version}}'></text>
+          </view>
+          <view class='movie-score line-ellipsis'>观众评
+            <text class='grade'>{{movie.sc}}</text>
+          </view>
+          <view class='movie-star line-ellipsis'>主演：{{movie.star}}</view>
+          <view class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
+        </view>
+        <view class='buy-tickets'>
+          <view wx:if='{{movie.globalReleased}}' class='btn'>购票</view>
+          <view wx:else class='btn pre-sale'>预售</view>
+        </view>
+      </view>
+    </view>
+    <view hidden="{{switchItem===0}}">
+      woshi2
+    </view>
+  </view>
+  <view hidden='{{loadingMore}}'>
+    <template is="loadingMore" />
+  </view>
 </view>

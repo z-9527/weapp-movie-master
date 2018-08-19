@@ -2,9 +2,14 @@ const app = getApp()
 
 Page({
   data: {
-    city: ''
+    city: '',
+    movieList:[],
+    movieIds:[],
+    switchItem:0,   //默认选择‘最近上映’
+    loadingMore:false, //加载更多
   },
   onLoad() {
+    this.firstLoad()
     //https://www.jianshu.com/p/aaf65625fc9d   解释的很好
     if (app.globalData.userLocation){
       this.setData({
@@ -19,7 +24,42 @@ Page({
     }
   },
   onShow(){
-    // console.log(1,this.data.city)
-    // console.log(2,app)
+    if (app.globalData.city.city_name && this.data.city !== app.globalData.city.city_name){
+      this.setData({
+        city: app.globalData.city.city_name
+      })
+   }
+  },
+  onReachBottom(){
+    console.log(123)
+  },
+  firstLoad(){
+    const _this = this
+    wx.request({
+      url: 'http://m.maoyan.com/ajax/movieOnInfoList?token=',
+      success(res){
+        const movieList = _this.formatImgUrl(res.data.movieList)
+        _this.setData({
+          movieIds: res.data.movieIds,
+          movieList
+        }, () => console.log(_this.data))
+      }
+    })
+  },
+  //切换swtch
+  selectItem(e){
+    this.setData({
+      switchItem: e.currentTarget.dataset.item
+    })
+  },
+  //处理图片url
+  formatImgUrl(arr,w=128,h=180){
+    //小程序不能在{{}}调用函数，所以我们只能在获取API的数据时处理，而不能在wx:for的每一项中处理
+    let newArr = []
+    arr.forEach(item=>{
+      let imgUrl = item.img.replace('w.h', `${w}.${h}`)
+      newArr.push({ ...item, img: imgUrl})
+    })
+    return newArr
   }
 })

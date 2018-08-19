@@ -3,15 +3,28 @@
     <input placeholder='输入城市名或拼音查询' class='search-input' bindinput='search' placeholder-class="phcolor"></input>
     <view class='iconfont icon-sousuo'></view>
   </view>
-  <view class='citylist-content' style='{{searchValue?"display:none":""}}'>
-    <view wx:for='{{citylist}}' wx:for-item='section' wx:key='{{section.title}}' data-title='{{section.title}}' class='section'>
-      <view class='section-title'>{{section.title}}</view>
-      <view class='{{section.style==="inline"?"section-body-inline":"section-body"}}'>
-        <view wx:for='{{section.items}}' wx:for-item='city' wx:key='{{city.id}}' class='section-item' bindtap='selectCity' data-city='{{city}}'>{{city.city_name}}</view>
+  <block wx:if='{{!!!searchValue}}'>
+    <view class='citylist-content'>
+      <view wx:for='{{citylist}}' wx:for-item='section' wx:key='{{section.title}}' data-title='{{section.title}}' class='section'>
+        <view class='section-title'>{{section.title}}</view>
+        <view class='{{section.style==="inline"?"section-body-inline":"section-body"}}'>
+          <view wx:for='{{section.items}}' wx:for-item='city' wx:key='{{city.id}}' class='section-item' bindtap='selectCity' data-city='{{city}}'>{{city.city_name}}</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class='citylist-nav' id='test' catchtouchmove='handleTouchmove' bindtouchstart='handleTouchstart' bindtouchend='handleTouchend' style='{{searchValue?"display:none":"display:block"}}'>
-    <view wx:for='{{citylist}}' wx:key='{{item.title}}' class='citylist-nav-item' bindtap='navSelect' data-index='{{index}}'>{{item.style==='inline'?item.index:item.title}}</view>
-  </view>
+    <view class='citylist-nav' id='test' catchtouchmove='handleTouchmove' bindtouchstart='handleTouchstart' bindtouchend='handleTouchend'>
+      <view wx:for='{{citylist}}' wx:key='{{item.title}}' class='citylist-nav-item' bindtap='navSelect' data-index='{{index}}'>{{item.style==='inline'?item.index:item.title}}</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class='result-box'>
+      <view wx:if='{{result.length}}'>
+        <view wx:for='{{result}}' wx:for-item='city' data-city="{{city}}" wx:key='{{city.id}}' bindtap='selectCity' class='result-item'>{{city.city_name}}</view>
+      </view>
+      <view wx:else class='no-result'>
+        <image src='../../../assets/images/nothing.png'></image>
+        <view>没有找到相关内容</view>
+      </view>
+    </view>
+  </block>
 </view>

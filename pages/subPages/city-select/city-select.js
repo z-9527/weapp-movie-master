@@ -4893,14 +4893,13 @@ Page({
     navItemHeight: 0, //侧边导航项的高度
     sections: [], //所有section，保存每个section的节点在文档的位置信息
     inNavbar: false, //手指是否在侧边导航，主要是区别后面wx.pageScrollTo触发的滚动还是直接触发的滚动
-    searchValue:'', //查询值
-    result:[]    //城市查询结果列表
+    searchValue: '', //查询值
+    result: [] //城市查询结果列表
   },
   onLoad() {
     this.normalizeCityList(citys)
   },
   onReady() {
-    console.log(citys)
     const query = wx.createSelectorQuery()
     query.select('.citylist-nav').boundingClientRect();
     query.select('.citylist-nav-item').boundingClientRect();
@@ -4928,11 +4927,14 @@ Page({
     })
   },
   onPageScroll(e) {
+    if (this.data.inNavbar || this.data.searchValue) {
+      return //如果是侧边栏的wx.pageScrollTo触发的滚动则不执行下面的程序
+    }
     const sections = this.data.sections
     const scrollTop = e.scrollTop
     curTime = new Date();
     clearTimeout(timeout);
-    if (this.data.inNavbar || curTime - startTime <= mustRun) {
+    if (curTime - startTime <= mustRun) {
       timeout = setTimeout(() => {
         this.handlePageScroll(sections, scrollTop)
       }, mustRun);
@@ -4944,7 +4946,7 @@ Page({
   //页面滚动的处理程序
   handlePageScroll(sections, scrollTop) {
     for (let item of sections) {
-      if (scrollTop >= item.top && scrollTop <= item.top + item.height) {
+      if (scrollTop >= item.top && scrollTop < item.top + item.height) {
         wx.showToast({
           title: item.title,
           icon: 'none'
@@ -5001,9 +5003,17 @@ Page({
   },
   //点击城市的事件处理程序
   selectCity(e) {
-    app.globalData.city = e.currentTarget.dataset.city
-    wx.switchTab({
-      url: '/pages/tabBar/movie/movie'
+    wx.showModal({
+      title: '提示',
+      content: '没有获取猫眼城市ID的API，所以暂不支持切换城市',
+      success(res) {
+        if (res.confirm){
+          app.globalData.city = e.currentTarget.dataset.city          
+          wx.switchTab({
+            url: '/pages/tabBar/movie/movie'
+          })
+        }
+      }
     })
   },
   //侧边栏导航的点击事件处理
@@ -5063,16 +5073,17 @@ Page({
   //input框输入是的查询事件
   search(e) {
     const value = e.detail.value.trim().toUpperCase()
-    console.log(value)    
-    const result = citys.filter(item=>{
-      if(value.length===1 && value>='A' && value<='Z'){
-        return value === item.city_pre.toUpperCase()
-      }
-      return item.city_name.includes(value) || item.city_pinyin.toUpperCase().includes(value) || item.city_short.toUpperCase().includes(value)
-    })
-    console.log(result)
+    let result = []
+    if (value) {
+      result = citys.filter(item => {
+        if (value.length === 1 && value >= 'A' && value <= 'Z') {
+          return value === item.city_pre.toUpperCase()
+        }
+        return item.city_name.includes(value) || item.city_pinyin.toUpperCase().includes(value) || item.city_short.toUpperCase().includes(value)
+      })
+    }
     this.setData({
-      searchValue:value,
+      searchValue: value,
       result,
     })
   },
