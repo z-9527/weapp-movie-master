@@ -1,3 +1,5 @@
+<import src='../../../templates/nothing.wxml'/>
+
 <view class='container'>
   <view class='search-city'>
     <input placeholder='输入城市名或拼音查询' class='search-input' bindinput='search' placeholder-class="phcolor"></input>
@@ -18,13 +20,12 @@
   </block>
   <block wx:else>
     <view class='result-box'>
-      <view wx:if='{{result.length}}'>
+      <block wx:if='{{result.length}}'>
         <view wx:for='{{result}}' wx:for-item='city' data-city="{{city}}" wx:key='{{city.id}}' bindtap='selectCity' class='result-item'>{{city.city_name}}</view>
-      </view>
-      <view wx:else class='no-result'>
-        <image src='../../../assets/images/nothing.png'></image>
-        <view>没有找到相关内容</view>
-      </view>
+      </block>
+      <block wx:else>
+        <template is='nothing' data='{{message:"没有找到相关内容"}}'/>
+      </block>
     </view>
   </block>
 </view>

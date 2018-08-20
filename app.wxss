@@ -1,5 +1,6 @@
 @import './assets/font/icon.wxss';
 @import './templates/loadingMore.wxss';
+@import './templates/nothing.wxss';
 view {
   font-size: 28rpx;
 }

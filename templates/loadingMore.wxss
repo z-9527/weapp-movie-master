@@ -6,7 +6,7 @@
   width: 54rpx;
   height: 54rpx;
 }
-.lading-text{
+.loading-text{
   margin-top: 8rpx;
   color: #666;
 }

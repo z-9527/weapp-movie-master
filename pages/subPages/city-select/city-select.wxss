@@ -49,25 +49,7 @@
   margin-left: 30rpx;
   border-bottom: 1px solid #c8c7cc;
 }
-.no-result{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height:calc(100vh - 100rpx);
-}
-.no-result image{
-    width: 174rpx;
-    height: 200rpx;
-    margin-bottom: 16px;
-    transform: translateY(-100rpx);
-}
-.no-result>view{
-    font-size: 32rpx;
-    color: #999;
-    transform: translateY(-100rpx);
-}
+
 /* 城市列表样式 */
 .citylist-content{
   margin-top: 100rpx;
