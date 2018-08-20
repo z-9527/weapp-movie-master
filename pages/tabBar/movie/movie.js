@@ -7,6 +7,7 @@ Page({
     movieIds:[],
     switchItem:0,   //默认选择‘最近上映’
     loadingMore:false, //加载更多
+    loadComplete:false  //‘正在上映’数据是否加载到最后一条
   },
   onLoad() {
     this.firstLoad()
@@ -31,7 +32,32 @@ Page({
    }
   },
   onReachBottom(){
-    console.log(123)
+    const { switchItem, movieList, movieIds, loadComplete} = this.data
+    const _this = this
+    if (this.data.switchItem===0){
+      if (loadComplete){
+        return 
+      }
+      const length = movieList.length
+      if (length === movieIds.length){
+        this.setData({
+          loadComplete:true
+        })
+      }
+      let query = movieIds.slice(length, length + 10).join('%2C')
+      const url = `http://m.maoyan.com/ajax/moreComingList?token=&movieIds=${query}`
+      wx.request({
+        url,
+        success(res){
+          const arr = movieList.concat(_this.formatImgUrl(res.data.coming))
+          _this.setData({
+            movieList: arr,
+            loadingMore:false
+          })
+        }
+      })
+
+    }
   },
   firstLoad(){
     const _this = this

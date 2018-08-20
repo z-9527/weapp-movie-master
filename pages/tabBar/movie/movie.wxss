@@ -113,6 +113,7 @@
   font-weight: 700;
   padding-right: 10rpx;
 }
+
 .version{
   display: inline-block;
   height: 28rpx;
@@ -137,7 +138,7 @@
 .grade {
   font-weight: 700;
   color: #faaf00;
-  font-size: 15px;
+  font-size: 30rpx;
 }
 
 .buy-tickets .btn {

@@ -1,5 +1,6 @@
 .loadingMore{
   text-align: center;
+  margin-top: 18rpx;
 }
 .loading-img{
   width: 54rpx;

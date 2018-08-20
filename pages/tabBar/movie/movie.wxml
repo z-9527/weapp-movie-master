@@ -22,8 +22,9 @@
           <view class='movie-name line-ellipsis'>{{movie.nm}}
             <text class='version {{movie.version}}'></text>
           </view>
-          <view class='movie-score line-ellipsis'>观众评
-            <text class='grade'>{{movie.sc}}</text>
+          <view class='movie-score line-ellipsis'>
+            <view wx:if='{{movie.globalReleased}}'>观众评 <text class='grade'>{{movie.sc}}</text></view>
+            <view wx:else><text class='grade'>{{movie.wish}}</text>人想看</view>
           </view>
           <view class='movie-star line-ellipsis'>主演：{{movie.star}}</view>
           <view class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
@@ -33,12 +34,13 @@
           <view wx:else class='btn pre-sale'>预售</view>
         </view>
       </view>
+      <view hidden='{{loadingMore || loadComplete}}'>
+        <template is="loadingMore" />
+      </view>
     </view>
     <view hidden="{{switchItem===0}}">
       woshi2
     </view>
   </view>
-  <view hidden='{{loadingMore}}'>
-    <template is="loadingMore" />
-  </view>
+
 </view>
