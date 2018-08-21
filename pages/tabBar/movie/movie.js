@@ -2,7 +2,7 @@ const app = getApp()
 
 Page({
   data: {
-    city: '',
+    city: '正在定位...',
     switchItem: 0, //默认选择‘正在热映’
     //‘正在热映’数据
     movieList0: [],
@@ -56,10 +56,14 @@ Page({
   //第一次加载页面时请求‘正在热映的数据’
   firstLoad() {
     const _this = this
+    wx.showLoading({
+      title:'正在加载...'
+    })
     wx.request({
       url: 'http://m.maoyan.com/ajax/movieOnInfoList?token=',
       success(res) {
         const movieList0 = _this.formatImgUrl(res.data.movieList)
+        wx.hideLoading()
         _this.setData({
           movieIds0: res.data.movieIds,
           movieList0
@@ -74,10 +78,14 @@ Page({
       switchItem: item
     })
     if (item === 1 && !this.data.mostExpectedList.length) {
+      wx.showLoading({
+        title: '正在加载...'
+      })
       const _this = this
       wx.request({
         url: 'http://m.maoyan.com/ajax/mostExpected?limit=10&offset=0&token=',
         success(res) {
+          wx.hideLoading()
           _this.setData({
             mostExpectedList: res.data.coming
           })
@@ -86,7 +94,7 @@ Page({
       wx.request({
         url: 'http://m.maoyan.com/ajax/comingList?token=&limit=10',
         success(res) {
-          console.log(res.data.coming)
+          wx.hideLoading()
           _this.setData({
             movieIds1: res.data.movieIds,
             movieList1: _this.formatImgUrl(res.data.coming)

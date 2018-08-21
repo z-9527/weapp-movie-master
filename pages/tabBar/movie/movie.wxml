@@ -18,13 +18,13 @@
   <view class='switch-content'>
     <view hidden="{{switchItem===1}}">
       <template is='movieSection' wx:for='{{movieList0}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie}}' />
-      <view wx:if='{{!loadComplete0}}'>
+      <view wx:if='{{!loadComplete0 && movieList0.length}}'>
         <template is="loadingMore" />
       </view>
     </view>
     <view hidden="{{switchItem===0}}">
       <template is='movieSection' wx:for='{{movieList1}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie,rt:true}}' />
-      <view wx:if='{{!loadComplete1}}'>
+      <view wx:if='{{!loadComplete1 && movieList1.length}}'>
         <template is="loadingMore" />
       </view>
     </view>
