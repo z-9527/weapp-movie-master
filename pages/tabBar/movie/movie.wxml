@@ -1,4 +1,5 @@
 <import src='../../../templates/loadingMore.wxml' />
+<import src='../../../templates/movieSection.wxml' />
 
 <view>
   <view class='topbar'>
@@ -16,25 +17,8 @@
   </view>
   <view class='switch-content'>
     <view hidden="{{switchItem===1}}">
-      <view wx:for='{{movieList}}' wx:for-item='movie' wx:key='{{movie.id}}' class='movie-section'>
-        <image class='movie-img' src='{{movie.img}}'></image>
-        <view class='movie-info'>
-          <view class='movie-name line-ellipsis'>{{movie.nm}}
-            <text class='version {{movie.version}}'></text>
-          </view>
-          <view class='movie-score line-ellipsis'>
-            <view wx:if='{{movie.globalReleased}}'>观众评 <text class='grade'>{{movie.sc}}</text></view>
-            <view wx:else><text class='grade'>{{movie.wish}}</text>人想看</view>
-          </view>
-          <view class='movie-star line-ellipsis'>主演：{{movie.star}}</view>
-          <view class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
-        </view>
-        <view class='buy-tickets'>
-          <view wx:if='{{movie.globalReleased}}' class='btn'>购票</view>
-          <view wx:else class='btn pre-sale'>预售</view>
-        </view>
-      </view>
-      <view hidden='{{loadingMore || loadComplete}}'>
+      <template is='movieSection' wx:for='{{movieList}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie}}'/>
+      <view wx:if='{{!loadComplete}}'>
         <template is="loadingMore" />
       </view>
     </view>
@@ -42,5 +26,4 @@
       woshi2
     </view>
   </view>
-
 </view>
