@@ -13,10 +13,12 @@
           <text class='grade'>{{movie.wish}}</text>人想看</view>
       </view>
       <view class='movie-star line-ellipsis'>主演：{{movie.star}}</view>
-      <view class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
+      <view wx:if='{{rt}}'>{{movie.rt}}上映</view>
+      <view wx:else class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
     </view>
     <view class='buy-tickets'>
       <view wx:if='{{movie.globalReleased}}' class='btn'>购票</view>
+      <view wx:elif='{{movie.showst===1}}' class='btn want-see'>想看</view>
       <view wx:else class='btn pre-sale'>预售</view>
     </view>
   </view>

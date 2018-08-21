@@ -3,87 +3,131 @@ const app = getApp()
 Page({
   data: {
     city: '',
-    movieList:[],
-    movieIds:[],
-    switchItem:0,   //默认选择‘最近上映’
-    loadComplete:false  //‘正在上映’数据是否加载到最后一条
+    switchItem: 0, //默认选择‘正在热映’
+    //‘正在热映’数据
+    movieList0: [],
+    movieIds0: [],
+    loadComplete0: false, //‘正在上映’数据是否加载到最后一条
+    //‘即将上映’数据
+    mostExpectedList: [],
+    movieList1: [],
+    movieIds1: [],
+    loadComplete1: false,
   },
   onLoad() {
     this.firstLoad()
     //https://www.jianshu.com/p/aaf65625fc9d   解释的很好
-    if (app.globalData.userLocation){
+    if (app.globalData.userLocation) {
       this.setData({
         city: app.globalData.city.city_name
       })
     } else {
-      app.userLocationReadyCallback = ()=>{
+      app.userLocationReadyCallback = () => {
         this.setData({
           city: app.globalData.city.city_name
         })
       }
     }
   },
-  onShow(){
-    if (app.globalData.city.city_name && this.data.city !== app.globalData.city.city_name){
+  onShow() {
+    if (app.globalData.city.city_name && this.data.city !== app.globalData.city.city_name) {
       this.setData({
         city: app.globalData.city.city_name
       })
-   }
-  },
-  //上拉触底刷新
-  onReachBottom(){
-    const { switchItem, movieList, movieIds, loadComplete} = this.data
-    const _this = this
-    if (this.data.switchItem===0){
-      if (loadComplete){
-        return 
-      }
-      const length = movieList.length
-      if (length === movieIds.length){
-        this.setData({
-          loadComplete:true
-        })
-        return
-      }
-      let query = movieIds.slice(length, length + 10).join('%2C')
-      const url = `http://m.maoyan.com/ajax/moreComingList?token=&movieIds=${query}`
-      wx.request({
-        url,
-        success(res){
-          const arr = movieList.concat(_this.formatImgUrl(res.data.coming))
-          _this.setData({
-            movieList: arr,
-          })
-        }
-      })
     }
   },
-  firstLoad(){
+  //上拉触底刷新
+  onReachBottom() {
+    const {
+      switchItem,
+      movieList0,
+      movieIds0,
+      loadComplete0,
+      movieList1,
+      movieIds1,
+      loadComplete1
+    } = this.data
+    if (this.data.switchItem === 0) {
+      this.ReachBottom(movieList0, movieIds0, loadComplete0, 0)
+    } else {
+      this.ReachBottom(movieList1, movieIds1, loadComplete1, 1)
+    }
+  },
+  //第一次加载页面时请求‘正在热映的数据’
+  firstLoad() {
     const _this = this
     wx.request({
       url: 'http://m.maoyan.com/ajax/movieOnInfoList?token=',
-      success(res){
-        const movieList = _this.formatImgUrl(res.data.movieList)
+      success(res) {
+        const movieList0 = _this.formatImgUrl(res.data.movieList)
         _this.setData({
-          movieIds: res.data.movieIds,
-          movieList
+          movieIds0: res.data.movieIds,
+          movieList0
         })
       }
     })
   },
   //切换swtch
-  selectItem(e){
+  selectItem(e) {
+    const item = e.currentTarget.dataset.item
     this.setData({
-      switchItem: e.currentTarget.dataset.item
+      switchItem: item
+    })
+    if (item === 1 && !this.data.mostExpectedList.length) {
+      const _this = this
+      wx.request({
+        url: 'http://m.maoyan.com/ajax/mostExpected?limit=10&offset=0&token=',
+        success(res) {
+          _this.setData({
+            mostExpectedList: res.data.coming
+          })
+        }
+      })
+      wx.request({
+        url: 'http://m.maoyan.com/ajax/comingList?token=&limit=10',
+        success(res) {
+          console.log(res.data.coming)
+          _this.setData({
+            movieIds1: res.data.movieIds,
+            movieList1: _this.formatImgUrl(res.data.coming)
+          })
+        }
+      })
+    }
+  },
+  //上拉触底刷新的加载函数
+  ReachBottom(list, ids, complete, item) {
+    const _this = this
+    if (complete) {
+      return
+    }
+    const length = list.length
+    if (length + 10 >= ids.length) {
+      this.setData({
+        [`loadComplete${item}`]: true
+      })
+    }
+    let query = ids.slice(length, length + 10).join('%2C')
+    const url = `http://m.maoyan.com/ajax/moreComingList?token=&movieIds=${query}`
+    wx.request({
+      url,
+      success(res) {
+        const arr = list.concat(_this.formatImgUrl(res.data.coming))
+        _this.setData({
+          [`movieList${item}`]: arr,
+        })
+      }
     })
   },
   //处理图片url
-  formatImgUrl(arr,w=128,h=180){
+  formatImgUrl(arr, w = 128, h = 180) {
     //小程序不能在{{}}调用函数，所以我们只能在获取API的数据时处理，而不能在wx:for的每一项中处理
     let newArr = []
-    arr.forEach(item=>{
+    arr.forEach(item => {
       let imgUrl = item.img.replace('w.h', `${w}.${h}`)
-      newArr.push({ ...item, img: imgUrl})
+      newArr.push({ ...item,
+        img: imgUrl
+      })
     })
     return newArr
   }

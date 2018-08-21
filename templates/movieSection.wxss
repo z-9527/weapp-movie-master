@@ -81,3 +81,6 @@
 .buy-tickets .btn.pre-sale {
   background-color: #3c9fe6;
 }
+.buy-tickets .want-see{
+  background-color: #faaf00;
+}
