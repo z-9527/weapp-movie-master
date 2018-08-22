@@ -75,3 +75,39 @@
   padding-top: 0;
 }
 
+.title {
+  padding-top: 20rpx;
+  font-size: 28rpx;
+}
+
+.most-expected {
+  margin-bottom: 20rpx;
+}
+
+.most-expected .title {
+  margin-bottom: 20rpx;
+}
+
+.expected-item {
+  display: inline-block;
+  width: 170rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+
+.poster {
+  position: relative;
+  width: 170rpx;
+  height: 230rpx;
+  margin-bottom: 12rpx;
+}
+
+.name {
+  margin-bottom: 3px;
+  font-size: 24rpx;
+}
+
+.data {
+  font-size: 24rpx;
+  color: #999;
+}

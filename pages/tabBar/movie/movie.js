@@ -13,6 +13,7 @@ Page({
     movieList1: [],
     movieIds1: [],
     loadComplete1: false,
+    loadComplete2:false  //水平滚动加载的数据是否加载完毕
   },
   onLoad() {
     this.firstLoad()
@@ -57,7 +58,7 @@ Page({
   firstLoad() {
     const _this = this
     wx.showLoading({
-      title:'正在加载...'
+      title: '正在加载...'
     })
     wx.request({
       url: 'http://m.maoyan.com/ajax/movieOnInfoList?token=',
@@ -87,7 +88,7 @@ Page({
         success(res) {
           wx.hideLoading()
           _this.setData({
-            mostExpectedList: res.data.coming
+            mostExpectedList: _this.formatImgUrl(res.data.coming,true)
           })
         }
       })
@@ -127,13 +128,36 @@ Page({
       }
     })
   },
+  //滚动到最右边时的事件处理函数
+  lower() {
+    const { mostExpectedList, loadComplete2} = this.data
+    const length =mostExpectedList.length
+    const _this = this
+    if (loadComplete2){
+      return 
+    }
+    wx.request({
+      url: `http://m.maoyan.com/ajax/mostExpected?limit=10&offset=${length}&token=`,
+      success(res) {
+        _this.setData({
+          mostExpectedList: mostExpectedList.concat(_this.formatImgUrl(res.data.coming,true)),
+          loadComplete2: !res.data.paging.hasMore || !res.data.coming.length    //当返回的数组长度为0时也认为数据请求完毕
+        })
+      }
+    })
+  },
   //处理图片url
-  formatImgUrl(arr, w = 128, h = 180) {
+  formatImgUrl(arr, cutTitle = false) {
     //小程序不能在{{}}调用函数，所以我们只能在获取API的数据时处理，而不能在wx:for的每一项中处理
     let newArr = []
     arr.forEach(item => {
-      let imgUrl = item.img.replace('w.h', `${w}.${h}`)
+      let title = item.comingTitle
+      if (cutTitle) {
+        title = item.comingTitle.split(' ')[0]
+      }
+      let imgUrl = item.img.replace('w.h', '128.180')
       newArr.push({ ...item,
+        comingTitle: title,
         img: imgUrl
       })
     })

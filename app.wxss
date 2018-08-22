@@ -11,3 +11,7 @@ view {
   overflow: hidden;
   white-space: nowrap;
 }
+.scroll-view_H{
+  white-space: nowrap;
+  width: 100%;
+}
