@@ -16,15 +16,21 @@
     "list": [
       {
         "pagePath": "pages/tabBar/movie/movie",
-        "text": "电影"
+        "text": "电影",
+        "iconPath":"assets/images/movie.png",
+        "selectedIconPath":"assets/images/movieSelect.png"
       },
       {
         "pagePath": "pages/tabBar/cinema/cinema",
-        "text": "影院"
+        "text": "影院",
+        "iconPath": "assets/images/cinema.png",
+        "selectedIconPath": "assets/images/cinemaSelect.png"
       },
       {
         "pagePath": "pages/tabBar/user/user",
-        "text": "我的"
+        "text": "我的",
+      "iconPath": "assets/images/user.png",
+      "selectedIconPath": "assets/images/userSelect.png"
       }
     ]
   }
