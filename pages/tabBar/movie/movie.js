@@ -149,6 +149,9 @@ Page({
   //处理图片url
   formatImgUrl(arr, cutTitle = false) {
     //小程序不能在{{}}调用函数，所以我们只能在获取API的数据时处理，而不能在wx:for的每一项中处理
+    if(!Array.isArray(arr)){
+      return
+    }
     let newArr = []
     arr.forEach(item => {
       let title = item.comingTitle
