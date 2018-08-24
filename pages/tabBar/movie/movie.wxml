@@ -23,8 +23,8 @@
       </view>
     </view>
     <view hidden="{{switchItem===0}}">
-      <view class='most-expected'>
-        <view wx:if='{{mostExpectedList.length}}' class='title'>近期最受期待</view>
+      <view class='most-expected' wx:if='{{mostExpectedList.length}}'>
+        <view class='title'>近期最受期待</view>
         <scroll-view class='scroll-view_H' scroll-x bindscrolltolower='lower'>
           <view wx:for='{{mostExpectedList}}' wx:for-item='movie' wx:key='{{id}}' class='expected-item'>
             <image src='{{movie.img}}' class='poster'></image>

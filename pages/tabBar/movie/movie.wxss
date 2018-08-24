@@ -81,9 +81,18 @@
 }
 
 .most-expected {
-  margin-bottom: 20rpx;
+  position: relative;
+  padding-bottom: 34rpx;
 }
-
+.most-expected::after{
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: -30rpx;
+  width: 100vw;
+  height: 20rpx;
+  background: #f5f5f5;
+}
 .most-expected .title {
   margin-bottom: 20rpx;
 }
