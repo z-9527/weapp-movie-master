@@ -1,0 +1,23 @@
+<import src='../../../templates/nothing.wxml' />
+<view class='search-wrapper'>
+  <view class='search-header topbar'>
+    <input class='search-input' placeholder-class='phcolor' placeholder='搜影院' bindinput='search'></input>
+    <text class='iconfont icon-sousuo'></text>
+    <navigator url='../../tabBar/cinema/cinema' open-type='switchTab' class='cancel'>取消</navigator>
+  </view>
+  <view class='result-list' hidden='{{!result.length}}'>
+    <view class='title'>影院</view>
+    <view wx:for='{{result}}' wx:for-item='cinema' wx:key='{{cinema.id}}' class='cinema-section'>
+      <view class='name-price'>{{cinema.nm}}<text class='sell-price'><text class='price'>{{cinema.sellPrice}}</text> 元起</text></view>
+      <view class='address'><text class='line-ellipsis'>{{cinema.addr}}</text><text>{{cinema.distance}}</text></view>
+      <view class='feature-tags'>
+        <text wx:for='{{cinema.hallType}}' wx:key='{{item}}'>{{item}}</text>
+        <text class='featrue'>小吃</text>
+        <text class='featrue' wx:if='{{cinema.vipDesc}}'>{{cinema.vipDesc}}</text>
+      </view>
+    </view>
+  </view>
+  <view hidden='{{result.length || !value}}'>
+    <template is='nothing' data='{{message:"没有找到相关影院"}}' />  
+  </view>
+</view>

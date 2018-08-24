@@ -1,2 +1,9 @@
-<!--pages/tarBar/cinema/cinema.wxml-->
-<text>pages/tarBar/cinema/cinema.wxml</text>
+<view>
+  <view class='topbar'>
+    <navigator class='city-entry' url='../../subPages/city-select/city-select'>
+      <text class='city-name'>{{city}}</text>
+      <text class='city-entry-arrow'></text>
+    </navigator>
+    <navigator url='../../subPages/search-cinema/search-cinema' class='search-input'><text class='iconfont icon-sousuo'></text>搜影院</navigator>
+  </view>
+</view>

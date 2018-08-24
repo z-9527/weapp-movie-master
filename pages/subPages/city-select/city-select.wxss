@@ -22,9 +22,7 @@
   color: #999;
 }
 
-.phcolor {
-  color: #999;
-}
+
 
 .icon-sousuo {
   position: absolute;

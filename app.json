@@ -3,7 +3,8 @@
     "pages/tabBar/movie/movie",
     "pages/tabBar/cinema/cinema",
     "pages/tabBar/user/user",
-    "pages/subPages/city-select/city-select"
+    "pages/subPages/city-select/city-select",
+    "pages/subPages/search-cinema/search-cinema"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,8 +18,8 @@
       {
         "pagePath": "pages/tabBar/movie/movie",
         "text": "电影",
-        "iconPath":"assets/images/movie.png",
-        "selectedIconPath":"assets/images/movieSelect.png"
+        "iconPath": "assets/images/movie.png",
+        "selectedIconPath": "assets/images/movieSelect.png"
       },
       {
         "pagePath": "pages/tabBar/cinema/cinema",
@@ -29,8 +30,8 @@
       {
         "pagePath": "pages/tabBar/user/user",
         "text": "我的",
-      "iconPath": "assets/images/user.png",
-      "selectedIconPath": "assets/images/userSelect.png"
+        "iconPath": "assets/images/user.png",
+        "selectedIconPath": "assets/images/userSelect.png"
       }
     ]
   }

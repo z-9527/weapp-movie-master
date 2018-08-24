@@ -15,3 +15,41 @@ view {
   white-space: nowrap;
   width: 100%;
 }
+/* topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 88rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+.city-entry {
+  padding-left: 30rpx;
+  font-size: 30rpx;
+  color: #666;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.city-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 19.2vw;
+}
+
+.city-entry-arrow {
+  width: 0;
+  height: 0;
+  border: 8rpx solid #b0b0b0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  display: inline-block;
+  margin-left: 8rpx;
+  margin-top: 10rpx;
+}
+.phcolor {
+  color: #999;
+}
