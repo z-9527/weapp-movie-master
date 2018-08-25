@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "test",
-					"pathName": "pages/subPages/search-cinema/search-cinema",
+					"pathName": "pages/tabBar/cinema/cinema",
 					"query": ""
 				}
 			]

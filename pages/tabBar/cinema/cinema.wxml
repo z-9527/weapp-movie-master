@@ -1,9 +1,45 @@
-<view>
+<import src='../../../templates/nothing.wxml' />
+
+<view class='container'>
   <view class='topbar'>
     <navigator class='city-entry' url='../../subPages/city-select/city-select'>
       <text class='city-name'>{{city}}</text>
       <text class='city-entry-arrow'></text>
     </navigator>
-    <navigator url='../../subPages/search-cinema/search-cinema' class='search-input'><text class='iconfont icon-sousuo'></text>搜影院</navigator>
+    <navigator url='../../subPages/search-cinema/search-cinema' class='search-input'>
+      <text class='iconfont icon-sousuo'></text>搜影院</navigator>
+  </view>
+  <view class='nav-wrapper'>
+    <view class='nav-item'>全城
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='nav-item have-border'>品牌
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='nav-item'>特色
+      <text class='city-entry-arrow'></text>
+    </view>
+  </view>
+  <view class='cinema-list'>
+    <view wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' class='cinema-section'>
+      <view class='name-price'>{{cinema.nm}}
+        <text class='sell-price'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
+      </view>
+      <view class='address'>
+        <text class='line-ellipsis'>{{cinema.addr}}</text>
+        <text>{{cinema.distance}}</text>
+      </view>
+      <view class='feature-tags'>
+        <text wx:for='{{cinema.tag.hallType}}' wx:key='{{item}}'>{{item}}</text>
+        <text class='featrue'>小吃</text>
+        <text class='featrue' wx:if='{{cinema.tag.vipTag}}'>{{cinema.tag.vipTag}}</text>
+      </view>
+      <view wx:if='{{!!cinema.promotion.cardPromotionTag}}'>
+        <text class='card'></text><text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
+      </view>
+    </view>
+  </view>
+  <view hidden='{{cinemas.length || first}}'>
+    <template is='nothing' data='{{message:"暂无符合条件的影院"}}' />  
   </view>
 </view>
