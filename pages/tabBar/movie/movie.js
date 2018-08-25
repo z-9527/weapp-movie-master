@@ -69,6 +69,11 @@ Page({
           movieIds0: res.data.movieIds,
           movieList0
         })
+        if (res.data.movieList.length >= res.data.movieIds.length){
+          _this.setData({
+            loadComplete0:true
+          })
+        }
       }
     })
   },
