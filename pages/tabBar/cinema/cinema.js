@@ -16,10 +16,11 @@ Page({
       areaId: -1,
       stationId: -1,
       item: '',
-      updateShowDay: true
+      updateShowDay: false
     },
-    first:true,
-    cinemas:[]
+    first: true,
+    cinemas: [], //影院列表
+    cityCinemaInfo: {} //城市影院信息
   },
   onLoad() {
     this.setData({
@@ -32,21 +33,50 @@ Page({
       city: app.globalData.city.city_name
     }
   },
+  //初始化页面
   initPage() {
     wx.showLoading({
       title: '正在加载...'
     })
     const _this = this;
+    this.getCinemas().then(()=>{
+      wx.hideLoading()
+      _this.setData({
+        first:false
+      })
+    })
     wx.request({
-      url: 'http://m.maoyan.com/ajax/cinemaList',
-      data:_this.data.params,
-      success(res){
-        wx.hideLoading()
+      url: 'http://m.maoyan.com/ajax/filterCinemas',
+      success(res) {
         _this.setData({
-          cinemas:res.data.cinemas,
-          first:false
+          cityCinemaInfo: res.data
         })
       }
+    })
+  },
+  //获取影院列表
+  getCinemas() {
+    const _this = this;
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: 'http://m.maoyan.com/ajax/cinemaList',
+        data: _this.data.params,
+        success(res) {
+          resolve()
+          _this.setData({
+            cinemas: res.data.cinemas,
+          })
+        }
+      })
+    })
+  },
+  //当过滤条件变化时调用的函数
+  changeCondition(e){
+    const obj = e.detail
+    this.setData({
+      params: { ...this.data.params,...obj}
+    },()=>{
+      this.getCinemas()
     })
   }
 })

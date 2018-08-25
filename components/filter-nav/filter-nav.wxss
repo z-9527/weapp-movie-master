@@ -1,0 +1,100 @@
+@import '/assets/font/icon.wxss';
+
+.line-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.tab {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 80rpx;
+  border-bottom: 1px solid #e6e6e6;
+  color: #777;
+  background: #fff;
+}
+
+.nav-item {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.have-border {
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+}
+
+.city-entry-arrow {
+  width: 0;
+  height: 0;
+  border: 8rpx solid #b0b0b0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  display: inline-block;
+  margin-left: 8rpx;
+  margin-top: 10rpx;
+}
+
+.select-item {
+  color: #e54847;
+}
+
+.select-item .city-entry-arrow {
+  position: relative;
+  transform: translateY(-8rpx);
+  border: 8rpx solid #e54847;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+.nav-content-item {
+  width: 100vw;
+  height: calc(100vh * 0.6);
+  background: #fff;
+  color: #777;
+}
+
+/* .region{
+
+} */
+
+.brand-scroll-view {
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-item {
+  display: flex;
+  justify-content: space-between;
+  line-height: 88rpx;
+  height: 88rpx;
+  border-bottom: 1px solid #f0f0f0;
+  padding-left: 45rpx;
+  padding-right: 80rpx;
+}
+.red {
+  color: #dd403b;
+}
+.brand-count{
+  font-size: 24rpx;
+}
+/* .special{
+  
+} */
+
+/* 蒙板 */
+
+.mask {
+  position: fixed;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}

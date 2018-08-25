@@ -29,26 +29,11 @@
 
 .nav-wrapper {
   position: fixed;
-  display: flex;
-  align-items: center;
   top: 90rpx;
   left: 0;
   width: 100vw;
   height: 80rpx;
-  border-bottom: 1px solid #e6e6e6;
-  color: #777;
   background: #fff;
-}
-
-.nav-item {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 26rpx;
-}
-
-.have-border {
-  border-left: 1px solid #e6e6e6;
-  border-right: 1px solid #e6e6e6;
 }
 
 .cinema-list {

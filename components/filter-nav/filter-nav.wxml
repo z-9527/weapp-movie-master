@@ -1,0 +1,30 @@
+<view class='nav'>
+  <view class='tab'>
+    <view class='line-ellipsis nav-item {{itemNum===1?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{1}}'>{{itemName1}}
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='line-ellipsis nav-item have-border {{itemNum===2?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{2}}'>{{itemName2}}
+      <text class='city-entry-arrow'></text>
+    </view>
+    <view class='line-ellipsis nav-item {{itemNum===3?"select-item":""}}' bindtap='selectItemNum' data-item-num='{{3}}'>{{itemName3}}
+      <text class='city-entry-arrow'></text>
+    </view>
+  </view>
+  <view class='nav-content'>
+    <view class='nav-content-item region' style='display:{{itemNum===1?"block":"none"}}'>1</view>
+    <view class='nav-content-item brand' style='display:{{itemNum===2?"block":"none"}}'>
+      <scroll-view class='brand-scroll-view' scroll-y>
+        <view wx:for='{{cityCinemaInfo.brand.subItems}}' wx:key='{{item.id}}' class='brand-item {{selectBrandIndex===index?"red":""}}' bindtap='selectBrand' data-index='{{index}}' data-brand='{{item}}'>
+          <view>
+            <text class='iconfont icon-hook' style='visibility:{{selectBrandIndex===index?"":"hidden"}}'></text> {{item.name}}
+          </view>
+          <view class='brand-count'>{{item.count}}</view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='nav-content-item special' style='display:{{itemNum===3?"block":"none"}}'>
+      
+    </view>
+  </view>
+  <view class='mask' bindtap='cancal' style='display:{{itemNum===-1?"none":"block"}}' catchtap='cancal'></view>
+</view>

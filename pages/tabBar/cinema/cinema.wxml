@@ -10,15 +10,7 @@
       <text class='iconfont icon-sousuo'></text>搜影院</navigator>
   </view>
   <view class='nav-wrapper'>
-    <view class='nav-item'>全城
-      <text class='city-entry-arrow'></text>
-    </view>
-    <view class='nav-item have-border'>品牌
-      <text class='city-entry-arrow'></text>
-    </view>
-    <view class='nav-item'>特色
-      <text class='city-entry-arrow'></text>
-    </view>
+    <filter-nav city-cinema-info='{{cityCinemaInfo}}' bindchange='changeCondition'></filter-nav>
   </view>
   <view class='cinema-list'>
     <view wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' class='cinema-section'>
