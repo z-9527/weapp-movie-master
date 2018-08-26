@@ -29,6 +29,7 @@
 
 .nav-wrapper {
   position: fixed;
+  z-index: 10;
   top: 90rpx;
   left: 0;
   width: 100vw;
@@ -43,7 +44,8 @@
 .cinema-section {
   padding: 30rpx 0;
   margin: 0 30rpx;
-  border-top: 1px solid #e6e6e6;
+  border:none;
+  border-bottom: 1px solid #e6e6e6;
   line-height: 1.8em;
 }
 

@@ -5,13 +5,14 @@
   overflow: hidden;
   white-space: nowrap;
 }
+
 .tab {
   display: flex;
   align-items: center;
   width: 100vw;
   height: 80rpx;
   border-bottom: 1px solid #e6e6e6;
-  color: #777;
+  color: #666;
   background: #fff;
 }
 
@@ -52,6 +53,7 @@
 }
 
 .nav-content-item {
+  position: relative;
   width: 100vw;
   height: calc(100vh * 0.6);
   background: #fff;
@@ -77,15 +79,84 @@
   padding-left: 45rpx;
   padding-right: 80rpx;
 }
+
 .red {
   color: #dd403b;
 }
-.brand-count{
+
+.brand-count {
   font-size: 24rpx;
 }
+
 /* .special{
   
 } */
+.special-scroll-view{
+  white-space: nowrap;
+  width: 100%;
+  height: calc(100% - 120rpx);
+}
+
+.special .item-title {
+  padding: 20rpx 30rpx;
+}
+
+.special .item-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30rpx;
+}
+
+.special .item-list .btn {
+  width: 21.3%;
+  height: 60rpx;
+  margin-right: 3%;
+  margin-bottom: 20rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+  padding: 0 6rpx;
+}
+.special .item-list .btn.select{
+  background: #fcf0f0;
+  color: #f03d37;
+  border: 1px solid #f03d37;
+}
+
+.special-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.special-btn .btn {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  height: 68rpx;
+  width: 20%;
+  text-align: center;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  line-height: 68rpx;
+}
+
+.special-btn .btn.confirm-btn {
+  background: #f03d37;
+  border: 1px solid #f03d37;
+  color: #fff;
+}
 
 /* 蒙板 */
 

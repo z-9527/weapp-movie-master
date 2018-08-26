@@ -14,16 +14,29 @@
     <view class='nav-content-item region' style='display:{{itemNum===1?"block":"none"}}'>1</view>
     <view class='nav-content-item brand' style='display:{{itemNum===2?"block":"none"}}'>
       <scroll-view class='brand-scroll-view' scroll-y>
-        <view wx:for='{{cityCinemaInfo.brand.subItems}}' wx:key='{{item.id}}' class='brand-item {{selectBrandIndex===index?"red":""}}' bindtap='selectBrand' data-index='{{index}}' data-brand='{{item}}'>
+        <view wx:for='{{cityCinemaInfo.brand.subItems}}' wx:key='{{item.id}}' class='brand-item {{selectBrandId===item.id?"red":""}}' bindtap='selectBrand' data-brand='{{item}}'>
           <view>
-            <text class='iconfont icon-hook' style='visibility:{{selectBrandIndex===index?"":"hidden"}}'></text> {{item.name}}
+            <text class='iconfont icon-hook' style='visibility:{{selectBrandId===item.id?"":"hidden"}}'></text> {{item.name}}
           </view>
           <view class='brand-count'>{{item.count}}</view>
         </view>
       </scroll-view>
     </view>
     <view class='nav-content-item special' style='display:{{itemNum===3?"block":"none"}}'>
-      
+      <scroll-view class='special-scroll-view' scroll-y>
+        <view class='item-title'>特色功能</view>
+        <view class='item-list'>
+          <view wx:for='{{cityCinemaInfo.service.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectServiceId===item.id?"select":""}}' bindtap='specialSelectItem' data-type-id='{{item.id}}' data-type='service'>{{item.name}}</view>
+        </view>
+        <view class='item-title'>特殊厅</view>
+        <view class='item-list'>
+          <view wx:for='{{cityCinemaInfo.hallType.subItems}}' wx:key='{{item.id}}' class='btn line-ellipsis {{selectHallTypeId===item.id?"select":""}}' bindtap='specialSelectItem' data-type-id='{{item.id}}' data-type='hallType'>{{item.name}}</view>
+        </view>
+      </scroll-view>
+      <view class='special-btn'>
+        <view class='btn' bindtap='specialReset'>重置</view>
+        <view class='btn confirm-btn' bindtap='specialConfirm'>确定</view>
+      </view>
     </view>
   </view>
   <view class='mask' bindtap='cancal' style='display:{{itemNum===-1?"none":"block"}}' catchtap='cancal'></view>

@@ -1,4 +1,5 @@
 <import src='../../../templates/nothing.wxml' />
+<import src='../../../templates/loadingMore.wxml' />
 
 <view class='container'>
   <view class='topbar'>
@@ -15,7 +16,7 @@
   <view class='cinema-list'>
     <view wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' class='cinema-section'>
       <view class='name-price'>{{cinema.nm}}
-        <text class='sell-price'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
+        <text class='sell-price' wx:if='{{cinema.sellPrice}}'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
       </view>
       <view class='address'>
         <text class='line-ellipsis'>{{cinema.addr}}</text>
@@ -27,11 +28,15 @@
         <text class='featrue' wx:if='{{cinema.tag.vipTag}}'>{{cinema.tag.vipTag}}</text>
       </view>
       <view wx:if='{{!!cinema.promotion.cardPromotionTag}}'>
-        <text class='card'></text><text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
+        <text class='card'></text>
+        <text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
       </view>
     </view>
   </view>
-  <view hidden='{{cinemas.length || first}}'>
-    <template is='nothing' data='{{message:"暂无符合条件的影院"}}' />  
+  <view wx:if='{{!loadComplete && cinemas.length}}'>
+    <template is="loadingMore" />
+  </view>
+  <view hidden='{{!nothing}}'>
+    <template is='nothing' data='{{message:"暂无符合条件的影院"}}' />
   </view>
 </view>
