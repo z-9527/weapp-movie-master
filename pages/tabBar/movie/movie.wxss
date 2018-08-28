@@ -19,6 +19,7 @@
   border-bottom: 2px solid #ef4238;
 }
 
+
 .search-entry {
   color: #ef4238;
   font-weight: 700;

@@ -19,7 +19,7 @@
 .nav-item {
   flex-grow: 1;
   text-align: center;
-  font-size: 26rpx;
+  font-size: 28rpx;
 }
 
 .have-border {
@@ -60,9 +60,53 @@
   color: #777;
 }
 
-/* .region{
+/* region */
 
-} */
+.region .tab {
+  border: none;
+}
+
+.region .nav-item {
+  height: 100%;
+  line-height: 80rpx;
+  box-sizing: border-box;
+}
+
+.region .nav-item.active {
+  color: #e54847;
+  border-bottom: 2px solid #e54847;
+}
+
+.region-list {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 80rpx);
+}
+
+.region-sidenav {
+  white-space: nowrap;
+  /* 直接用百分比有点问题 */
+  width: calc(100vw * 0.4);  
+  height: 100%;
+}
+.side-item{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}
+.side-item.active{
+  color: #dd403b;
+  background: #f5f5f5;
+}
+
+.region-list-item {
+  white-space: nowrap;
+  flex-grow: 1;
+  height: 100%;
+  background: #f5f5f5;
+}
+
+/* brand */
 
 .brand-scroll-view {
   white-space: nowrap;
@@ -84,14 +128,14 @@
   color: #dd403b;
 }
 
+
 .brand-count {
   font-size: 24rpx;
 }
 
-/* .special{
-  
-} */
-.special-scroll-view{
+/* special */
+
+.special-scroll-view {
   white-space: nowrap;
   width: 100%;
   height: calc(100% - 120rpx);
@@ -120,7 +164,8 @@
   border: 1px solid #e5e5e5;
   padding: 0 6rpx;
 }
-.special .item-list .btn.select{
+
+.special .item-list .btn.select {
   background: #fcf0f0;
   color: #f03d37;
   border: 1px solid #f03d37;

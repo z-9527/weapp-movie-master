@@ -11,7 +11,18 @@
     </view>
   </view>
   <view class='nav-content'>
-    <view class='nav-content-item region' style='display:{{itemNum===1?"block":"none"}}'>1</view>
+    <view class='nav-content-item region' style='display:{{itemNum===1?"block":"none"}}'>
+      <view class='tab'>
+        <view class='nav-item {{selectRegion.item===0 ?"active":""}}' bindtap='selectRegionItem' data-index='{{0}}'>商区</view>
+        <view class='nav-item {{selectRegion.item===1 ?"active":""}}' bindtap='selectRegionItem' data-index='{{1}}'>地铁站</view>
+      </view>
+      <view class='region-list'>
+        <scroll-view class='region-sidenav' scroll-y>
+          <view wx:for='{{selectRegion.sideList}}' wx:key='{{item.id}}' class='line-ellipsis side-item {{item.id===selectRegion.selectDistrictId || item.id===selectRegion.selectLineId?"active":""}}'>{{item.name}}({{item.count}})</view>
+        </scroll-view>
+        <scroll-view class='region-list-item' scroll-y></scroll-view>
+      </view>
+    </view>
     <view class='nav-content-item brand' style='display:{{itemNum===2?"block":"none"}}'>
       <scroll-view class='brand-scroll-view' scroll-y>
         <view wx:for='{{cityCinemaInfo.brand.subItems}}' wx:key='{{item.id}}' class='brand-item {{selectBrandId===item.id?"red":""}}' bindtap='selectBrand' data-brand='{{item}}'>
