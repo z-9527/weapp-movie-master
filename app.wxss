@@ -57,7 +57,7 @@ view {
 
 .cinema-section {
   padding: 30rpx;
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #f0f0f0;
   line-height: 1.8em;
 }
 
@@ -104,4 +104,10 @@ view {
 .feature-tags .featrue {
   color: #f90;
   border-color: #f90;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

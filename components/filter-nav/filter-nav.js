@@ -8,7 +8,6 @@ Component({
       value: {},
       observer: function (newVal, oldVal, changedPath){
         const sideList = newVal.district ? newVal.district.subItems : [];
-        console.log(sideList)
         this.setData({
           selectRegion: { ...this.data.selectRegion, sideList }
         })
@@ -29,10 +28,10 @@ Component({
     selectHallTypeId: -1,  //选择的特殊厅ID
     selectRegion: {
       item: 0,
-      sideList: [],
-      list: [],
+      sideList: [],          //侧边导航的list
+      list: [],              //详情list
       selectDistrictId:-1,   //选择的大区ID
-      selectAreaI:-1,       //选择的小区ID
+      selectAreaId:-1,       //选择的小区ID
       selectLineId:-1,       //选择的地铁线ID
       selectStationId:-1      //选择的地铁站ID
     }
@@ -120,9 +119,13 @@ Component({
       if (index===0){
         obj.item = 0
         obj.sideList = cityCinemaInfo.district.subItems
+        const findItem = obj.sideList.find(item => item.id === obj.selectDistrictId)
+        obj.list = findItem.subItems ? findItem.subItems :[]
       } else {
         obj.item = 1
-        obj.sideList = cityCinemaInfo.subway.subItems        
+        obj.sideList = cityCinemaInfo.subway.subItems       
+        const findItem = obj.sideList.find(item => item.id === obj.selectLineId)
+        obj.list = findItem.subItems ? findItem.subItems : [] 
       }
       this.setData({
         selectRegion: obj
@@ -130,16 +133,66 @@ Component({
     },
     //“全城”的side的点击事件
     regionSideClick(e){
-      const {item } = this.data.selectRegion
-      const id = e.currentTarget.dataset.id
-      let obj = { ...this.data.selectRegion }
+      const { item, selectDistrictId, selectLineId, selectStationId, selectAreaId } = this.data.selectRegion
+      const side = e.currentTarget.dataset.side
+      let obj = { ...this.data.selectRegion, list: side.subItems ? side.subItems : [] }
       if (item===0){
-        // obj.
+        if (side.id ===-1 && selectDistrictId !==-1){
+          this.triggerEvent('change', {
+            districtId: -1,
+            lineId: selectLineId,
+            areaId: -1,
+            stationId: selectStationId
+          })
+          this.setData({
+            itemNum: -1,
+            itemName1:'全城',
+            selectRegion: { ...this.data.selectRegion, selectDistrictId: -1, selectAreaId:-1}
+          })
+          return
+        }
+        obj.selectDistrictId = side.id
+        obj.list = side.subItems ? side.subItems :[]
       } else {
-
+        if (side.id === -1 && selectLineId !== -1) {
+          this.triggerEvent('change', {
+            districtId: selectDistrictId,
+            lineId: -1,
+            areaId: selectAreaId,
+            stationId: -1
+          })
+          this.setData({
+            itemNum: -1,
+            itemName1: '全城',
+            selectRegion: { ...this.data.selectRegion, selectLineId: -1, selectStationId: -1 }
+          })
+          return
+        }
+        obj.selectLineId = side.id
       }
       this.setData({
         selectRegion:obj
+      })
+    },
+    //“全城”详细list的点击事件
+    regionListClick(e){
+      const item = e.currentTarget.dataset.item
+      let obj = { ...this.data.selectRegion}
+      if (this.data.selectRegion.item===0){
+        obj.selectAreaId = item.id
+      } else {
+        obj.selectStationId = item.id
+      }
+      this.triggerEvent('change', {
+        districtId: obj.selectDistrictId,
+        lineId: obj.selectLineId,
+        areaId: obj.selectAreaId,
+        stationId: obj.selectStationId
+      })
+      this.setData({
+        selectRegion: obj,
+        itemNum: -1,
+        itemName1: item.name,
       })
     }
   },

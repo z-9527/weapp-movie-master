@@ -12,7 +12,7 @@
   width: 100vw;
   height: 80rpx;
   border-bottom: 1px solid #e6e6e6;
-  color: #666;
+  color: #555;
   background: #fff;
 }
 
@@ -20,6 +20,13 @@
   flex-grow: 1;
   text-align: center;
   font-size: 28rpx;
+}
+.tab .nav-item{
+  width: 33.33%
+}
+.nav-item .title{
+  display: inline-block;
+  max-width: 80%;
 }
 
 .have-border {
@@ -35,6 +42,7 @@
   border-right-color: transparent;
   border-bottom-color: transparent;
   display: inline-block;
+  vertical-align: text-top;
   margin-left: 8rpx;
   margin-top: 10rpx;
 }
@@ -104,6 +112,14 @@
   flex-grow: 1;
   height: 100%;
   background: #f5f5f5;
+}
+.region-list-item .item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 50rpx;
+  height: 80rpx;
 }
 
 /* brand */
