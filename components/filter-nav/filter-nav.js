@@ -137,6 +137,7 @@ Component({
       const side = e.currentTarget.dataset.side
       let obj = { ...this.data.selectRegion, list: side.subItems ? side.subItems : [] }
       if (item===0){
+        //点击“全部”时关闭下拉框
         if (side.id ===-1 && selectDistrictId !==-1){
           this.triggerEvent('change', {
             districtId: -1,
@@ -147,7 +148,7 @@ Component({
           this.setData({
             itemNum: -1,
             itemName1:'全城',
-            selectRegion: { ...this.data.selectRegion, selectDistrictId: -1, selectAreaId:-1}
+            selectRegion: { ...this.data.selectRegion, selectDistrictId: -1, selectAreaId:-1,list:[]}
           })
           return
         }
@@ -164,7 +165,7 @@ Component({
           this.setData({
             itemNum: -1,
             itemName1: '全城',
-            selectRegion: { ...this.data.selectRegion, selectLineId: -1, selectStationId: -1 }
+            selectRegion: { ...this.data.selectRegion, selectLineId: -1, selectStationId: -1,list:[] }
           })
           return
         }
