@@ -1,7 +1,7 @@
 <import src='../../../templates/nothing.wxml' />
 <import src='../../../templates/loadingMore.wxml' />
 
-<view class='container'>
+<view class='container' style='position:{{isShow?"fixed":""}}'>
   <view class='topbar'>
     <navigator class='city-entry' url='../../subPages/city-select/city-select'>
       <text class='city-name'>{{city}}</text>
@@ -11,7 +11,7 @@
       <text class='iconfont icon-sousuo'></text>搜影院</navigator>
   </view>
   <view class='nav-wrapper'>
-    <filter-nav city-cinema-info='{{cityCinemaInfo}}' bindchange='changeCondition'></filter-nav>
+    <filter-nav city-cinema-info='{{cityCinemaInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow'></filter-nav>
   </view>
   <view class='cinema-list'>
     <view wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' class='cinema-section'>

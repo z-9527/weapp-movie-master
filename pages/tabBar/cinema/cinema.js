@@ -18,10 +18,11 @@ Page({
       item: '',
       updateShowDay: false
     },
-    nothing:false,  //结果是否为空
+    nothing: false, //结果是否为空
     cinemas: [], //影院列表
     cityCinemaInfo: {}, //城市影院信息
-    loadComplete:false   //数据是否加载完
+    loadComplete: false, //数据是否加载完
+    isShow: false, //导航下拉框是否展开
   },
   onLoad() {
     this.setData({
@@ -40,7 +41,7 @@ Page({
       title: '正在加载...'
     })
     const _this = this;
-    this.getCinemas(this.data.params).then(()=>{
+    this.getCinemas(this.data.params).then(() => {
       wx.hideLoading()
     })
     wx.request({
@@ -70,32 +71,43 @@ Page({
     })
   },
   //当过滤条件变化时调用的函数
-  changeCondition(e){
+  changeCondition(e) {
     const obj = e.detail
     wx.showLoading({
       title: '正在加载...'
     })
     this.setData({
-      params: { ...this.data.params,...obj},
-      cinemas:[],
-      nothing:false
-    },()=>{
-      this.getCinemas(this.data.params).then((list)=>{
-        if (!list.length){
+      params: { ...this.data.params,
+        ...obj
+      },
+      cinemas: [],
+      nothing: false
+    }, () => {
+      this.getCinemas(this.data.params).then((list) => {
+        if (!list.length) {
           this.setData({
-            nothing:true
+            nothing: true
           })
         }
         wx.hideLoading()
       })
     })
   },
+  //导航下拉框状态变化时的处理
+  toggleShow(e) {
+    const item = e.detail.item
+    this.setData({
+      isShow: item !== -1
+    })
+  },
   //上拉触底加载更多
-  onReachBottom(){
-    if(this.data.loadComplete){
+  onReachBottom() {
+    if (this.data.loadComplete) {
       return
     }
-    const params = { ...this.data.params, offset: this.data.cinemas.length}
+    const params = { ...this.data.params,
+      offset: this.data.cinemas.length
+    }
     this.getCinemas(params)
   }
 })
