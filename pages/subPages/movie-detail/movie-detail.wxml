@@ -1,2 +1,32 @@
-<!--pages/subPages/movie-detail/movie-detail.wxml-->
-<text>pages/subPages/movie-detail/movie-detail.wxml</text>
+<view>
+  <view class='movie-header' wx:if='{{detailMovie}}'>
+    <view class='movie-background' style='background-image: url({{detailMovie.img}})'></view>
+    <view class='movie-mask'></view>
+    <view class='movie-content'>
+      <view class='movie-poster' style='background-image: url({{detailMovie.img}})'></view>
+      <view class='movie-info'>
+        <view class='movie-name line-ellipsis'>{{detailMovie.nm}}</view>
+        <view class='movie-ename line-ellipsis'>{{detailMovie.enm}}</view>
+        <view wx:if='{{detailMovie.globalReleased}}'>
+          <view wx:if='{{detailMovie.sc}}'>
+            <view class='movie-score line-ellipsis'>
+              <image class='movie-star' wx:for='{{detailMovie.stars}}' wx:key='{{index}}' src='/assets/images/{{item}}.png'></image>
+              {{detailMovie.sc}}
+            </view>
+            <view class='score-num line-ellipsis'>({{detailMovie.snum}}万人评分)</view>
+          </view>
+          <view class='no-score' wx:else>暂无评分</view>
+        </view>
+        <view wx:else class='movie-score'>{{detailMovie.wish}}人想看</view>
+        <view class='movie-category line-ellipsis'>{{detailMovie.cat}}
+          <view class='tag-box' wx:if='{{detailMovie.version}}'>
+            <text class='tag-d'>{{detailMovie.version[0]}}</text>
+            <text wx:if='{{detailMovie.version[1]}}' class='tag-imax'>{{detailMovie.version[1]}}</text>
+          </view>
+        </view>
+        <view class='movie-time line-ellipsis'>{{detailMovie.src}} / {{detailMovie.dur}}分钟</view>
+        <view class='movie-time line-ellipsis'>{{detailMovie.pubDesc}}</view>
+      </view>
+    </view>
+  </view>
+</view>

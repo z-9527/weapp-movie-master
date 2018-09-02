@@ -1,13 +1,14 @@
 <template name="movieSection">
-  <navigator class='movie-section'>
+  <navigator class='movie-section' url='/pages/subPages/movie-detail/movie-detail?movieId={{movie.id}}'>
     <image class='movie-img' src='{{movie.img}}'></image>
     <view class='movie-info'>
       <view class='movie-name line-ellipsis'>{{movie.nm}}
         <text class='version {{movie.version}}'></text>
       </view>
       <view class='movie-score line-ellipsis'>
-        <view wx:if='{{movie.globalReleased}}'>观众评
-          <text class='grade'>{{movie.sc}}</text>
+        <view wx:if='{{movie.globalReleased}}'>
+          <text wx:if='{{movie.sc}}'>观众评<text class='grade'>{{movie.sc}}</text></text>
+          <text wx:else>暂无评分</text>
         </view>
         <view wx:else>
           <text class='grade'>{{movie.wish}}</text>人想看</view>
