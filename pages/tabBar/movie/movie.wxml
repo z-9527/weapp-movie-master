@@ -17,7 +17,7 @@
   </view>
   <view class='switch-content'>
     <view hidden="{{switchItem===1}}">
-      <template is='movieSection' wx:for='{{movieList0}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie}}' />
+      <template is='movieSection' wx:for='{{movieList0}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie}}'/>
       <view wx:if='{{!loadComplete0 && movieList0.length}}'>
         <template is="loadingMore" />
       </view>

@@ -3,13 +3,14 @@
   display: flex;
   align-items: center;
   height: 228rpx;
+  padding: 0 30rpx;
 }
 .movie-section::after{
   position: absolute;
   content: '';
   height: 0;
-  width: calc(100% - 148rpx);
-  right:0;
+  width: calc(100% - 208rpx);
+  right:30rpx;
   bottom:0;
   border-bottom: 1px solid #f0f0f0;
 }
