@@ -1,5 +1,5 @@
-<view>
-  <view class='movie-header' wx:if='{{detailMovie}}'>
+<view wx:if='{{detailMovie}}'>
+  <view class='movie-header'>
     <view class='movie-background' style='background-image: url({{detailMovie.img}})'></view>
     <view class='movie-mask'></view>
     <view class='movie-content'>
@@ -28,5 +28,26 @@
         <view class='movie-time line-ellipsis'>{{detailMovie.pubDesc}}</view>
       </view>
     </view>
+  </view>
+  <view class='section'>
+    <view class='section-title'>剧情简介</view>
+    <view class='synopsis' style='height:{{isFold?"120rpx":"auto"}}'>{{detailMovie.dra}}</view>
+    <view class='iconfont icon-jiantouarrow483 {{isFold?"":"unfold"}}' bindtap='toggleFold'></view>
+  </view>
+  <view class='section'>
+    <view class='section-title'>演职人员</view>
+    <scroll-view scroll-x class='scroll-view_H'>
+
+    </scroll-view>
+  </view>
+  <view class='section'>
+    <view class='section-title'>媒体库</view>
+    <scroll-view scroll-x class='scroll-view_H'>
+      <view class='videoImg-box'>
+        <image src='{{detailMovie.videoImg}}' class='videoImg'></image>
+        <view class='iconfont icon-zanting'></view>
+      </view>
+      <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo'></image>
+    </scroll-view>
   </view>
 </view>

@@ -1,6 +1,7 @@
 Page({
   data:{
-    detailMovie:null    //电影详情
+    detailMovie:null,    //电影详情
+    isFold:true
   },
   onLoad(options){
     const movieId = options.movieId
@@ -43,10 +44,17 @@ Page({
     if (fullStars<5){
       stars[fullStars] = halfStar;
     }
-    console.log(stars)
     obj.stars = stars
+    //处理媒体库的图片
+    obj.photos = obj.photos.map(item => item.replace('w.h/', '') +'@180w_140h_1e_1c.webp')
     console.log(123,obj)
     return obj
+  },
+  //折叠与展开剧情简介
+  toggleFold(){
+    this.setData({
+      isFold:!this.data.isFold
+    })
   }
 
 })

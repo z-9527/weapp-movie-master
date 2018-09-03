@@ -104,9 +104,3 @@ view {
   color: #f90;
   border-color: #f90;
 }
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-}
