@@ -81,7 +81,7 @@ view {
   display: flex;
   justify-content: space-between;
   font-size: 28rpx;
-  color: #999;
+  color: #666;
 }
 
 .feature-tags {

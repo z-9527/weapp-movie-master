@@ -29,25 +29,26 @@
       </view>
     </view>
   </view>
-  <view class='section'>
-    <view class='section-title'>剧情简介</view>
-    <view class='synopsis' style='height:{{isFold?"120rpx":"auto"}}'>{{detailMovie.dra}}</view>
-    <view class='iconfont icon-jiantouarrow483 {{isFold?"":"unfold"}}' bindtap='toggleFold'></view>
+  <view class='movie-body'>
+    <view class='section'>
+      <view class='section-title'>剧情简介</view>
+      <view class='synopsis' style='height:{{isFold?"120rpx":"auto"}}'>{{detailMovie.dra}}</view>
+      <view class='iconfont icon-jiantouarrow483 {{isFold?"":"unfold"}}' bindtap='toggleFold'></view>
+    </view>
+    <view class='section'>
+      <view class='section-title'>演职人员</view>
+      <scroll-view scroll-x class='scroll-view_H'>暂无数据...</scroll-view>
+    </view>
+    <view class='section'>
+      <view class='section-title'>媒体库</view>
+      <scroll-view scroll-x class='scroll-view_H'>
+        <view class='videoImg-box'>
+          <image src='{{detailMovie.videoImg}}' class='videoImg'></image>
+          <view class='iconfont icon-zanting'></view>
+        </view>
+        <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo'></image>
+      </scroll-view>
+    </view>
   </view>
-  <view class='section'>
-    <view class='section-title'>演职人员</view>
-    <scroll-view scroll-x class='scroll-view_H'>
-
-    </scroll-view>
-  </view>
-  <view class='section'>
-    <view class='section-title'>媒体库</view>
-    <scroll-view scroll-x class='scroll-view_H'>
-      <view class='videoImg-box'>
-        <image src='{{detailMovie.videoImg}}' class='videoImg'></image>
-        <view class='iconfont icon-zanting'></view>
-      </view>
-      <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo'></image>
-    </scroll-view>
-  </view>
+  <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}' wx:if='{{detailMovie.globalReleased}}' class='purchase'>优惠购票</navigator>
 </view>

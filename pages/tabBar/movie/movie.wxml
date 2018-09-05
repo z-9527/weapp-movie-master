@@ -26,12 +26,12 @@
       <view class='most-expected' wx:if='{{mostExpectedList.length}}'>
         <view class='title'>近期最受期待</view>
         <scroll-view class='scroll-view_H' scroll-x bindscrolltolower='lower'>
-          <view wx:for='{{mostExpectedList}}' wx:for-item='movie' wx:key='{{id}}' class='expected-item'>
+          <navigator url='/pages/subPages/movie-detail/movie-detail?movieId={{movie.id}}' wx:for='{{mostExpectedList}}' wx:for-item='movie' wx:key='{{id}}' class='expected-item'>
             <image src='{{movie.img}}' class='poster'></image>
             <view class='name line-ellipsis'>{{movie.nm}}</view>
             <view class='data line-ellipsis'>{{movie.wish}}人想看</view>
             <view class='data'>{{movie.comingTitle}}</view>
-          </view>
+          </navigator>
         </scroll-view>
       </view>
       <block wx:for='{{movieList1}}' wx:for-item='movie' wx:key='{{movie.id}}'>

@@ -5,7 +5,8 @@
     "pages/tabBar/user/user",
     "pages/subPages/city-select/city-select",
     "pages/subPages/search-cinema/search-cinema",
-    "pages/subPages/movie-detail/movie-detail"
+    "pages/subPages/movie-detail/movie-detail",
+    "pages/subPages/select-cinema/select-cinema"
   ],
   "window": {
     "backgroundTextStyle": "light",
