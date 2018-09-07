@@ -50,5 +50,5 @@
       </scroll-view>
     </view>
   </view>
-  <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}' wx:if='{{detailMovie.globalReleased}}' class='purchase'>优惠购票</navigator>
+  <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}' wx:if='{{detailMovie.onSale}}' class='purchase'>优惠购票</navigator>
 </view>

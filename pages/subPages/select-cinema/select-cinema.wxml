@@ -1,3 +1,7 @@
-<view>
-我是电影
+<view class='container' style='position:{{isShow?"fixed":""}}'>
+  <view class='top'>
+    <scroll-view class='timeline scroll-view_H' scroll-x>
+      <view class='day {{item.day===day?"active":""}}' wx:for='{{days}}' wx:key='{{item}}' bindtap='selectDay' data-day='{{item.day}}'>{{item.title}}</view>
+    </scroll-view>
+  </view>
 </view>
