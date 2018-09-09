@@ -3,9 +3,9 @@ const util = require('../../../utils/util.js')
 Page({
   data: {
     days: util.getSevenDay(), //获取7天
+    day: util.getToday(), //观影日期（默认为今天）
     isShow: false, //导航下拉框是否展开
     cityCinemaInfo: {}, //影院过滤菜单
-    day: util.getToday(), //观影日期（默认为今天）
     params: {      //影院搜索条件
       movieId: 0,
       day: util.getToday(),
@@ -19,9 +19,9 @@ Page({
       areaId: -1,
       stationId: -1,
       item: '',
-      updateShowDay: true,
-      cityId: ''
-    }  
+      updateShowDay: false,
+    },
+    cinemas:[] //影院列表 
 
   },
   onLoad(options) {
@@ -33,37 +33,49 @@ Page({
     this.setData({
       params: { ...this.data.params, movieId }
     },()=>{
-      this.initPage(movieId)
+      this.initPage()
     })
   },
   //初始化页面
-  initPage(movieId) {
-    const {
-      day
-    } = this.data
+  initPage() {
+   this.getData()
+  },
+  //获取数据
+  getData(){
+    const {day,params} = this.data
     const _this = this
+    //获取过滤菜单
     wx.request({
-      url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${movieId}&day=${day}`,
-      success(res) {
+      url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${day}`,
+      success(res){
         _this.setData({
-          cityCinemaInfo: res.data
+          cityCinemaInfo:res.data
         })
       }
     })
+    //获取影院列表
     wx.request({
       url: `http://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
-      data:_this.data.params,
-      method: 'POST',
-      success(res) {
-        console.log(res.data)
+      method:'POST',
+      data: params,
+      success(res){
+        _this.setData({
+          cinemas: res.data.cinemas
+        })
+        console.log(res)
       }
     })
-
   },
   selectDay(e){
     const day = e.currentTarget.dataset.day
+    if (day === this.data.day){
+      return
+    }
     this.setData({
-      day
+      day,
+      params: { ...this.data.params,day}
+    },()=>{
+      this.getData()
     })
   },
   

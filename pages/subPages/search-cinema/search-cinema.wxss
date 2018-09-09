@@ -1,3 +1,4 @@
+@import '/templates/cinemaSection.wxss';
 .search-wrapper {
   background-color: #fff;
   height: 100vh;
@@ -48,3 +49,9 @@
   padding: 18rpx 30rpx;
 }
 
+.cinema-section{
+  padding: 30rpx;
+  margin: 0;
+  border:none;  
+  border-top: 1px solid #f0f0f0;
+}

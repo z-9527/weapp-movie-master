@@ -1,3 +1,4 @@
+@import '/templates/cinemaSection.wxss';
 .top{
   position: fixed;
   top: 0;
@@ -5,6 +6,7 @@
   width: 100%;
   color: #555;
   font-size: 28rpx;
+  background: #fff;
 }
 .timeline{
   height: 90rpx;
@@ -24,6 +26,9 @@
   border-bottom: 2px solid #ef4238;
 }
 
+.cinema-list{
+  margin-top: 170rpx;
+}
 
 
 

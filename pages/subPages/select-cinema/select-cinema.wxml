@@ -1,7 +1,17 @@
+<import src='../../../templates/cinemaSection.wxml' />
+
 <view class='container' style='position:{{isShow?"fixed":""}}'>
   <view class='top'>
-    <scroll-view class='timeline scroll-view_H' scroll-x>
-      <view class='day {{item.day===day?"active":""}}' wx:for='{{days}}' wx:key='{{item}}' bindtap='selectDay' data-day='{{item.day}}'>{{item.title}}</view>
-    </scroll-view>
+    <view>
+      <scroll-view class='timeline scroll-view_H' scroll-x>
+        <view class='day {{item.day===day?"active":""}}' wx:for='{{days}}' wx:key='{{item}}' bindtap='selectDay' data-day='{{item.day}}'>{{item.title}}</view>
+      </scroll-view>
+    </view>
+    <view>
+      <filter-nav city-cinema-info='{{cityCinemaInfo}}'></filter-nav>
+    </view>
+  </view>
+  <view class='cinema-list'>
+    <template is="cinemaSection" wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' data='{{cinema}}' />
   </view>
 </view>
