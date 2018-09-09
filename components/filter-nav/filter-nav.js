@@ -14,6 +14,17 @@ Component({
           }
         })
       }
+    },
+    hidden:{
+      type: Boolean,
+      value: true,
+      observer: function (newVal){
+        if (newVal){
+          this.setData({
+            itemNum: -1
+          })
+        }
+      }
     }
   },
 

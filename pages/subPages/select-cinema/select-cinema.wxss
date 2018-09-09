@@ -1,5 +1,6 @@
 @import '/templates/cinemaSection.wxss';
-.top{
+
+.top {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,12 +8,15 @@
   color: #555;
   font-size: 28rpx;
   background: #fff;
+  z-index: 10;
 }
-.timeline{
+
+.timeline {
   height: 90rpx;
   border-bottom: 1px solid #e6e6e6;
 }
-.day{
+
+.day {
   display: inline-block;
   height: 90rpx;
   width: 30%;
@@ -21,16 +25,19 @@
   box-sizing: border-box;
   margin: 0 10rpx;
 }
-.day.active{
+
+.day.active {
   color: #ef4238;
   border-bottom: 2px solid #ef4238;
 }
 
-.cinema-list{
-  margin-top: 170rpx;
+.main-content {
+  padding-bottom: 30rpx;
 }
 
-
+.cinema-list {
+  margin-top: 170rpx;
+}
 
 ::-webkit-scrollbar {
   width: 0;

@@ -28,7 +28,8 @@
   font-size: 28rpx;
   color: #666;
 }
-.distance{
+
+.distance {
   margin-left: 10rpx;
 }
 
@@ -68,5 +69,10 @@
 
 .discount-label-text {
   font-size: 22rpx;
+  color: #999;
+}
+
+.showTimes {
+  font-size: 24rpx;
   color: #999;
 }

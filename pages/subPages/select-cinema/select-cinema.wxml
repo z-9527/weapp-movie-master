@@ -1,4 +1,6 @@
 <import src='../../../templates/cinemaSection.wxml' />
+<import src='../../../templates/loadingMore.wxml' />
+<import src='../../../templates/nothing.wxml' />
 
 <view class='container' style='position:{{isShow?"fixed":""}}'>
   <view class='top'>
@@ -8,10 +10,21 @@
       </scroll-view>
     </view>
     <view>
-      <filter-nav city-cinema-info='{{cityCinemaInfo}}'></filter-nav>
+      <filter-nav city-cinema-info='{{cityCinemaInfo}}' bindchange='changeCondition' bindtoggleShow='toggleShow' hidden='{{!isShow}}'></filter-nav>
     </view>
   </view>
-  <view class='cinema-list'>
-    <template is="cinemaSection" wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' data='{{cinema}}' />
+  <view class='main-content'>
+    <view class='cinema-list'>
+      <template is="cinemaSection" wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' data='{{cinema}}' />
+    </view>
+    <view wx:if='{{!loadComplete && cinemas.length}}'>
+      <template is="loadingMore" />
+    </view>
+    <view hidden='{{!nothing}}'>
+      <template is='nothing' data='{{message:"暂无符合条件的影院"}}' />
+    </view>
+     <view hidden='{{!noSchedule}}'>
+      <template is='nothing' data='{{message:"当天暂无场次"}}' />
+    </view>
   </view>
 </view>

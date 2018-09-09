@@ -16,5 +16,6 @@
         <text class='card'></text>
         <text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
       </view>
+      <view wx:if='{{cinema.showTimes}}' class='showTimes'>近期场次：{{cinema.showTimes}}</view>
     </view>
 </template>

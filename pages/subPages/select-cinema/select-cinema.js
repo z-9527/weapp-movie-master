@@ -6,7 +6,7 @@ Page({
     day: util.getToday(), //观影日期（默认为今天）
     isShow: false, //导航下拉框是否展开
     cityCinemaInfo: {}, //影院过滤菜单
-    params: {      //影院搜索条件
+    params: { //影院搜索条件
       movieId: 0,
       day: util.getToday(),
       offset: 0,
@@ -21,62 +21,144 @@ Page({
       item: '',
       updateShowDay: false,
     },
-    cinemas:[] //影院列表 
+    cinemas: [], //影院列表 
+    loadComplete: false, //数据是否加载完
+    nothing: false, //是否有符合过滤的影院
+    noSchedule: false //当天是否有场次，原本时间是由后台返回的，但是缺少城市ID就没有返回，导致当天可能没有播放场次
 
   },
   onLoad(options) {
-    const movieId = options.movieId || 341737 //测试
-    const movieName = options.movieName || '碟中谍6：全面瓦解' //测试
+    const movieId = options.movieId || '1203575'
+    const movieName = options.movieName || 'fdaf'
     wx.setNavigationBarTitle({
       title: movieName
     })
     this.setData({
-      params: { ...this.data.params, movieId }
-    },()=>{
+      params: { ...this.data.params,
+        movieId
+      }
+    }, () => {
       this.initPage()
     })
   },
   //初始化页面
   initPage() {
-   this.getData()
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    this.getCinemas(this.data.params).then((list) => {
+      wx.hideLoading()
+      if (!list.length) {
+        this.setData({
+          noSchedule: true
+        })
+      }
+    })
+    this.getFilter()
   },
-  //获取数据
-  getData(){
-    const {day,params} = this.data
-    const _this = this
-    //获取过滤菜单
+  //获取影院列表
+  getCinemas(params) {
+    const _this = this;
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: `http://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
+        method: 'POST',
+        data: params,
+        success(res) {
+          resolve(res.data.cinemas)
+          _this.setData({
+            cinemas: _this.data.cinemas.concat(res.data.cinemas),
+            loadComplete: !res.data.paging.hasMore
+          })
+        }
+      })
+    })
+  },
+  //获取过滤菜单数据
+  getFilter() {
+    const _this = this;
+    const {
+      params,
+      day
+    } = this.data
     wx.request({
       url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${day}`,
-      success(res){
+      success(res) {
         _this.setData({
-          cityCinemaInfo:res.data
+          cityCinemaInfo: res.data
         })
-      }
-    })
-    //获取影院列表
-    wx.request({
-      url: `http://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
-      method:'POST',
-      data: params,
-      success(res){
-        _this.setData({
-          cinemas: res.data.cinemas
-        })
-        console.log(res)
       }
     })
   },
-  selectDay(e){
+  //选择时间的处理
+  selectDay(e) {
     const day = e.currentTarget.dataset.day
-    if (day === this.data.day){
+    if (day === this.data.day) {
       return
     }
     this.setData({
       day,
-      params: { ...this.data.params,day}
-    },()=>{
-      this.getData()
+      params: { ...this.data.params,
+        day
+      },
+      cinemas: [],
+      isShow: false, //隐藏过滤下拉框
+      noSchedule: false
+    }, () => {
+      wx.showLoading({
+        title: '正在加载...'
+      })
+      this.getCinemas(this.data.params).then((list) => {
+        wx.hideLoading()
+        if (!list.length) {
+          this.setData({
+            noSchedule: true
+          })
+        }
+      })
+      this.getFilter()
     })
   },
-  
+  //当过滤条件变化时调用的函数
+  changeCondition(e) {
+    const obj = e.detail
+    wx.showLoading({
+      title: '正在加载...'
+    })
+    this.setData({
+      params: {
+        ...this.data.params,
+        ...obj
+      },
+      cinemas: [],
+      nothing: false
+    }, () => {
+      this.getCinemas(this.data.params).then((list) => {
+        if (!list.length) {
+          this.setData({
+            nothing: true
+          })
+        }
+        wx.hideLoading()
+      })
+    })
+  },
+  //导航下拉框状态变化时的处理，在下拉框展开时禁止滚动穿透
+  toggleShow(e) {
+    const item = e.detail.item
+    this.setData({
+      isShow: item !== -1
+    })
+  },
+  //上拉触底加载更多
+  onReachBottom() {
+    if (this.data.loadComplete) {
+      return
+    }
+    const params = {
+      ...this.data.params,
+      offset: this.data.cinemas.length
+    }
+    this.getCinemas(params)
+  }
 })
