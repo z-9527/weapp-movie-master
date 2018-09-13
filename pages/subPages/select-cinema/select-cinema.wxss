@@ -10,27 +10,6 @@
   background: #fff;
   z-index: 10;
 }
-
-.timeline {
-  height: 90rpx;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.day {
-  display: inline-block;
-  height: 90rpx;
-  width: 30%;
-  line-height: 90rpx;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0 10rpx;
-}
-
-.day.active {
-  color: #ef4238;
-  border-bottom: 2px solid #ef4238;
-}
-
 .main-content {
   padding-bottom: 30rpx;
 }

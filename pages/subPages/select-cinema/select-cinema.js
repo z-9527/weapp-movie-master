@@ -1,14 +1,11 @@
-const util = require('../../../utils/util.js')
-
 Page({
   data: {
-    days: util.getSevenDay(), //获取7天
-    day: util.getToday(), //观影日期（默认为今天）
+    showTime:'',//影片上映日期
     isShow: false, //导航下拉框是否展开
     cityCinemaInfo: {}, //影院过滤菜单
     params: { //影院搜索条件
       movieId: 0,
-      day: util.getToday(),
+      day: '',
       offset: 0,
       limit: 20,
       districtId: -1,
@@ -28,33 +25,19 @@ Page({
 
   },
   onLoad(options) {
-    const movieId = options.movieId || '1203575'
-    const movieName = options.movieName || 'fdaf'
+    const movieId = options.movieId
+    const movieName = options.movieName
+    const showTime = options.showTime //影片上映日期
     wx.setNavigationBarTitle({
       title: movieName
     })
     this.setData({
+      showTime,
       params: { ...this.data.params,
         movieId
       }
-    }, () => {
-      this.initPage()
     })
-  },
-  //初始化页面
-  initPage() {
-    wx.showLoading({
-      title: '正在加载...'
-    })
-    this.getCinemas(this.data.params).then((list) => {
-      wx.hideLoading()
-      if (!list.length) {
-        this.setData({
-          noSchedule: true
-        })
-      }
-    })
-    this.getFilter()
+    //select-time会触发事件来调用changeTime初始化数据
   },
   //获取影院列表
   getCinemas(params) {
@@ -77,12 +60,9 @@ Page({
   //获取过滤菜单数据
   getFilter() {
     const _this = this;
-    const {
-      params,
-      day
-    } = this.data
+    const {params} = this.data
     wx.request({
-      url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${day}`,
+      url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${params.day}`,
       success(res) {
         _this.setData({
           cityCinemaInfo: res.data
@@ -90,21 +70,15 @@ Page({
       }
     })
   },
-  //选择时间的处理
-  selectDay(e) {
-    const day = e.currentTarget.dataset.day
-    if (day === this.data.day) {
-      return
-    }
+  //当选择的时间变化时触发
+  changeTime(e){
+    const day = e.detail.day
     this.setData({
-      day,
-      params: { ...this.data.params,
-        day
-      },
+      params: { ...this.data.params,day},
       cinemas: [],
       isShow: false, //隐藏过滤下拉框
       noSchedule: false
-    }, () => {
+    },()=>{
       wx.showLoading({
         title: '正在加载...'
       })

@@ -1,0 +1,24 @@
+.timeline {
+  height: 90rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+/* 设置了externalClasses 不起作用 */
+.scroll-view_H {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.day {
+  display: inline-block;
+  height: 90rpx;
+  width: 30%;
+  line-height: 90rpx;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 10rpx;
+}
+
+.day.active {
+  color: #ef4238;
+  border-bottom: 2px solid #ef4238;
+}

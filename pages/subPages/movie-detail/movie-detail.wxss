@@ -133,6 +133,7 @@
 .scroll-view_H{
   padding: 0 30rpx;
   font-size: 30rpx;
+  box-sizing: border-box;
 }
 .videoImg-box{
   position: relative;
