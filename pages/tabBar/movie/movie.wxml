@@ -11,9 +11,9 @@
       <view class='hot-item {{switchItem===0 ? "active" :""}}' bindtap='selectItem' data-item='{{0}}'>正在热映</view>
       <view class='hot-item {{switchItem===1 ? "active" :""}}' bindtap='selectItem' data-item='{{1}}'>即将上映</view>
     </view>
-    <view class='search-entry'>
+    <navigator class='search-entry' url='../../subPages/search-page/search-page?stype=-1'>
       <text class='iconfont icon-sousuo'></text>
-    </view>
+    </navigator>
   </view>
   <view class='switch-content'>
     <view hidden="{{switchItem===1}}">

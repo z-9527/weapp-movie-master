@@ -8,7 +8,7 @@
       <text class='city-name'>{{city}}</text>
       <text class='city-entry-arrow'></text>
     </navigator>
-    <navigator url='../../subPages/search-cinema/search-cinema' class='search-input'>
+    <navigator url='../../subPages/search-page/search-page?stype=2' class='search-input'>
       <text class='iconfont icon-sousuo'></text>搜影院</navigator>
   </view>
   <view class='nav-wrapper'>

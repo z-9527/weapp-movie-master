@@ -25,7 +25,9 @@
 .search-entry {
   color: #ef4238;
   font-weight: 700;
-  padding: 20rpx 30rpx 20rpx 20rpx;
+  height: 100%;
+  line-height: 90rpx;
+  padding: 0 30rpx;
 }
 
 .search-entry .iconfont {
