@@ -1,0 +1,222 @@
+.cinema-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  padding-right: 0;
+}
+
+.info-box {
+  width: 520rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  line-height: 48rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.location {
+  margin-top: 2px;
+  font-size: 26rpx;
+  line-height: 37rpx;
+  color: #999;
+}
+
+.location-icon {
+  width: 140rpx;
+  height: 62rpx;
+  border-left: 1px solid #d8d8d8;
+  text-align: center;
+}
+
+.location-icon image {
+  display: inline-block;
+  width: 38rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 270rpx;
+}
+
+.post-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  -webkit-filter: blur(30px);
+  filter: blur(30px);
+  background-position-y: 40%;
+}
+
+.post-bg-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #40454d;
+  opacity: 0.55;
+}
+
+.movie-info {
+  padding: 22rpx 30rpx;
+  text-align: center;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.grade {
+  color: #ffb400;
+  font-size: 32rpx;
+}
+
+.small {
+  font-size: 20rpx;
+}
+
+.movie-desc {
+  height: 37rpx;
+  margin-top: 2px;
+  line-height: 37rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.item {
+  display: flex;
+  padding: 30rpx 30rpx 30rpx 0;
+  margin: 0 0 0 30rpx;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.begin {
+  font-size: 40rpx;
+  color: #333;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.end {
+  margin-top: 20rpx;
+  color: #999;
+  font-size: 22rpx;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.info-block {
+  margin-left: 34rpx;
+  flex: 1;
+  overflow-x: hidden;
+}
+
+.lan {
+  margin-top: 2px;
+  line-height: 36rpx;
+  font-size: 26rpx;
+  color: #333;
+  white-space: normal;
+}
+
+.hall {
+  margin-top: 14rpx;
+  font-size: 22rpx;
+  color: #999;
+  white-space: normal;
+}
+
+.price {
+  flex: 0 1 auto;
+  width: 260rpx;
+  margin-left: 10rpx;
+}
+
+.price-box {
+  display: flex;
+  flex-wrap: wrap;
+  height: 40rpx;
+  align-items: flex-end;
+}
+
+.sellPr {
+  line-height: 1;
+  color: #f03d37;
+  margin-top: 1px;
+  font-size: 38rpx;
+  margin-right: 10rpx;
+}
+
+.d {
+  font-size: 22rpx;
+}
+
+.vipPrice {
+  height: 25rpx;
+  line-height: 25rpx;
+  margin-top: 1px;
+  border: 1px solid #ff9000;
+  border-radius: 2px;
+  font-size: 22rpx;
+}
+
+.vipPrice .icon {
+  display: inline-block;
+  padding: 0 2px;
+  color: #fff;
+  background-color: #f90;
+}
+
+.vipPrice .num {
+  display: inline-block;
+  padding: 0 2px;
+  color: #f90;
+  background-color: #fff;
+}
+
+.discount {
+  margin-top: 14rpx;
+  color: #999;
+  font-size: 22rpx;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.button-block {
+  display: flex;
+  align-items: center;
+  margin-left: 34rpx;
+}
+
+.button {
+  width: 90rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #f03d37;
+  color: #fff;
+  border-radius: 8rpx;
+  white-space: nowrap;
+  font-size: 24rpx;
+  border: none;
+}
+
+.tuan-list {
+  margin-left: 30rpx;
+  border-bottom: 20rpx solid #f5f5f5;
+}
+
+.tuan-list .title {
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  color: #666;
+}

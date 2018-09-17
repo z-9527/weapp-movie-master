@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "影院",
+  "usingComponents": {
+    "select-time": "/components/select-time/select-time"
+  }
+}

@@ -6,7 +6,9 @@
     "pages/subPages/city-select/city-select",
     "pages/subPages/search-page/search-page",
     "pages/subPages/movie-detail/movie-detail",
-    "pages/subPages/select-cinema/select-cinema"
+    "pages/subPages/select-cinema/select-cinema",
+    "pages/subPages/cinema-detail/cinema-detail",
+    "pages/subPages/cinema-map/cinema-map"
   ],
   "window": {
     "backgroundTextStyle": "light",
