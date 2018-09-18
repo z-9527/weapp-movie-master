@@ -1,21 +1,23 @@
 <template name="cinemaSection">
-   <view class='cinema-section'>
-      <view class='name-price line-ellipsis'>{{cinema.nm}}
-        <text class='sell-price' wx:if='{{cinema.sellPrice}}'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
-      </view>
-      <view class='address'>
-        <text class='line-ellipsis'>{{cinema.addr}}</text>
-        <text class='distance'>{{cinema.distance}}</text>
-      </view>
-      <view class='feature-tags'>
-        <text wx:for='{{cinema.hallType || cinema.tag.hallType}}' wx:key='{{item}}'>{{item}}</text>
-        <text class='featrue'>小吃</text>
-        <text class='featrue' wx:if='{{cinema.vipDesc ||cinema.tag.vipTag}}'>{{cinema.vipDesc ||cinema.tag.vipTag}}</text>
-      </view>
-      <view wx:if='{{!!cinema.promotion.cardPromotionTag}}'>
-        <text class='card'></text>
-        <text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
-      </view>
-      <view wx:if='{{cinema.showTimes}}' class='showTimes'>近期场次：{{cinema.showTimes}}</view>
+  <view class='cinema-section'>
+    <view class='name-price line-ellipsis'>{{cinema.nm}}
+      <text class='sell-price' wx:if='{{cinema.sellPrice}}'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
     </view>
+    <view class='address'>
+      <text class='line-ellipsis'>{{cinema.addr}}</text>
+      <text class='distance'>{{cinema.distance}}</text>
+    </view>
+    <view class='feature-tags'>
+      <text wx:if='{{cinema.endorse || cinema.tag.endorse}}'>退</text>
+      <text wx:if='{{cinema.allowRefund || cinema.tag.allowRefund}}'>改签</text>
+      <text wx:for='{{cinema.hallType || cinema.tag.hallType}}' wx:key='{{item}}'>{{item}}</text>
+      <text class='featrue' wx:if='{{cinema.snack || cinema.tag.snack}}'>小吃</text>
+      <text class='featrue' wx:if='{{cinema.vipDesc ||cinema.tag.vipTag}}'>{{cinema.vipDesc ||cinema.tag.vipTag}}</text>
+    </view>
+    <view wx:if='{{!!cinema.promotion.cardPromotionTag}}'>
+      <text class='card'></text>
+      <text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
+    </view>
+    <view wx:if='{{cinema.showTimes}}' class='showTimes'>近期场次：{{cinema.showTimes}}</view>
+  </view>
 </template>

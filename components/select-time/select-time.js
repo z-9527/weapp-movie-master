@@ -31,9 +31,13 @@ Component({
       type: Array,
       value: null,
       observer: function(days) {
-        days && this.setData({
-          days
-        })
+        if (Array.isArray(days) && days.length) {
+          this.setData({
+            days
+          },()=>{
+            this.selectDay()
+          })
+        }
       }
     }
   },
@@ -45,10 +49,6 @@ Component({
     //如果没有传递日期列表，就模拟一个日期列表
     if (!this.properties.days) {
       this.getWeek(this.properties.startTime)
-    } else {
-      this.setData({
-        days: this.properties.days
-      })
     }
   },
   methods: {
@@ -73,15 +73,12 @@ Component({
       }
       this.setData({
         days,
-        selectDay: this.properties.defaultSelect || days[0].day
       }, () => {
-        this.triggerEvent('selectDayEvent', {
-          day: this.data.selectDay
-        })
+        this.selectDay()
       })
     },
     selectDay(e) {
-      const day = e.currentTarget.dataset.day
+      const day = (e && e.currentTarget.dataset.day) || this.properties.defaultSelect || this.data.days[0].day
       if (day === this.data.selectDay) {
         return
       }

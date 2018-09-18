@@ -27,11 +27,11 @@
   </view>
   <view>
     <view class='time' wx:for='{{timeList}}' wx:key='{{item.tm}}' class='item'>
-      <view class='time-block'>
+      <view class='time-block block'>
         <view class='begin'>{{item.tm}}</view>
-        <view class='end'>{{}} 散场</view>
+        <view class='end'>{{item.endTime}} 散场</view>
       </view>
-      <view class='info-block'>
+      <view class='info-block block'>
         <view class="lan">{{item.lang}} {{item.tp}}</view>
         <view class="hall">{{item.th}}</view>
       </view>
@@ -53,11 +53,26 @@
       </view>
     </view>
   </view>
-  <view class='tuan-list' wx:if='{{dealList.length}}'>
+  <view class='tuan-list' wx:if='{{divideDealList.length}}'>
     <view class='title'>影院超值套餐</view>
-    <view class='tuan-item' wx:for='{{dealList}}'>
-      <view><image src='{{item.imageUrl}}'></image></view>
-      <view></view>
+    <view class='tuan-item' wx:for='{{divideDealList}}' wx:key='{{item.title}}'>
+      <view wx:for='{{item.dealList}}' wx:for-item="i" wx:key='{{i}}' class='snack-item'>
+        <view>
+          <image src='{{i.imageUrl}}'></image>
+        </view>
+        <view class='snack-info'>
+          <view class='first-title'>{{i.firstTitle}}</view>
+          <view class='second-title line-ellipsis'>{{i.secondTitle}}</view>
+          <view class='snack-price'>
+            <view>
+              <text class='num'>{{i.price}}</text>
+              <text class='rmb'>元</text>
+              <text class='font'> 影院价:{{i.value}}元</text>
+            </view>
+            <view class='font'>{{i.curNumberDesc}}</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

@@ -21,5 +21,6 @@ const getToday = (day) => {
 
 module.exports = {
   formatTime: formatTime,
+  formatNumber: formatNumber,
   getToday
 }
