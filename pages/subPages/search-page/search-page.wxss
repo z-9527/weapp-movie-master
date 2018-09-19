@@ -1,4 +1,4 @@
-@import '/templates/cinemaSection.wxss';
+@import '/templates/cinemaSection/cinemaSection.wxss';
 .search-wrapper {
   background-color: #fff;
   height: 100vh;

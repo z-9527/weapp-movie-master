@@ -1,6 +1,6 @@
 @import './assets/font/icon.wxss';
-@import './templates/loadingMore.wxss';
-@import './templates/nothing.wxss';
+@import './templates/loadingMore/loadingMore.wxss';
+@import './templates/nothing/nothing.wxss';
 /* 因为将模板的样式直接引入到了app.wxss，所以注意上面的样式的污染 */
 view {
   font-size: 28rpx;

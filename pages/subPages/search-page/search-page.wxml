@@ -1,5 +1,5 @@
 <import src='../../../templates/nothing.wxml' />
-<import src='../../../templates/cinemaSection.wxml' />
+<import src='../../../templates/cinemaSection/cinemaSection.wxml' />
 
 <view class='search-wrapper'>
   <view class='search-header topbar'>

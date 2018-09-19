@@ -1,6 +1,6 @@
-<import src='../../../templates/cinemaSection.wxml' />
-<import src='../../../templates/loadingMore.wxml' />
-<import src='../../../templates/nothing.wxml' />
+<import src='../../../templates/cinemaSection/cinemaSection.wxml' />
+<import src='../../../templates/loadingMore/loadingMore.wxml' />
+<import src='../../../templates/nothing/nothing.wxml' />
 
 <view class='container' style='position:{{isShow?"fixed":""}}'>
   <view class='top'>

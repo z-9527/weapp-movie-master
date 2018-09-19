@@ -1,4 +1,4 @@
-@import '/templates/cinemaSection.wxss';
+@import '/templates/cinemaSection/cinemaSection.wxss';
 .topbar {
   position: fixed;
   width: 100vw;

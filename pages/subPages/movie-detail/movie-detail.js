@@ -1,10 +1,11 @@
 Page({
   data:{
     detailMovie:null,    //电影详情
-    isFold:false
+    isFold:false,
+    comments:{}   //观众评论
   },
   onLoad(options){
-    const movieId = options.movieId
+    const movieId = options.movieId || 1203575
     this.initPage(movieId)
   },
   //初始页面
@@ -13,6 +14,7 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
+    this.getComment(movieId)
     wx.request({
       url: `http://m.maoyan.com/ajax/detailmovie?movieId=${movieId}`,
       success(res) {
@@ -21,6 +23,32 @@ Page({
           detailMovie: _this.handleData(res.data.detailMovie)
         })
       }
+    })
+  },
+  //获取观众评论
+  getComment(movieId){
+    const _this = this
+    wx.request({
+      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=1`,
+      success(res){
+        let comments = {...res.data}
+        if (comments.hcmts){
+          comments.hcmts = comments.hcmts.slice(0,3)
+        }
+        console.log(comments)
+        _this.setData({
+          comments
+        })
+      }
+    })
+  },
+  //预览图片
+  previewImage(e){
+    const current = e.currentTarget.dataset.url
+    const urls = this.data.detailMovie.photos.map(item => item.replace('180w_140h','375w_250h'))
+    wx.previewImage({
+      urls,
+      current
     })
   },
   //处理数据

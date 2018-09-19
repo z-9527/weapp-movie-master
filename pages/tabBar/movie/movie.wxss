@@ -1,4 +1,4 @@
-@import '/templates/movieSection.wxss';
+@import '/templates/movieSection/movieSection.wxss';
 
 .switch-hot {
   display: flex;

@@ -42,12 +42,16 @@
     <view class='section'>
       <view class='section-title'>媒体库</view>
       <scroll-view scroll-x class='scroll-view_H'>
-        <view class='videoImg-box'>
-          <image src='{{detailMovie.videoImg}}' class='videoImg'></image>
+        <view wx:if='{{!detailMovie.videoImg && !detailMovie.photos.length}}'>暂无数据...</view>
+        <view class='videoImg-box' wx:if='{{detailMovie.videoImg}}'>
+          <image src='{{detailMovie.videoImg}}' class='videoImg' mode='aspectFill'></image>
           <view class='iconfont icon-zanting'></view>
         </view>
-        <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo'></image>
+        <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo' mode='aspectFill' bindtap='previewImage' data-url='{{item}}'></image>
       </scroll-view>
+    </view>
+    <view class='section' wx:if='{{comments.total}}'>
+      <view class='section-title comment'>观众评论</view>
     </view>
   </view>
   <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}&showTime={{detailMovie.rt}}' wx:if='{{detailMovie.onSale}}' class='purchase'>优惠购票</navigator>

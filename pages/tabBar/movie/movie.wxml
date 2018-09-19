@@ -1,5 +1,5 @@
-<import src='../../../templates/loadingMore.wxml' />
-<import src='../../../templates/movieSection.wxml' />
+<import src='../../../templates/loadingMore/loadingMore.wxml' />
+<import src='../../../templates/movieSection/movieSection.wxml' />
 
 <view>
   <view class='topbar'>

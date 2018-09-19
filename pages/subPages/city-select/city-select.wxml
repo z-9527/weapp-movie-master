@@ -1,4 +1,4 @@
-<import src='../../../templates/nothing.wxml'/>
+<import src='../../../templates/nothing/nothing.wxml'/>
 
 <view class='container'>
   <view class='search-city'>
