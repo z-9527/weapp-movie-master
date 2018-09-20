@@ -1,3 +1,4 @@
+@import '/templates/commentSection/commentSection.wxss';
 .movie-header {
   position: relative;
   height: 366rpx;

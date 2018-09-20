@@ -1,0 +1,57 @@
+.commentSection {
+  display: flex;
+  padding: 30rpx;
+  padding-bottom: 0;
+}
+
+.avatar {
+  height: 70rpx;
+  width: 70rpx;
+  border-radius: 50%;
+}
+
+.left {
+  margin-left: 40rpx;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 30rpx;
+}
+
+.nickName {
+  font-size: 24rpx;
+  color: #444;
+}
+
+.buy {
+  display: inline-block;
+  border-radius: 2px;
+  color: #fff;
+  background: #f90;
+  font-size: 22rpx;
+  margin-left: 5px;
+  padding: 1px 2px;
+}
+
+
+.commentSection .movie-star {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 3px;
+}
+
+.content {
+  font-size: 30rpx;
+  margin: 20rpx 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #999;
+}
+.comment-time{
+  font-size: 24rpx;
+}
+.approve{
+  font-size: 24rpx;
+}

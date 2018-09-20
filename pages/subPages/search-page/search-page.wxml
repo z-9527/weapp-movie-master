@@ -1,4 +1,4 @@
-<import src='../../../templates/nothing.wxml' />
+<import src='../../../templates/nothing/nothing.wxml' />
 <import src='../../../templates/cinemaSection/cinemaSection.wxml' />
 
 <view class='search-wrapper'>

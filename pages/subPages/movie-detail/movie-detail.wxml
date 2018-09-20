@@ -1,3 +1,5 @@
+<import src='../../../templates/commentSection/commentSection.wxml'/>
+
 <view wx:if='{{detailMovie}}'>
   <view class='movie-header'>
     <view class='movie-background' style='background-image: url({{detailMovie.img}})'></view>
@@ -52,6 +54,7 @@
     </view>
     <view class='section' wx:if='{{comments.total}}'>
       <view class='section-title comment'>观众评论</view>
+      <template is='commentSection' wx:for='{{comments.hcmts}}' wx:key='{{comment.id}}' wx:for-item='comment' data='{{comment}}'></template>
     </view>
   </view>
   <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}&showTime={{detailMovie.rt}}' wx:if='{{detailMovie.onSale}}' class='purchase'>优惠购票</navigator>
