@@ -1,4 +1,4 @@
-<import src='../../../templates/commentSection/commentSection.wxml'/>
+<import src='../../../templates/commentSection/commentSection.wxml' />
 
 <view wx:if='{{detailMovie}}'>
   <view class='movie-header'>
@@ -54,7 +54,10 @@
     </view>
     <view class='section' wx:if='{{comments.total}}'>
       <view class='section-title comment'>观众评论</view>
-      <template is='commentSection' wx:for='{{comments.hcmts}}' wx:key='{{comment.id}}' wx:for-item='comment' data='{{comment}}'></template>
+      <view>
+        <template is='commentSection' wx:for='{{comments.hcmts}}' wx:key='{{comment.id}}' wx:for-item='comment' data='{{comment}}'></template>
+      </view>
+      <navigator wx:if='{{comments.total>3}}' class='total' url='../comment-page/comment-page?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}'>查看全部{{comments.total}}条短评</navigator>
     </view>
   </view>
   <navigator hover-class='none' url='/pages/subPages/select-cinema/select-cinema?movieId={{detailMovie.id}}&movieName={{detailMovie.nm}}&showTime={{detailMovie.rt}}' wx:if='{{detailMovie.onSale}}' class='purchase'>优惠购票</navigator>

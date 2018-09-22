@@ -7,7 +7,7 @@ Page({
     comments:{}   //观众评论
   },
   onLoad(options){
-    const movieId = options.movieId || 1203575
+    const movieId = options.movieId
     this.initPage(movieId)
   },
   //初始页面
@@ -44,7 +44,6 @@ Page({
             return temp
           })
         }
-        console.log(comments.hcmts)
         _this.setData({
           comments
         })

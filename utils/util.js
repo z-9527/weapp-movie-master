@@ -27,10 +27,10 @@ const calcTime = (time) => {
     return day.split(' ')[0]
   }
   //一分钟前评论
-  if (result < 6000) {
+  if (result < 60000) {
     return '刚刚'
   }
-  if (6000 <= result && result < 3600000) {
+  if (60000 <= result && result < 3600000) {
     return `${Math.floor(result / 60000)}分钟前`
   }
   if (3600000 <= result && result < 86400000){
@@ -39,7 +39,7 @@ const calcTime = (time) => {
   if (86400000 <= result && result < 604800000) {
     return `${Math.floor(result / 86400000)}天前`
   }
-  return `${formatNumber(day.getMonth() + 1)}:${formatNumber(day.getDate())}`
+  return `${formatNumber(day.getMonth() + 1)}-${formatNumber(day.getDate())}`
  
 }
 
