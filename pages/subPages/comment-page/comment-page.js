@@ -22,18 +22,20 @@ Page({
   },
   //获取观众评论
   getComment(movieId) {
+    if (this.data.loadComplete){
+      return
+    }
     const cmts = this.data.cmts
-    const page = Math.floor(cmts.length / 15) + 1
     const _this = this
     wx.request({
-      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${page}`,
+      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${cmts.length}`,
       success(res) {
         let comments = { ...res.data }    
         const newCmts = cmts.concat(_this.formatData(comments.cmts))  
         _this.setData({
           hcmts: _this.formatData(comments.hcmts),
           cmts: newCmts,
-          loadComplete: newCmts.length >= comments.total
+          loadComplete: newCmts.length>=comments.total
         })
       }
     })
@@ -41,14 +43,16 @@ Page({
   //处理数据
   formatData(arr){
     let list = []
-    list = arr.map(item=>{
-      let temp = { ...item }
-      temp.avatarurl = temp.avatarurl || '/assets/images/avatar.png'
-      temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item => item.id === 4))
-      temp.stars = this.formatStar(temp.score)
-      temp.calcTime = util.calcTime(temp.startTime)
-      return temp
-    })
+    if(arr.length){
+      list = arr.map(item => {
+        let temp = { ...item }
+        temp.avatarurl = temp.avatarurl || '/assets/images/avatar.png'
+        temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item => item.id === 4))
+        temp.stars = this.formatStar(temp.score)
+        temp.calcTime = util.calcTime(temp.startTime)
+        return temp
+      })
+    }
     return list
   },
   //处理评分星星

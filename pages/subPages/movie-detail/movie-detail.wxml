@@ -52,7 +52,7 @@
         <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo' mode='aspectFill' bindtap='previewImage' data-url='{{item}}'></image>
       </scroll-view>
     </view>
-    <view class='section' wx:if='{{comments.total}}'>
+    <view class='section' wx:if='{{comments.total && comments.hcmts.length}}'>
       <view class='section-title comment'>观众评论</view>
       <view>
         <template is='commentSection' wx:for='{{comments.hcmts}}' wx:key='{{comment.id}}' wx:for-item='comment' data='{{comment}}'></template>

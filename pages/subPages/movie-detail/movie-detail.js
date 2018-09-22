@@ -31,24 +31,33 @@ Page({
   getComment(movieId){
     const _this = this
     wx.request({
-      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=1`,
+      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=0`,
       success(res){
         let comments = {...res.data}
-        if (comments.hcmts){
-          comments.hcmts = comments.hcmts.slice(0,3).map(item=>{
-            let temp = {...item}
-            temp.avatarurl = temp.avatarurl || '/assets/images/avatar.png'
-            temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item=>item.id===4))
-            temp.stars = _this.formatStar(temp.score)
-            temp.calcTime = util.calcTime(temp.startTime)
-            return temp
-          })
+        if (comments.total){
+          const arr = comments.hcmts.length ? comments.hcmts : comments.cmts
+          comments.hcmts = _this.formatData(arr.slice(0, 3))
         }
         _this.setData({
           comments
         })
       }
     })
+  },
+  //处理数据
+  formatData(arr) {
+    let list = []
+    if (arr.length) {
+      list = arr.map(item => {
+        let temp = { ...item }
+        temp.avatarurl = temp.avatarurl || '/assets/images/avatar.png'
+        temp.purchase = !!(temp.tagList && temp.tagList.fixed.some(item => item.id === 4))
+        temp.stars = this.formatStar(temp.score)
+        temp.calcTime = util.calcTime(temp.startTime)
+        return temp
+      })
+    }
+    return list
   },
   //预览图片
   previewImage(e){

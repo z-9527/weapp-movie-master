@@ -20,11 +20,14 @@ const getToday = () => {
 }
 
 const calcTime = (time) => {
+  if(!time){
+    return
+  }
   const day = new Date(time)
   const now = new Date()
   const result = now.getTime() - day.getTime()
   if (now.getFullYear() !== day.getFullYear()) {
-    return day.split(' ')[0]
+    return time.split(' ')[0]
   }
   //一分钟前评论
   if (result < 60000) {
