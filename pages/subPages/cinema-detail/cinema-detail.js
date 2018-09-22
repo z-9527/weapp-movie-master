@@ -11,8 +11,8 @@ Page({
     divideDealList: [] //影院分类零食列表
   },
   onLoad(query) {
-    const cinemaId = query.cinemaId || 23975 //测试
-    const movieId = query.cinemaId || 1203575 //测试
+    const cinemaId = query.cinemaId
+    const movieId = query.cinemaId
     const day = query.day
     this.initPage({
       movieId,

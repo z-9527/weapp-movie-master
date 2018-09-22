@@ -26,7 +26,7 @@ Page({
   },
   onLoad() {
     this.setData({
-      city: app.globalData.city.city_name || '武汉'
+      city: app.globalData.city.city_name
     })
     this.initPage()
   },
