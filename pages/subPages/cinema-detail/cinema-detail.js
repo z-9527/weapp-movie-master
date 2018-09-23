@@ -4,21 +4,23 @@ Page({
   data: {
     cinemaId: '',
     movieId: '',
-    cinemaDetail: {}, //影院详情
-    movie: '', //选中的电影
+    cinemaDetail: null, //影院详情
+    movie: null, //选中的电影
+    movies:null, //电影列表
     days: [], //该电影的排片日期列表
     timeList: [], //当天播放电影的时间段
     divideDealList: [] //影院分类零食列表
-  },
+  }, 
   onLoad(query) {
-    const cinemaId = query.cinemaId
-    const movieId = query.cinemaId
+    const cinemaId = query.cinemaId || 894
+    const movieId = query.movieId || ''
     const day = query.day
     this.initPage({
       movieId,
       cinemaId
     })
   },
+  //初始化页面
   initPage(obj) {
     const {
       movieId,
@@ -34,21 +36,15 @@ Page({
       success(res) {
         _this.setData({
           cinemaDetail: res.data,
+          movies: _this.formatMovie(res.data.showData.movies),
           divideDealList: _this.formatUrl(res.data.dealList.divideDealList)
-        }, () => {
-          _this.selectMovie(movieId)
         })
-        console.log(res.data)
       }
     })
   },
   //选择电影
-  selectMovie(movieId) {
-    if (movie && movie.id === movieId) {
-      return
-    }
-    const movies = this.data.cinemaDetail.showData.movies
-    let movie = movies.find(item => item.id === movieId) || movies[0]
+  selectMovie(e) {
+    const movie = e.detail.movie
     let days = []
     movie.shows.forEach(item => {
       days.push({
@@ -87,6 +83,19 @@ Page({
     }
     return timeList
   },
+  //处理电影图片的url
+  formatMovie(arr){
+    let list = []
+    if (Array.isArray(arr)) {
+      arr.forEach(item => {
+        list.push({
+          ...item,
+          img: item.img.replace('w.h', '148.208')
+        })
+      })
+    }
+    return list
+  },
   //处理零食图片的url
   formatUrl(arr) {
     let divideDealList = []
@@ -102,7 +111,6 @@ Page({
         divideDealList.push(temp)
       })
     }
-    console.log(divideDealList)
     return divideDealList
   },
 })

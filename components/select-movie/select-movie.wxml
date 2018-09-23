@@ -1,0 +1,9 @@
+<view class='swiper-container'>
+  <view class='post-bg' style='background-image:url({{movie.img}})'></view>
+  <view class='post-bg-mask'></view>
+  <scroll-view class='swiper-wrapper scroll-view_H' scroll-x>
+    <view class='movie-item {{movie.id===item.id?"select":""}}' wx:for='{{movies}}' wx:key='{{item.id}}' data-movie='{{item}}' bindtap='selectMovie'>
+      <image src='{{item.img}}'></image>
+    </view>
+  </scroll-view>
+</view>
