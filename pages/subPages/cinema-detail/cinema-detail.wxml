@@ -1,5 +1,5 @@
-<view>
-  <view class='cinema-info' wx:if='{{cinemaDetail}}'>
+<view wx:if='{{cinemaDetail}}'>
+  <view class='cinema-info'>
     <view class='info-box'>
       <view class='title line-ellipsis'>{{cinemaDetail.cinemaData.nm}}</view>
       <view class='location line-ellipsis'>{{cinemaDetail.cinemaData.addr}}</view>
