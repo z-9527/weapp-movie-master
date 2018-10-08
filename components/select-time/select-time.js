@@ -78,7 +78,7 @@ Component({
       })
     },
     selectDay(e) {
-      const day = (e && e.currentTarget.dataset.day) || this.properties.defaultSelect || this.data.days[0].day
+      const day = (e && e.currentTarget.dataset.day) || this.findDefaultDay() || this.data.days[0].day
       if (day === this.data.selectDay) {
         return
       }
@@ -88,6 +88,10 @@ Component({
       this.triggerEvent('selectDayEvent', {
         day
       })
+    },
+    findDefaultDay(){
+      const day = this.data.days.find(item => item.day === this.properties.defaultSelect)
+      return day && day.day
     }
   }
 })

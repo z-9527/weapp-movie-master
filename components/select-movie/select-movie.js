@@ -14,13 +14,11 @@ Component({
         }
       }
     },
-    defaultSelect: {
-      type: Object,
-      value: null,
+    defaultSelectID: {
+      type: String,
+      value: '',
       observer: function(movie) {
-        movie && this.setData({
-          movie
-        })
+        // movie && this.selectMovie()
       }
     }
   },
@@ -31,14 +29,16 @@ Component({
     size: 0, //电影item的大小（包括margin）
     i: 0 //当前电影的索引,下面的函数传递了事件对象后就不能传递其他参数了，所以只能放在data中传递
   },
+  
   methods: {
     //选中电影
     selectMovie(e) {
-      const movie = (e && e.currentTarget.dataset.movie) || this.properties.defaultSelect || this.data.movies[this.data.i]
-      if (this.data.movie && movie.id === this.data.movie.id) {
+      const {movies} = this.data
+      const movie = (e && e.currentTarget.dataset.movie) || movies.find(item => item.id == this.properties.defaultSelectID) || movies[this.data.i]
+      if (movies.length && this.data.movie && movie.id === this.data.movie.id) {
         return
       }
-      const index = this.data.movies.findIndex(item => item.id === movie.id)
+      const index = movies.findIndex(item => item.id === movie.id)
       if (this.data.size) {
         this.setData({
           movie,
@@ -72,11 +72,9 @@ Component({
           resolve(size)
         }).exec()
       })
-    },
-    handleScroll(e) {
-    },
+    }
     /**
-     * 本来想用touchend事件来做滚动结束后“选择电影”功能，但是获取scrollOffset有两三秒的延迟，所以就放弃了这种方法
+     * 本来想用touchend事件来做滚动结束后“选择电影”功能，但是获取scrollOffset有两三秒的延迟，所以就放弃了
     handleTouchend(e) {
       const size = this.data.size
       const query = wx.createSelectorQuery().in(this)

@@ -12,12 +12,13 @@ Page({
     divideDealList: [] //影院分类零食列表
   }, 
   onLoad(query) {
-    const cinemaId = query.cinemaId || 894
-    const movieId = query.movieId || ''
-    const day = query.day
-    this.initPage({
+    const { cinemaId = 894, movieId = '', day=''} = query
+    this.setData({
+      cinemaId,
       movieId,
-      cinemaId
+      day
+    },()=>{
+      this.initPage()
     })
   },
   //初始化页面
@@ -25,12 +26,8 @@ Page({
     const {
       movieId,
       cinemaId
-    } = obj
+    } = this.data
     const _this = this
-    this.setData({
-      cinemaId,
-      movieId
-    })
     wx.request({
       url: `http://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
       success(res) {

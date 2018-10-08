@@ -1,5 +1,5 @@
 <template name="cinemaSection">
-  <view class='cinema-section'>
+  <navigator class='cinema-section' url='/pages/subPages/cinema-detail/cinema-detail?cinemaId={{cinema.id}}&movieId={{movieId}}&day={{day}}' hover-class="none">
     <view class='name-price line-ellipsis'>{{cinema.nm}}
       <text class='sell-price' wx:if='{{cinema.sellPrice}}'><text class='price'>{{cinema.sellPrice}}</text> 元起</text>
     </view>
@@ -19,5 +19,5 @@
       <text class='discount-label-text'>{{cinema.promotion.cardPromotionTag}}</text>
     </view>
     <view wx:if='{{cinema.showTimes}}' class='showTimes'>近期场次：{{cinema.showTimes}}</view>
-  </view>
+  </navigator>
 </template>
