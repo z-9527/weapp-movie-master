@@ -35,10 +35,10 @@
           <view class='end'>{{item.endTime}} 散场</view>
         </view>
         <view class='info-block box'>
-          <view class="lan">{{item.lang}} {{item.tp}}</view>
-          <view class="hall">{{item.th}}</view>
+          <view class="lan line-ellipsis">{{item.lang}} {{item.tp}}</view>
+          <view class="hall line-ellipsis">{{item.th}}</view>
         </view>
-        <view class='price'>
+        <view class='price box'>
           <view class='price-box'>
             <view class="sellPr">
               <text class="stonefont">{{ (item.vipPrice && item.vipPrice*1+10) || 37 }}</text>
@@ -49,7 +49,7 @@
               <text class="num">{{item.vipPrice}}</text>
             </view>
           </view>
-          <view class='discount' wx:if='{{item.extraDesc}}'>{{item.extraDesc}}</view>
+          <view class='discount line-ellipsis' wx:if='{{item.extraDesc}}'>{{item.extraDesc}}</view>
         </view>
         <view class='button-block'>
           <view class='button'>购票</view>

@@ -117,7 +117,7 @@
 
 .info-block {
   margin-left: 34rpx;
-  flex-grow: 1;
+  width: 180rpx;
   overflow-x: hidden;
 }
 
@@ -125,17 +125,15 @@
   margin-top: 1px;
   font-size: 26rpx;
   color: #333;
-  white-space: nowrap;
 }
 
 .hall {
   font-size: 22rpx;
   color: #999;
-  white-space: normal;
 }
 
 .price {
-  flex: 0 1 auto;
+  /* flex: 0 1 auto; */
   width: 260rpx;
   margin-left: 20rpx;
 }
@@ -185,11 +183,8 @@
 }
 
 .discount {
-  margin-top: 14rpx;
   color: #999;
   font-size: 22rpx;
-  line-height: 1;
-  white-space: nowrap;
 }
 
 .button-block {
