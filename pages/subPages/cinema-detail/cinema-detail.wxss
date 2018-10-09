@@ -140,7 +140,7 @@
 
 .price-box {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   height: 40rpx;
   align-items: flex-end;
 }

@@ -39,7 +39,7 @@
           <view class="hall line-ellipsis">{{item.th}}</view>
         </view>
         <view class='price box'>
-          <view class='price-box'>
+          <view class='price-box line-ellipsis'>
             <view class="sellPr">
               <text class="stonefont">{{ (item.vipPrice && item.vipPrice*1+10) || 37 }}</text>
               <text class="d">元</text>
