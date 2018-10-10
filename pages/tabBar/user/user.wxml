@@ -1,2 +1,31 @@
-<!--pages/tabBar/user/user.wxml-->
-<text>pages/tabBar/user/user.wxml</text>
+<view class='container'>
+  <view class='header'>
+    <image src='/assets/images/avatar.png'></image>
+    <view class='name'>!</view>
+  </view>
+  <view>
+    <view class='order'>
+      <view class='title-box'>
+        <view class='title'>我的订单</view>
+        <view class='title-line'></view>
+      </view>
+      <view class='order-list'>
+        <view class='order-item'>
+          <image src='/assets/images/order_movie.png'></image>
+          <view>电影</view>
+        </view>
+        <view class='order-item'>
+          <image src='/assets/images/order_store.png'></image>
+          <view>商城</view>
+        </view>
+      </view>
+    </view>
+    <view class='other'>
+      <view class='share other-item'>
+        分享给朋友
+      </view>
+      <view class='customer other-item'>客服反馈</view>
+      <view class='about other-item'>关于</view>
+    </view>
+  </view>
+</view>
