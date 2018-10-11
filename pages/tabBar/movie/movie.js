@@ -170,5 +170,12 @@ Page({
       })
     })
     return newArr
+  },
+  //转发
+  onShareAppMessage(res) {
+    return {
+      title: '快来看看附近的电影院',
+      path: 'pages/tabBar/movie/movie'
+    }
   }
 })

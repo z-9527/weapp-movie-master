@@ -109,5 +109,12 @@ Page({
       offset: this.data.cinemas.length
     }
     this.getCinemas(params)
+  },
+  //转发
+  onShareAppMessage(res) {
+    return {
+      title: '最近上映的这些电影你都看了吗？',
+      path: 'pages/tabBar/movie/movie'
+    }
   }
 })

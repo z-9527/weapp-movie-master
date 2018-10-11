@@ -118,6 +118,23 @@
   border-top: 1px solid #ccc;
   transform: translateY(-50%) rotate(135deg);
 }
+/* 覆盖分享按钮的默认样式 */
+.share .share-btn{
+   width:100%;
+   border:none;
+   border-radius: 0;
+   padding:0;
+   margin:0;
+   font-size: 1em;
+   position: static;
+   line-height: normal;
+   color: #333;
+   text-align: left;
+   background: #fff;
+}
+.share .share-btn::after{
+  content: none;
+}
 .other .iconfont{
   display: inline-block;
   line-height: 100rpx;

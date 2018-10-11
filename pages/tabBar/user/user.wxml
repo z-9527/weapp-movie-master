@@ -22,7 +22,9 @@
     </view>
     <view class='other'>
       <view class='share other-item'>
-        <text class='iconfont icon-fenxiang1'></text> 分享给朋友
+        <button open-type='share' class='share-btn' hover-class='none'>
+          <text class='iconfont icon-fenxiang1'></text> 分享给朋友
+        </button>
       </view>
       <view class='customer other-item'>
         <text class='iconfont icon-lianxikefu'></text> 客服反馈
