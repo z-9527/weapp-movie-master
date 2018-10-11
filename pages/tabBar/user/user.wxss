@@ -118,3 +118,16 @@
   border-top: 1px solid #ccc;
   transform: translateY(-50%) rotate(135deg);
 }
+.other .iconfont{
+  display: inline-block;
+  line-height: 100rpx;
+  margin-right: 8rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.customer .iconfont{
+  font-size: 38rpx;
+}
+.about .iconfont{
+  opacity: 0.8;
+}

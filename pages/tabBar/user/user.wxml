@@ -22,10 +22,14 @@
     </view>
     <view class='other'>
       <view class='share other-item'>
-        分享给朋友
+        <text class='iconfont icon-fenxiang1'></text> 分享给朋友
       </view>
-      <view class='customer other-item'>客服反馈</view>
-      <view class='about other-item'>关于</view>
+      <view class='customer other-item'>
+        <text class='iconfont icon-lianxikefu'></text> 客服反馈
+      </view>
+      <view class='about other-item'>
+        <text class='iconfont icon-guanyuwomen'></text> 关于
+      </view>
     </view>
   </view>
 </view>
