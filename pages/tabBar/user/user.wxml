@@ -22,15 +22,19 @@
     </view>
     <view class='other'>
       <view class='share other-item'>
-        <button open-type='share' class='share-btn' hover-class='none'>
+        <button open-type='share' class='btn' hover-class='none'>
           <text class='iconfont icon-fenxiang1'></text> 分享给朋友
         </button>
       </view>
       <view class='customer other-item'>
-        <text class='iconfont icon-lianxikefu'></text> 客服反馈
+        <button open-type='contact' class='btn' hover-class='none'>
+          <text class='iconfont icon-lianxikefu'></text> 客服反馈
+        </button>
       </view>
       <view class='about other-item'>
-        <text class='iconfont icon-guanyuwomen'></text> 关于
+        <navigator url='../../subPages/about/about' hover-class='none'>
+          <text class='iconfont icon-guanyuwomen'></text> 关于
+        </navigator>
       </view>
     </view>
   </view>

@@ -1,0 +1,16 @@
+<view class='container'>
+  <view class='banner'>
+    <image src='/assets/images/youcan.jpg' mode='aspectFill'></image>
+  </view>
+  <view class='section'>
+    <view wx:for='{{info}}' wx:key='{{item.label}}'>
+      <text>{{item.label}}：</text>
+      <text>{{item.value}}</text>
+    </view>
+    <view>
+    </view>
+  </view>
+  <view class='section'>
+    <text> 基于原生小程序精仿的猫眼电影，仅供学习和参考。源码在github上开源，觉得不错的可以给个star鼓励和支持！</text>
+  </view>
+</view>

@@ -9,7 +9,8 @@
     "pages/subPages/select-cinema/select-cinema",
     "pages/subPages/cinema-detail/cinema-detail",
     "pages/subPages/cinema-map/cinema-map",
-    "pages/subPages/comment-page/comment-page"
+    "pages/subPages/comment-page/comment-page",
+    "pages/subPages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
