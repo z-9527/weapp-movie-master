@@ -1,0 +1,53 @@
+<view class='container'>
+  <!-- 头部 -->
+  <view class='image-box'>
+    <image src='{{info.dealBrief.imageUrl}}' mode='aspectFill'></image>
+    <view class='info-box'>
+      <view class='cinema-name line-ellipsis'>{{cinemaName}}</view>
+      <view class='snack-title line-ellipsis'>{{info.dealBrief.title}}</view>
+    </view>
+    <view class='mask'></view>
+  </view>
+  <!-- 价格 -->
+  <view class='section'>
+    <view class='price-box'>
+      <view>
+        <text class='price-num' wx:if='{{info.dealBrief.originPrice}}'>{{info.dealBrief.originPrice}}<text class='yuan'>元</text></text>
+        <text class='cinema-price' wx:if='{{info.dealBrief.value}}'>影院价:{{info.dealBrief.value}}元</text>
+      </view>
+      <view class='buy-btn'>立即抢购</view>
+    </view>
+    <view class='price-box'>
+      <view class='deal-tags-list'>
+        <text class='item' wx:if='{{info.dealBrief.refundTag.supportTimeRefund}}'><text class='text-icon'></text>随时退</text>
+        <text class='item' wx:if='{{info.dealBrief.refundTag.supportExpireRefund}}'><text class='text-icon'></text>过期退</text>
+      </view>
+      <view class='sold'>
+        <text class='iconfont icon-04'></text>
+        <text>{{info.dealBrief.curNumberDesc}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 套餐详情 -->
+  <view class='section'>
+    <view class='section-title'>套餐详情</view>
+    <view class='dealsets-details' wx:for='{{info.dealBrief.menus}}' wx:key='{{item}}'>
+      <view class='set-title' wx:if='{{item.title}}'>{{item.title}}</view>
+      <view class='detail-group' wx:for='{{item.items}}' wx:key='{{item}}'>
+        <text class='right line-ellipsis'>{{item.name}}</text>
+        <text class='center line-ellipsis'>{{item.amount}}</text>
+        <text class='left'>¥{{item.subtotal}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 购买须知 -->
+  <view class='purchase-notice section'>
+    <view class='section-title'>购买须知</view>
+    <view class='terms'>
+      <view class='terms-item' wx:for='{{info.dealBrief.terms}}' wx:key='{{item}}'>
+        <view class='tip-title' wx:if='{{item.title}}'>{{item.title}}:</view>
+        <view class='tip-des'>{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -45,10 +45,21 @@ const calcTime = (time) => {
   return `${formatNumber(day.getMonth() + 1)}-${formatNumber(day.getDate())}`
  
 }
+//将对象转发为字符串拼接到url中
+const ObjToString = (obj)=>{
+  let str = ''
+  if (Object.prototype.toString.call(obj) === '[object Object]'){
+    for (let [key, value] of Object.entries(obj)){
+      str += `${key}=${value}&`
+    }
+  }
+  return str
+}
 
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
   getToday,
-  calcTime
+  calcTime,
+  ObjToString
 }

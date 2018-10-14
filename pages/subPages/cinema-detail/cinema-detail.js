@@ -12,7 +12,7 @@ Page({
     divideDealList: [] //影院分类零食列表
   }, 
   onLoad(query) {
-    const { cinemaId = 894, movieId = '', day=''} = query
+    const { cinemaId='', movieId = '', day=''} = query
     this.setData({
       cinemaId,
       movieId,
@@ -63,6 +63,19 @@ Page({
     this.setData({
       timeList: this.createEndTime(movie.shows[index].plist, movie.dur)
     })
+  },
+  //跳转到“套餐详情”页面
+  goSnackPage(e){
+    const info = e.currentTarget.dataset.info;
+    const paramsStr = util.ObjToString({
+      cinemaName: this.data.cinemaDetail.cinemaData.nm,
+      cinemaId: this.data.cinemaId,
+      dealId: info.dealId
+    })
+    wx.navigateTo({
+      url: `/pages/subPages/snack-page/snack-page?${paramsStr}`,
+    })
+
   },
   //处理散场时间
   createEndTime(arr, dur) {

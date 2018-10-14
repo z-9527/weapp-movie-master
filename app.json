@@ -10,7 +10,8 @@
     "pages/subPages/cinema-detail/cinema-detail",
     "pages/subPages/cinema-map/cinema-map",
     "pages/subPages/comment-page/comment-page",
-    "pages/subPages/about/about"
+    "pages/subPages/about/about",
+    "pages/subPages/snack-page/snack-page"
   ],
   "window": {
     "backgroundTextStyle": "light",

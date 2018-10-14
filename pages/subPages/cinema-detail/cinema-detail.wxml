@@ -64,7 +64,7 @@
   <view class='tuan-list' wx:if='{{divideDealList.length}}'>
     <view class='title'>影院超值套餐</view>
     <view class='tuan-item' wx:for='{{divideDealList}}' wx:key='{{item.title}}'>
-      <view wx:for='{{item.dealList}}' wx:for-item="i" wx:key='{{i}}' class='snack-item'>
+      <view wx:for='{{item.dealList}}' wx:for-item="i" wx:key='{{i}}' class='snack-item' bindtap='goSnackPage' data-info='{{i}}'>
         <view>
           <image src='{{i.imageUrl}}'></image>
         </view>
