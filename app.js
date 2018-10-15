@@ -41,7 +41,7 @@ App({
     })
   },
   globalData: {
-    userLocation: null,
-    city:{}
+    userLocation: null, //用户的位置信息
+    city:{}   //用户切换的城市
   }
 })

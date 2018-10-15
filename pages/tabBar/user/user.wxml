@@ -32,7 +32,7 @@
         </button>
       </view>
       <view class='about other-item'>
-        <navigator url='../../subPages/about/about' hover-class='none'>
+        <navigator url='../../subPages/about-page/about-page' hover-class='none'>
           <text class='iconfont icon-guanyuwomen'></text> 关于
         </navigator>
       </view>

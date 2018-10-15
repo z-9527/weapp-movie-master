@@ -2,7 +2,7 @@
   <view class='cinema-info'>
     <view class='info-box'>
       <view class='title line-ellipsis'>{{cinemaDetail.cinemaData.nm}}</view>
-      <view class='location line-ellipsis'>{{cinemaDetail.cinemaData.addr}}</view>
+      <view class='location'>{{cinemaDetail.cinemaData.addr}}</view>
     </view>
     <navigator url='/pages/subPages/cinema-map/cinema-map' class='location-icon'>
       <image src='/assets/images/location.png'></image>
@@ -29,7 +29,7 @@
   </view>
   <view>
     <view wx:if='{{timeList.length}}'>
-      <view class='time' wx:for='{{timeList}}' wx:key='{{item.tm}}' class='item'>
+      <view class='time' wx:for='{{timeList}}' wx:key='{{item.tm}}' class='item' bindtap='buyTicket' data-info='{{item}}'>
         <view class='time-block box'>
           <view class='begin'>{{item.tm}}</view>
           <view class='end'>{{item.endTime}} 散场</view>

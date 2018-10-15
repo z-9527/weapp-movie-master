@@ -12,7 +12,7 @@ Page({
     divideDealList: [] //影院分类零食列表
   }, 
   onLoad(query) {
-    const { cinemaId='', movieId = '', day=''} = query
+    const { cinemaId='908', movieId = '', day=''} = query
     this.setData({
       cinemaId,
       movieId,
@@ -75,7 +75,19 @@ Page({
     wx.navigateTo({
       url: `/pages/subPages/snack-page/snack-page?${paramsStr}`,
     })
-
+  },
+  //购票
+  buyTicket(e){
+    const info = e.currentTarget.dataset.info;
+    wx.showModal({
+      title: '提示',
+      content: '此小程序仅为学习，不会产生任何支付',
+      success:(res)=>{
+        if (res.confirm){
+          
+        }
+      }
+    })
   },
   //处理散场时间
   createEndTime(arr, dur) {
