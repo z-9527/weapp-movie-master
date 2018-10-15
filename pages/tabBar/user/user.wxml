@@ -1,7 +1,7 @@
 <view class='container'>
   <view class='header'>
-    <image src='/assets/images/avatar.png'></image>
-    <view class='name'>!</view>
+    <open-data type="userAvatarUrl" class='avatar'></open-data>
+    <open-data type="userNickName" class='name'></open-data>
   </view>
   <view>
     <view class='order'>
