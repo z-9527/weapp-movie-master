@@ -9,7 +9,8 @@ Page({
     movies:null, //电影列表
     days: [], //该电影的排片日期列表
     timeList: [], //当天播放电影的时间段
-    divideDealList: [] //影院分类零食列表
+    divideDealList: [], //影院分类零食列表
+    first:true //只在第一次提示
   }, 
   onLoad(query) {
     const { cinemaId='908', movieId = '', day=''} = query
@@ -79,15 +80,32 @@ Page({
   //购票
   buyTicket(e){
     const info = e.currentTarget.dataset.info;
-    wx.showModal({
-      title: '提示',
-      content: '此小程序仅为学习，不会产生任何支付',
-      success:(res)=>{
-        if (res.confirm){
-          
-        }
-      }
+    console.log(info)
+    const paramsStr = util.ObjToString({
+      cinemaName: this.data.cinemaDetail.cinemaData.nm,
+      cinemaId: this.data.cinemaId,
     })
+    // 只提示一次
+    if (this.data.first){
+      wx.showModal({
+        title: '提示',
+        content: '此小程序仅为学习，不会产生任何支付',
+        success: (res) => {
+          this.setData({
+            first:false
+          })
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/subPages/buy-ticket/buy-ticket',
+            })
+          }
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/subPages/buy-ticket/buy-ticket',
+      })
+    }
   },
   //处理散场时间
   createEndTime(arr, dur) {

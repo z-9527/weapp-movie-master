@@ -11,7 +11,8 @@
     "pages/subPages/cinema-map/cinema-map",
     "pages/subPages/comment-page/comment-page",
     "pages/subPages/about-page/about-page",
-    "pages/subPages/snack-page/snack-page"
+    "pages/subPages/snack-page/snack-page",
+    "pages/subPages/buy-ticket/buy-ticket"
   ],
   "window": {
     "backgroundTextStyle": "light",
