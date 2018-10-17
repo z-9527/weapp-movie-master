@@ -31,6 +31,7 @@
 
 .movie-box {
   padding-bottom: 20rpx;
+  padding-right: 30rpx;
   border-bottom: 1px solid #f0f0f0;
   line-height: 1.5em;
 }

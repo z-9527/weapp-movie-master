@@ -1,5 +1,6 @@
 const util = require('../../../utils/util.js')
 const formatNumber = util.formatNumber
+const getRandom = util.getRandom
 Page({
   data: {
     cinemaId: '',
@@ -80,13 +81,24 @@ Page({
   //购票
   buyTicket(e){
     const info = e.currentTarget.dataset.info;
-    console.log(info)
+    const { movie, cinemaId, cinemaDetail,first} =  this.data
+    //添加订单信息
     const paramsStr = util.ObjToString({
-      cinemaName: this.data.cinemaDetail.cinemaData.nm,
-      cinemaId: this.data.cinemaId,
+      cinemaName: cinemaDetail.cinemaData.nm,//电影院名
+      cinemaId: cinemaId,//电影院ID
+      hall:info.th,//大厅
+      movieName: movie.nm,//电影名
+      movieImg:movie.img,//海报
+      lang: info.lang+info.tp,//语言
+      time: `${info.dt} ${info.tm}`,//时间
+      price: (info.vipPrice && info.vipPrice * 1 + 10) || 37,//票价
+      seat: `${getRandom(1, 21)}排${getRandom(1, 21)}座`,//座位
+      Vcode: getRandom(100000,999999), //模拟6位数的验证码
+      flowNumber: getRandom(100000000, 999999999), //模拟9位数的流水号,
+      orderId: getRandom(1000000000, 9999999999), //模拟10位数的订单号,
     })
     // 只提示一次
-    if (this.data.first){
+    if (first){
       wx.showModal({
         title: '提示',
         content: '此小程序仅为学习，不会产生任何支付',
@@ -96,14 +108,14 @@ Page({
           })
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/subPages/buy-ticket/buy-ticket',
+              url: `/pages/subPages/buy-ticket/buy-ticket?${paramsStr}`,
             })
           }
         }
       })
     } else {
       wx.navigateTo({
-        url: '/pages/subPages/buy-ticket/buy-ticket',
+        url: `/pages/subPages/buy-ticket/buy-ticket?${paramsStr}`,
       })
     }
   },
