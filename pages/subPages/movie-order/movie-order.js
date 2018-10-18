@@ -1,8 +1,11 @@
+const util = require('../../../utils/util.js')
 Page({
   data:{
     orderList:[]
   },
   onLoad(){
+  },
+  onShow(){
     this.initData()
   },
   initData(){
@@ -27,6 +30,14 @@ Page({
           wx.setStorageSync('movieOrder', orderList)
         }
       }
+    })
+  },
+  //跳转到订单详情页面
+  goTo(e){
+    const order = e.currentTarget.dataset.order
+    const paramsStr = util.ObjToString(order)
+    wx.navigateTo({
+      url: `../movie-order-detail/movie-order-detail?${paramsStr}`
     })
   }
 })

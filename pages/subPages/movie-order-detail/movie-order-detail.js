@@ -1,0 +1,14 @@
+Page({
+  data:{
+    order:{}
+  },
+  onLoad(opt){
+    this.initData(opt)
+  },
+  initData(order){
+    console.log(123,order)
+    this.setData({
+      order
+    })
+  }
+})

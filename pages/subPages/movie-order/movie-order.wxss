@@ -29,6 +29,7 @@
 }
 
 .order-info {
+  position: relative;
   display: flex;
   padding: 20rpx 30rpx 20rpx 0;
   margin-left: 30rpx;
@@ -41,7 +42,6 @@
 }
 
 .order-desc {
-  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -68,9 +68,6 @@
 }
 
 .delete-box .delete {
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 30rpx;
   color: #666;
 }

@@ -5,10 +5,10 @@
       <view>{{item.cinemaName}}</view>
       <view class='triangle'></view>
     </navigator>
-    <view class='order-info'>
+    <view class='order-info' bindtap='goTo' data-order='{{item}}'>
       <image src='{{item.movieImg}}'></image>
       <view class='order-desc'>
-        <view class='delete-box' bindtap='deleteOrder' data-index='{{index}}'>
+        <view class='delete-box' catchtap='deleteOrder' data-index='{{index}}'>
           <view class='iconfont icon-del delete'></view>
         </view>
         <view class='movie-name line-ellipsis'>{{item.movieName}} 1张</view>
