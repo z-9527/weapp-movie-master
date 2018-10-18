@@ -7,6 +7,9 @@ Page({
     cinemas: {}
   },
   onLoad(query) {
+   this.initPage(query)
+  },
+  initPage(query){
     //搜索类型，-1代表搜索影院或电影，2代表搜索影院
     const stype = query.stype
     let placeholder = ''

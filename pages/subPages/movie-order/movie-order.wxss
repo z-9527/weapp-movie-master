@@ -1,0 +1,94 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.order-item {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
+.order-title {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx 20rpx 0;
+  margin-left: 30rpx;
+  color: #666;
+  font-size: 26rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.triangle {
+  width: 16rpx;
+  height: 16rpx;
+  border-left: 1px solid #999;
+  border-top: 1px solid #999;
+  margin-left: 5rpx;
+  transform: rotate(135deg) scale(0.8);
+}
+
+.order-info {
+  display: flex;
+  padding: 20rpx 30rpx 20rpx 0;
+  margin-left: 30rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-info image {
+  width: 114rpx;
+  height: 160rpx;
+}
+
+.order-desc {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: space-around;
+  margin-left: 24rpx;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* showTime不继承order-desc？ */
+
+.showTime, .position {
+  /* 不继承上面的font-size，所以重新写 */
+  font-size: 24rpx;
+}
+
+.order-desc .delete-box {
+  /* 多写一个box的原因是增大点击面积 */
+  position: absolute;
+  padding: 30rpx;
+  top: 0;
+  right: 0;
+}
+
+.delete-box .delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 30rpx;
+  color: #666;
+}
+
+.movie-name {
+  font-size: 30rpx;
+  color: #000;
+}
+
+.order-more {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.status {
+  font-size: 26rpx;
+  color: #666;
+}

@@ -7,10 +7,17 @@ Page({
     loadComplete:false //是否加载完
   },
   onLoad(options){
+    this.initPage(options)
+  },
+  //初始化页面
+  initPage(options){
     const movieId = options.movieId
     const movieName = options.movieName
     wx.setNavigationBarTitle({
       title: `观众评论-${movieName}`
+    })
+    wx.showLoading({
+      title: '正在加载...',
     })
     this.getComment(movieId)
     this.setData({
@@ -31,7 +38,8 @@ Page({
       url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${cmts.length}`,
       success(res) {
         let comments = { ...res.data }    
-        const newCmts = cmts.concat(_this.formatData(comments.cmts))  
+        const newCmts = cmts.concat(_this.formatData(comments.cmts)) 
+        wx.hideLoading() 
         _this.setData({
           hcmts: _this.formatData(comments.hcmts),
           cmts: newCmts,

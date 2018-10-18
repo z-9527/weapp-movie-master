@@ -12,7 +12,8 @@
     "pages/subPages/comment-page/comment-page",
     "pages/subPages/about-page/about-page",
     "pages/subPages/snack-page/snack-page",
-    "pages/subPages/buy-ticket/buy-ticket"
+    "pages/subPages/buy-ticket/buy-ticket",
+    "pages/subPages/movie-order/movie-order"
   ],
   "window": {
     "backgroundTextStyle": "light",

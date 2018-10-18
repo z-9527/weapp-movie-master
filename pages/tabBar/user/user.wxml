@@ -10,10 +10,10 @@
         <view class='title-line'></view>
       </view>
       <view class='order-list'>
-        <view class='order-item'>
+        <navigator class='order-item' url='../../subPages/movie-order/movie-order' hover-class='none'>
           <image src='/assets/images/order_movie.png'></image>
           <view>电影</view>
-        </view>
+        </navigator>
         <view class='order-item'>
           <image src='/assets/images/order_store.png'></image>
           <view>商城</view>

@@ -14,25 +14,24 @@ Page({
     first:true //只在第一次提示
   }, 
   onLoad(query) {
-    const { cinemaId='908', movieId = '', day=''} = query
+   this.initPage(query)
+  },
+  //初始化页面
+  initPage(query) {
+    const { cinemaId = '908', movieId = '', day = '' } = query
     this.setData({
       cinemaId,
       movieId,
       day
-    },()=>{
-      this.initPage()
     })
-  },
-  //初始化页面
-  initPage(obj) {
-    const {
-      movieId,
-      cinemaId
-    } = this.data
     const _this = this
+    wx.showLoading({
+      title: '正在加载...',
+    })
     wx.request({
       url: `http://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
       success(res) {
+        wx.hideLoading()
         _this.setData({
           cinemaDetail: res.data,
           movies: _this.formatMovie(res.data.showData.movies),

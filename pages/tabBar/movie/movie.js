@@ -16,6 +16,9 @@ Page({
     loadComplete2:false  //水平滚动加载的数据是否加载完毕
   },
   onLoad() {
+    this.initPage()
+  },
+  initPage(){
     this.firstLoad()
     //https://www.jianshu.com/p/aaf65625fc9d   解释的很好
     if (app.globalData.userLocation) {

@@ -25,6 +25,9 @@ Page({
 
   },
   onLoad(options) {
+    this.initPage(options)
+  },
+  initPage(options){
     const movieId = options.movieId
     const movieName = options.movieName
     const showTime = options.showTime //影片上映日期
@@ -33,7 +36,8 @@ Page({
     })
     this.setData({
       showTime,
-      params: { ...this.data.params,
+      params: {
+        ...this.data.params,
         movieId
       }
     })
