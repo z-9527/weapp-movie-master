@@ -61,11 +61,11 @@ Page({
   },
   //预览图片
   previewImage(e){
-    const current = e.currentTarget.dataset.url
+    const currentIndex = e.currentTarget.dataset.index
     const urls = this.data.detailMovie.photos.map(item => item.replace('180w_140h','375w_250h'))
     wx.previewImage({
       urls,
-      current
+      current: urls[currentIndex]
     })
   },
   //处理评分星星

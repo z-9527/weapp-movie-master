@@ -1,1 +1,31 @@
-<view>订单详情</view>
+<view class='container'>
+  <view class='ticket-content'>
+    <navigator class='cinema' url='../cinema-detail/cinema-detail?cinemaId={{order.cinemaId}}' hover-class='none'>
+      <view>{{order.cinemaName}}</view>
+      <view class='triangle'></view>
+    </navigator>
+    <view class='movie-info'>
+      <view class='movie-name line-ellipsis'>{{order.movieName}}</view>
+      <view class='showTime line-ellipsis'>{{order.time}} {{order.lang}}</view>
+      <view class='position line-ellipsis'>{{order.hall}} {{order.seat}}</view>
+    </view>
+    <view class='divider-box'>
+      <view class='divider'></view>
+      <image class='status' src='/assets/images/status.png'></image>
+    </view> 
+    <view class='code-container'>
+      <view class='code-box'>
+        <view>手机号：187××××2533</view>
+        <view>流水号：{{order.flowNumber}}</view>
+        <view>验证码：{{order.Vcode}}</view>
+      </view>
+      <view class='rq'>
+        <image src='/assets/images/qr.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='price-box'>
+    <view>猫眼订单号：{{order.orderId}}</view>
+    <view>总价：{{order.price}}元</view>
+  </view>
+</view>

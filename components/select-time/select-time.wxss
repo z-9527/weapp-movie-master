@@ -16,6 +16,7 @@
   text-align: center;
   box-sizing: border-box;
   margin: 0 10rpx;
+  font-size: 28rpx;
 }
 
 .day.active {

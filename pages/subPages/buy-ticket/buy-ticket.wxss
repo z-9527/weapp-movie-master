@@ -37,6 +37,7 @@
 }
 
 .movie-name {
+  color: #333;
   font-size: 34rpx;
 }
 

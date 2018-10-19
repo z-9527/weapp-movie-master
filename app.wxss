@@ -2,9 +2,11 @@
 @import './templates/loadingMore/loadingMore.wxss';
 @import './templates/nothing/nothing.wxss';
 /* 因为将模板的样式直接引入到了app.wxss，所以注意上面的样式的污染 */
-view {
+/* view {
   font-size: 28rpx;
-}
+  本来让小程序默认为28px，但是这种写法导致页面中字体不能继承父类定义的字体大小了
+  在写web时我们给默认字体大小都是在body或html中，而不是给div
+} */
 
 .line-ellipsis {
   text-overflow: ellipsis;

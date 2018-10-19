@@ -16,7 +16,7 @@
         </navigator>
         <view class='order-item'>
           <image src='/assets/images/order_store.png'></image>
-          <view>商城</view>
+          <view>小吃</view>
         </view>
       </view>
     </view>

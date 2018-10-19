@@ -101,7 +101,7 @@
   position: relative;
   height: 100rpx;
   line-height: 100rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   margin-left: 30rpx;
   padding-right: 30rpx;
   color: #333;

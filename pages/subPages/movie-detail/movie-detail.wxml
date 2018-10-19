@@ -49,7 +49,7 @@
           <image src='{{detailMovie.videoImg}}' class='videoImg' mode='aspectFill'></image>
           <view class='iconfont icon-zanting'></view>
         </view>
-        <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo' mode='aspectFill' bindtap='previewImage' data-url='{{item}}'></image>
+        <image wx:for='{{detailMovie.photos}}' wx:key='{{item}}' src='{{item}}' class='photo' mode='aspectFill' bindtap='previewImage' data-index='{{index}}'></image>
       </scroll-view>
     </view>
     <view class='section' wx:if='{{comments.total && comments.hcmts.length}}'>

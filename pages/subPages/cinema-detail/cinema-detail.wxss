@@ -13,7 +13,6 @@
 .title {
   font-size: 34rpx;
   line-height: 48rpx;
-  font-weight: 700;
   color: #333;
 }
 
