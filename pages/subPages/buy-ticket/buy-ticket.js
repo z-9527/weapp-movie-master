@@ -1,6 +1,6 @@
 Page({
   data:{
-    order:{},
+    order:null,
     first:true //是否是第一次支付
   },
   onLoad(params){

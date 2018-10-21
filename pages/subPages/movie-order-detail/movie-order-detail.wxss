@@ -118,16 +118,25 @@
 }
 
 .rq image {
-  width: 328rpx;
-  height: 328rpx;
+  width: 400rpx;
+  height: 400rpx;
   margin: 0 auto;
 }
 
-.price-box {
+.box {
   padding: 30rpx;
   background: #fff;
   font-size: 30rpx;
   color: #333;
   line-height: 1.5;
+  margin-bottom: 20rpx;
 }
-
+.phone-box{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #999;
+}
+.phone{
+  color: #f03d37;
+}

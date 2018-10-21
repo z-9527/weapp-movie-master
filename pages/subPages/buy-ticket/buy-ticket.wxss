@@ -17,7 +17,7 @@
 .section-title {
   padding-bottom: 20rpx;
   border-bottom: 1px solid #f0f0f0;
-  font-size: 34rpx;
+  font-size: 32rpx;
   line-height: 1em;
 }
 
@@ -34,11 +34,12 @@
   padding-right: 30rpx;
   border-bottom: 1px solid #f0f0f0;
   line-height: 1.5em;
+  font-size: 30rpx;
 }
 
 .movie-name {
   color: #333;
-  font-size: 34rpx;
+  font-size: 36rpx;
 }
 
 .watch-time {

@@ -1,6 +1,6 @@
 Page({
   data:{
-    order:{}
+    order:null
   },
   onLoad(opt){
     this.initData(opt)

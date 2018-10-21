@@ -247,7 +247,7 @@
 
 .second-title {
   width: 90%;
-  font-size: 22rpx;
+  font-size: 24rpx;
   color: #999;
 }
 

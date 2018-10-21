@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container' wx:if='{{order}}'>
   <view class='section'>
     <view class='movie-box'>
       <view class='movie-name'>{{order.movieName}}</view>

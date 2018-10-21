@@ -1,4 +1,4 @@
-<view class='container'>
+<view class='container' wx:if='{{order}}'>
   <view class='ticket-content'>
     <navigator class='cinema' url='../cinema-detail/cinema-detail?cinemaId={{order.cinemaId}}' hover-class='none'>
       <view>{{order.cinemaName}}</view>
@@ -24,8 +24,15 @@
       </view>
     </view>
   </view>
-  <view class='price-box'>
+  <view class='price-box box'>
     <view>猫眼订单号：{{order.orderId}}</view>
     <view>总价：{{order.price}}元</view>
+  </view>
+  <view class='maoyan box'>
+    <view>猫眼客服电话</view>
+    <view class='phone-box'>
+      <view>工作时间： 9:00-24:00</view>
+      <view class='phone'>1010-5335</view>
+    </view>
   </view>
 </view>
