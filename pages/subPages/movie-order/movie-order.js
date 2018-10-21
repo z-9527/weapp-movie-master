@@ -1,6 +1,6 @@
 const util = require('../../../utils/util.js')
 Page({
-  data:{
+  data:{ 
     orderList:[]
   },
   onLoad(){

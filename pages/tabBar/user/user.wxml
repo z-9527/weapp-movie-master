@@ -14,10 +14,10 @@
           <image src='/assets/images/order_movie.png'></image>
           <view>电影</view>
         </navigator>
-        <view class='order-item'>
+        <navigator class='order-item' url='../../subPages/snack-order/snack-order' hover-class='none'>
           <image src='/assets/images/order_store.png'></image>
           <view>小吃</view>
-        </view>
+        </navigator>
       </view>
     </view>
     <view class='other'>

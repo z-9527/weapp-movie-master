@@ -38,6 +38,7 @@ Page({
       cinemaName,
       cinemaId,
       title: info.dealBrief.title,//套餐名
+      img: info.dealBrief.imageUrl,//图片
       amount:1,//数量
       price: info.dealBrief.originPrice,//单价
       total: info.dealBrief.originPrice * 1//合计

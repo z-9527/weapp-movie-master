@@ -15,7 +15,8 @@
     "pages/subPages/buy-ticket/buy-ticket",
     "pages/subPages/movie-order/movie-order",
     "pages/subPages/movie-order-detail/movie-order-detail",
-    "pages/subPages/buy-snack/buy-snack"
+    "pages/subPages/buy-snack/buy-snack",
+    "pages/subPages/snack-order/snack-order"
   ],
   "window": {
     "backgroundTextStyle": "light",

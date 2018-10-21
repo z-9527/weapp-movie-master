@@ -40,7 +40,7 @@
 
 .order-list-page .order-info image {
   width: 114rpx;
-  height: 160rpx;
+  height: 114rpx;
 }
 
 .order-list-page .order-desc {
@@ -74,7 +74,7 @@
   color: #999;
 }
 
-.order-list-page .movie-name {
+.order-list-page .snack-name {
   font-size: 30rpx;
   width: 80%;
   color: #000;
