@@ -1,3 +1,4 @@
+const util = require('../../../utils/util.js')
 Page({
   data: {
     info: null,
@@ -23,9 +24,26 @@ Page({
         wx.hideLoading()
         this.setData({
           cinemaName: obj.cinemaName,
+          cinemaId: obj.cinemaId,
           info: res.data.data
         })
       }
+    })
+  },
+  //跳转到“提交订单”页面
+  buySnack(){
+    const { info, cinemaName, cinemaId} = this.data
+    //添加订单信息
+    const paramsStr = util.ObjToString({
+      cinemaName,
+      cinemaId,
+      title: info.dealBrief.title,//套餐名
+      amount:1,//数量
+      price: info.dealBrief.originPrice,//单价
+      total: info.dealBrief.originPrice * 1//合计
+    })
+    wx.navigateTo({
+      url: `/pages/subPages/buy-snack/buy-snack?${paramsStr}`,
     })
   }
 })

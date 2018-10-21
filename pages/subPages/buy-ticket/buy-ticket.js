@@ -11,7 +11,7 @@ Page({
       order:params
     })
   },
-  //支付
+  //模拟支付
   payment(){
     //避免重复支付
     if(this.data.first){
