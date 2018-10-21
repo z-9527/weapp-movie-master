@@ -1,1 +1,9 @@
-<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+<view class='container'>
+  <map id='map' class='map' longitude='114.16837' latitude='30.498636' show-location markers='{{markers}}'></map>
+  <!-- 原生组件的层级是最高的，所以页面中的其他组件无论设置 z-index 为多少，都无法盖在原生组件上，所以只能用cover-image -->
+  <cover-image src='/assets/images/pos.png' class='pos' bindtap='position'></cover-image>
+  <view class='cinema-box'>
+    <view class='cinema-name'>中影国际影城(武汉经开永旺店)</view>
+    <view class='cinema-position'>乐城B馆道388号永旺梦乐城B</view>
+  </view>
+</view> 
