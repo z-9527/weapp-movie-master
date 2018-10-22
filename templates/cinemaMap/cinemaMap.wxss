@@ -4,6 +4,7 @@
   align-items: center;
   padding: 30rpx;
   padding-right: 0;
+  background: #fff;
 }
 
 .cinema-info .info-box {

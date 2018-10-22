@@ -4,7 +4,8 @@ Page({
     first:true //是否是第一次支付
   },
   onLoad(params){
-    this.initData(params)
+    const paramsObj = JSON.parse(params.paramsStr)
+    this.initData(paramsObj)
   },
   initData(params){
     this.setData({

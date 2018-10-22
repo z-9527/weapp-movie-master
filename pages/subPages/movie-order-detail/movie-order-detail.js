@@ -3,10 +3,10 @@ Page({
     order:null
   },
   onLoad(opt){
-    this.initData(opt)
+    const paramsObj = JSON.parse(opt.paramsStr)
+    this.initData(paramsObj)
   },
   initData(order){
-    console.log(123,order)
     this.setData({
       order
     })

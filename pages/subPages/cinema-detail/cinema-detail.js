@@ -18,7 +18,7 @@ Page({
   },
   //初始化页面
   initPage(query) {
-    const { cinemaId = '908', movieId = '', day = '' } = query
+    const { cinemaId = '', movieId = '', day = '' } = query
     this.setData({
       cinemaId,
       movieId,
@@ -68,14 +68,15 @@ Page({
   //跳转到“套餐详情”页面
   goSnackPage(e){
     const info = e.currentTarget.dataset.info;
-    const paramsStr = util.ObjToString({
+    //将参数转化为JSON通过页面跳转时传递
+    const paramsStr = JSON.stringify({
       cinemaName: this.data.cinemaDetail.cinemaData.nm,
       cinemaId: this.data.cinemaId,
       dealId: info.dealId,
       cinemaData: this.data.cinemaDetail.cinemaData//影院信息
     })
     wx.navigateTo({
-      url: `/pages/subPages/snack-page/snack-page?${paramsStr}`,
+      url: `/pages/subPages/snack-page/snack-page?paramsStr=${paramsStr}`,
     })
   },
   //购票
@@ -83,7 +84,7 @@ Page({
     const info = e.currentTarget.dataset.info;
     const { movie, cinemaId, cinemaDetail,first} =  this.data
     //添加订单信息
-    const paramsStr = util.ObjToString({
+    const paramsStr = JSON.stringify({
       cinemaName: cinemaDetail.cinemaData.nm,//电影院名
       cinemaId: cinemaId,//电影院ID
       hall:info.th,//大厅
@@ -109,14 +110,14 @@ Page({
           })
           if (res.confirm) {
             wx.navigateTo({
-              url: `/pages/subPages/buy-ticket/buy-ticket?${paramsStr}`,
+              url: `/pages/subPages/buy-ticket/buy-ticket?paramsStr=${paramsStr}`,
             })
           }
         }
       })
     } else {
       wx.navigateTo({
-        url: `/pages/subPages/buy-ticket/buy-ticket?${paramsStr}`,
+        url: `/pages/subPages/buy-ticket/buy-ticket?paramsStr=${paramsStr}`,
       })
     }
   },

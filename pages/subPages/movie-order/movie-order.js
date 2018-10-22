@@ -1,4 +1,3 @@
-const util = require('../../../utils/util.js')
 Page({
   data:{ 
     orderList:[]
@@ -35,9 +34,9 @@ Page({
   //跳转到订单详情页面
   goTo(e){
     const order = e.currentTarget.dataset.order
-    const paramsStr = util.ObjToString(order)
+    const paramsStr = JSON.stringify(order)
     wx.navigateTo({
-      url: `../movie-order-detail/movie-order-detail?${paramsStr}`
+      url: `../movie-order-detail/movie-order-detail?paramsStr=${paramsStr}`
     })
   }
 })

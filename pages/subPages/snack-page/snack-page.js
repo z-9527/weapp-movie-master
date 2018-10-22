@@ -1,4 +1,3 @@
-const util = require('../../../utils/util.js')
 Page({
   data: {
     info: null, //小吃详情
@@ -6,10 +5,10 @@ Page({
     cinemaData:null //影院地图详情
   },
   onLoad(obj) {
-    this.initPage(obj)
+    const paramsObj = JSON.parse(obj.paramsStr)
+    this.initPage(paramsObj)
   },
   initPage(obj) {
-    console.log(obj)
     wx.showLoading({
       title: '正在加载',
     })
@@ -37,7 +36,7 @@ Page({
   buySnack(){
     const { info, cinemaName, cinemaId} = this.data
     //添加订单信息
-    const paramsStr = util.ObjToString({
+    const paramsStr = JSON.stringify({
       cinemaName,
       cinemaId,
       title: info.dealBrief.title,//套餐名
@@ -47,7 +46,7 @@ Page({
       total: info.dealBrief.originPrice * 1//合计
     })
     wx.navigateTo({
-      url: `/pages/subPages/buy-snack/buy-snack?${paramsStr}`,
+      url: `/pages/subPages/buy-snack/buy-snack?paramsStr=${paramsStr}`,
     })
   }
 })

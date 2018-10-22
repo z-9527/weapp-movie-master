@@ -1,3 +1,4 @@
+@import '/templates/cinemaMap/cinemaMap.wxss';
 .container {
   width: 100vw;
   min-height: 100vh;
@@ -118,8 +119,8 @@
 }
 
 .rq image {
-  width: 400rpx;
-  height: 400rpx;
+  width: 500rpx;
+  height: 500rpx;
   margin: 0 auto;
 }
 
@@ -139,4 +140,7 @@
 }
 .phone{
   color: #f03d37;
+}
+.map-box{
+  margin-bottom: 20rpx;
 }

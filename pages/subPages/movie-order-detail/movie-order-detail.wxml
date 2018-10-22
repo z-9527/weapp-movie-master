@@ -1,3 +1,4 @@
+<import src='../../../templates/cinemaMap/cinemaMap.wxml' />
 <view class='container' wx:if='{{order}}'>
   <view class='ticket-content'>
     <navigator class='cinema' url='../cinema-detail/cinema-detail?cinemaId={{order.cinemaId}}' hover-class='none'>
@@ -12,7 +13,7 @@
     <view class='divider-box'>
       <view class='divider'></view>
       <image class='status' src='/assets/images/status.png'></image>
-    </view> 
+    </view>
     <view class='code-container'>
       <view class='code-box'>
         <view>手机号：187××××2533</view>
@@ -27,6 +28,9 @@
   <view class='price-box box'>
     <view>猫眼订单号：{{order.orderId}}</view>
     <view>总价：{{order.price}}元</view>
+  </view>
+  <view class='map-box'>
+    <template is="cinemaMap" data='{{cinemaData:order.cinemaData}}' />
   </view>
   <view class='maoyan box'>
     <view>猫眼客服电话</view>
