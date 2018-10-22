@@ -1,17 +1,17 @@
 Page({
   data: {
-    info: null,
+    cinemaData: null,
     markers: []
   },
   onLoad(opt) {
-    this.initData({})
+    this.initData(opt)
   },
-  initData(info) {
+  initData(cinemaData) {
     this.setData({
-      info,
+      cinemaData,
       markers: [{
-        latitude: info.latitude || 30.498636,
-        longitude: info.longitude || 114.16837
+        latitude: cinemaData.latitude,
+        longitude: cinemaData.longitude
       }]
     })
   },

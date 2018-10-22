@@ -1,42 +1,4 @@
-.cinema-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30rpx;
-  padding-right: 0;
-}
-
-.info-box {
-  width: 520rpx;
-}
-
-.title {
-  font-size: 34rpx;
-  line-height: 48rpx;
-  color: #333;
-}
-
-.location {
-  margin-top: 2px;
-  font-size: 26rpx;
-  line-height: 37rpx;
-  color: #999;
-}
-
-.location-icon {
-  width: 140rpx;
-  height: 62rpx;
-  border-left: 1px solid #d8d8d8;
-  text-align: center;
-}
-
-.location-icon image {
-  display: inline-block;
-  width: 38rpx;
-  height: 44rpx;
-  margin-top: 10rpx;
-}
-
+@import '/templates/cinemaMap/cinemaMap.wxss';
 .movie-info {
   padding: 22rpx 30rpx;
   text-align: center;

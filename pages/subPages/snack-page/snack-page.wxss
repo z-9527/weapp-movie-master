@@ -1,3 +1,4 @@
+@import '/templates/cinemaMap/cinemaMap.wxss';
 .container {
   padding-bottom: 50rpx;
 }

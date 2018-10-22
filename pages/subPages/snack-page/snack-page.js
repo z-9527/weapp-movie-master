@@ -1,13 +1,15 @@
 const util = require('../../../utils/util.js')
 Page({
   data: {
-    info: null,
-    cinemaName: ''
+    info: null, //小吃详情
+    cinemaName: '',
+    cinemaData:null //影院地图详情
   },
   onLoad(obj) {
     this.initPage(obj)
   },
   initPage(obj) {
+    console.log(obj)
     wx.showLoading({
       title: '正在加载',
     })
@@ -25,6 +27,7 @@ Page({
         this.setData({
           cinemaName: obj.cinemaName,
           cinemaId: obj.cinemaId,
+          cinemaData: obj.cinemaData,
           info: res.data.data
         })
       }

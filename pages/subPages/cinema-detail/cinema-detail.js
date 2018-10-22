@@ -71,7 +71,8 @@ Page({
     const paramsStr = util.ObjToString({
       cinemaName: this.data.cinemaDetail.cinemaData.nm,
       cinemaId: this.data.cinemaId,
-      dealId: info.dealId
+      dealId: info.dealId,
+      cinemaData: this.data.cinemaDetail.cinemaData//影院信息
     })
     wx.navigateTo({
       url: `/pages/subPages/snack-page/snack-page?${paramsStr}`,
@@ -95,6 +96,7 @@ Page({
       Vcode: getRandom(100000,999999), //模拟6位数的验证码
       flowNumber: getRandom(100000000, 999999999), //模拟9位数的流水号,
       orderId: getRandom(1000000000, 9999999999), //模拟10位数的订单号,
+      cinemaData: cinemaDetail.cinemaData//影院信息
     })
     // 只提示一次
     if (first){

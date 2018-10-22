@@ -1,12 +1,7 @@
+<import src='../../../templates/cinemaMap/cinemaMap.wxml' />
 <view wx:if='{{cinemaDetail}}'>
-  <view class='cinema-info'>
-    <view class='info-box'>
-      <view class='title line-ellipsis'>{{cinemaDetail.cinemaData.nm}}</view>
-      <view class='location'>{{cinemaDetail.cinemaData.addr}}</view>
-    </view>
-    <navigator url='/pages/subPages/cinema-map/cinema-map' class='location-icon'>
-      <image src='/assets/images/location.png'></image>
-    </navigator>
+  <view>
+   <template is="cinemaMap" data='{{cinemaData:cinemaDetail.cinemaData}}'/>
   </view>
   <view>
     <view>

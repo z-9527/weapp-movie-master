@@ -1,3 +1,4 @@
+<import src='../../../templates/cinemaMap/cinemaMap.wxml' />
 <view class='container'>
   <!-- 头部 -->
   <view class='image-box'>
@@ -49,5 +50,10 @@
         <view class='tip-des'>{{item.content}}</view>
       </view>
     </view>
+  </view>
+  <!-- 影院信息 -->
+  <view class='section'>
+    <view class='section-title'>影院信息</view>
+    <template is="cinemaMap" data='{{cinemaData}}'/>
   </view>
 </view>
