@@ -13,30 +13,30 @@ Page({
     movieList1: [],
     movieIds1: [],
     loadComplete1: false,
-    loadComplete2:false  //水平滚动加载的数据是否加载完毕
+    loadComplete2: false //水平滚动加载的数据是否加载完毕
   },
   onLoad() {
     this.initPage()
   },
-  initPage(){
-    this.firstLoad()
+  initPage() {
     //https://www.jianshu.com/p/aaf65625fc9d   解释的很好
     if (app.globalData.userLocation) {
       this.setData({
-        city: app.globalData.city.city_name
+        city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
       })
     } else {
       app.userLocationReadyCallback = () => {
         this.setData({
-          city: app.globalData.city.city_name
+          city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
         })
       }
     }
+    this.firstLoad()
   },
   onShow() {
-    if (app.globalData.city.city_name && this.data.city !== app.globalData.city.city_name) {
+    if (app.globalData.selectCity) {
       this.setData({
-        city: app.globalData.city.city_name
+        city: app.globalData.selectCity.cityName
       })
     }
   },
@@ -72,9 +72,9 @@ Page({
           movieIds0: res.data.movieIds,
           movieList0
         })
-        if (res.data.movieList.length >= res.data.movieIds.length){
+        if (res.data.movieList.length >= res.data.movieIds.length) {
           _this.setData({
-            loadComplete0:true
+            loadComplete0: true
           })
         }
       }
@@ -96,7 +96,7 @@ Page({
         success(res) {
           wx.hideLoading()
           _this.setData({
-            mostExpectedList: _this.formatImgUrl(res.data.coming,true)
+            mostExpectedList: _this.formatImgUrl(res.data.coming, true)
           })
         }
       })
@@ -138,18 +138,21 @@ Page({
   },
   //滚动到最右边时的事件处理函数
   lower() {
-    const { mostExpectedList, loadComplete2} = this.data
-    const length =mostExpectedList.length
+    const {
+      mostExpectedList,
+      loadComplete2
+    } = this.data
+    const length = mostExpectedList.length
     const _this = this
-    if (loadComplete2){
-      return 
+    if (loadComplete2) {
+      return
     }
     wx.request({
       url: `http://m.maoyan.com/ajax/mostExpected?limit=10&offset=${length}&token=`,
       success(res) {
         _this.setData({
-          mostExpectedList: mostExpectedList.concat(_this.formatImgUrl(res.data.coming,true)),
-          loadComplete2: !res.data.paging.hasMore || !res.data.coming.length    //当返回的数组长度为0时也认为数据请求完毕
+          mostExpectedList: mostExpectedList.concat(_this.formatImgUrl(res.data.coming, true)),
+          loadComplete2: !res.data.paging.hasMore || !res.data.coming.length //当返回的数组长度为0时也认为数据请求完毕
         })
       }
     })
@@ -157,7 +160,7 @@ Page({
   //处理图片url
   formatImgUrl(arr, cutTitle = false) {
     //小程序不能在{{}}调用函数，所以我们只能在获取API的数据时处理，而不能在wx:for的每一项中处理
-    if(!Array.isArray(arr)){
+    if (!Array.isArray(arr)) {
       return
     }
     let newArr = []

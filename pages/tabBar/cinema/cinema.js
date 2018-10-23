@@ -26,13 +26,15 @@ Page({
   },
   onLoad() {
     this.setData({
-      city: app.globalData.city.city_name
+      city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
     })
     this.initPage()
   },
   onShow() {
-    if (this.data.city !== app.globalData.city.city_name) {
-      city: app.globalData.city.city_name
+    if (app.globalData.selectCity) {
+      this.setData({
+        city: app.globalData.selectCity.cityName
+      })
     }
   },
   //初始化页面
