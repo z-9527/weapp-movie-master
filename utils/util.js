@@ -47,9 +47,13 @@ const calcTime = (time) => {
 }
 
 //获取指定区间的随机整数
-const getRandom = (lowerValue, upperValue)=>{
+const getRandom = (lowerValue, upperValue,isFormat)=>{
   const num = Math.floor(Math.random() * (upperValue - lowerValue + 1) + lowerValue);
-  return formatNumber(num);
+  if (isFormat){
+    return formatNumber(num);
+  } else {
+    return num
+  }
 }
 
 module.exports = {

@@ -1,6 +1,10 @@
 #my-video {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 420rpx;
+  z-index: 9;
 }
 
 .movie-intro-desc {
@@ -9,6 +13,7 @@
   border-bottom: 20rpx solid #f5f5f5;
   color: #666;
   font-size: 26rpx;
+  margin-top: 420rpx;
 }
 
 .name-box {
@@ -51,4 +56,53 @@
   top: 50%;
   right: 30rpx;
   transform: translateY(-50%);
+}
+
+.play-title {
+  padding: 30rpx;
+  border: 1px solid #f5f5f5;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.video-item {
+  display: flex;
+  padding: 30rpx;
+  padding-left: 0;
+  margin-left: 30rpx;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.img-box {
+  position: relative;
+  width: 220rpx;
+  height: 124rpx;
+}
+
+.img-box image {
+  width: 220rpx;
+  height: 124rpx;
+}
+.txt{
+  position: absolute;
+  left: 10rpx;
+  bottom: 10rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.video-name {
+  /* 多行文字溢出打省略号 */
+  flex: 1;
+  margin-left: 30rpx;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 30rpx;
+  color: #666;
+}
+.red{
+  color: #f03d37;
 }

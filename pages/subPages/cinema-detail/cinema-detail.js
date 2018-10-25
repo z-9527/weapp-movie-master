@@ -93,7 +93,7 @@ Page({
       lang: info.lang+info.tp,//语言
       time: `${info.dt} ${info.tm}`,//时间
       price: (info.vipPrice && info.vipPrice * 1 + 10) || 37,//票价
-      seat: `${getRandom(1, 21)}排${getRandom(1, 21)}座`,//座位
+      seat: `${getRandom(1, 21,true)}排${getRandom(1, 21,true)}座`,//座位
       Vcode: getRandom(100000,999999), //模拟6位数的验证码
       flowNumber: getRandom(100000000, 999999999), //模拟9位数的流水号,
       orderId: getRandom(1000000000, 9999999999), //模拟10位数的订单号,

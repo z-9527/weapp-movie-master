@@ -108,14 +108,16 @@ Page({
   toVideo(){
     const detailMovie = this.data.detailMovie;
     const paramsStr = JSON.stringify({
-      videoList:[{   //构建video播放列表（虽然只获得了一条数据）
+      video:{
         videourl: detailMovie.videourl,
         videoImg: detailMovie.videoImg,
         videoName: detailMovie.videoName,
-      }],
+      },
       movieName: detailMovie.nm,  //电影名称
+      id: detailMovie.id,//电影ID
       version: detailMovie.version, //电影类型（3d、IMAX）
       release: detailMovie.pubDesc, //上映时间
+      rt: detailMovie.rt,//电影上映时间
       wish: detailMovie.wish, //想看的人数
       globalReleased: detailMovie.globalReleased, //是否上映
       sc: detailMovie.sc, //评分

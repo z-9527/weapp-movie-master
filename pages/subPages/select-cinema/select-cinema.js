@@ -52,6 +52,7 @@ Page({
         method: 'POST',
         data: params,
         success(res) {
+          // 缺少了城市ID所以返回值缺少showDays，只能自己模拟时间了
           resolve(res.data.cinemas)
           _this.setData({
             cinemas: _this.data.cinemas.concat(res.data.cinemas),

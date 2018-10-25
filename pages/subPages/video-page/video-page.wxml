@@ -1,6 +1,6 @@
 <view wx:if='{{info && current !==-1}}'>
   <view>
-    <video id='my-video' src='{{info.videoList[current].videourl}}' autoplay></video>
+    <video wx:key='{{current}}' id='my-video' src='{{videoList[current].videourl}}' autoplay></video>
   </view>
   <view class='movie-intro-desc'>
     <view class='name-box'>
@@ -19,10 +19,20 @@
         <text class='yellow'>{{info.wish}}</text>人想看</view>
     </view>
     <view class='release'>{{info.release}}</view>
-    <view class='buy-tickets'>
+    <view class='buy-tickets' bindtap='goTo'>
       <view wx:if='{{info.showst===3}}' class='btn'>购票</view>
       <view wx:elif='{{info.showst===1}}' class='btn want-see'>想看</view>
       <view wx:elif='{{info.showst===4}}' class='btn pre-sale'>预售</view>
+    </view>
+  </view>
+  <view class='list-box' wx:if='{{videoList.length}}'>
+    <view class='play-title'>播放列表 （{{videoList.length}}）</view>
+    <view wx:for='{{videoList}}' wx:key='{{item}}' class='video-item' bindtap='selectItem' data-index='{{index}}'>
+      <view class='img-box'>
+        <image src='{{item.videoImg}}' mode='aspectFill'></image>
+        <view class='txt' wx:if='{{current===index}}'>播放中</view>
+      </view>
+      <view class='video-name {{current === index ?"red":""}}'>{{item.videoName}}</view>
     </view>
   </view>
 </view>
