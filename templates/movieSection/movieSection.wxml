@@ -18,9 +18,9 @@
       <view wx:else class='movie-showInfo line-ellipsis'>{{movie.showInfo}}</view>
     </view>
     <view class='buy-tickets'>
-      <view wx:if='{{movie.globalReleased}}' class='btn'>购票</view>
+      <view wx:if='{{movie.showst===3}}' class='btn'>购票</view>
       <view wx:elif='{{movie.showst===1}}' class='btn want-see'>想看</view>
-      <view wx:else class='btn pre-sale'>预售</view>
+      <view wx:elif='{{movie.showst===4}}' class='btn pre-sale'>预售</view>
     </view>
   </navigator>
 </template>

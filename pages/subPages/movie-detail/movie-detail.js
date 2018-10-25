@@ -103,6 +103,27 @@ Page({
     this.setData({
       isFold:!this.data.isFold
     })
+  },
+  //跳转到video页面
+  toVideo(){
+    const detailMovie = this.data.detailMovie;
+    const paramsStr = JSON.stringify({
+      videoList:[{   //构建video播放列表（虽然只获得了一条数据）
+        videourl: detailMovie.videourl,
+        videoImg: detailMovie.videoImg,
+        videoName: detailMovie.videoName,
+      }],
+      movieName: detailMovie.nm,  //电影名称
+      version: detailMovie.version, //电影类型（3d、IMAX）
+      release: detailMovie.pubDesc, //上映时间
+      wish: detailMovie.wish, //想看的人数
+      globalReleased: detailMovie.globalReleased, //是否上映
+      sc: detailMovie.sc, //评分
+      showst: detailMovie.showst//判读“想看”、“预售”
+    })
+    wx.navigateTo({
+      url: `../video-page/video-page?paramsStr=${paramsStr}`
+    })
   }
 
 })

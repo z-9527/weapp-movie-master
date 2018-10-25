@@ -55,3 +55,23 @@
 .phcolor {
   color: #999;
 }
+.buy-tickets .btn {
+  width: 94rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #f03d37;
+  color: #fff;
+  border-radius: 8rpx;
+  white-space: nowrap;
+  font-size: 24rpx;
+  border: none;
+}
+
+.buy-tickets .btn.pre-sale {
+  background-color: #3c9fe6;
+}
+.buy-tickets .want-see{
+  background-color: #faaf00;
+}

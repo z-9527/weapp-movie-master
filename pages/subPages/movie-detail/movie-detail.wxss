@@ -87,18 +87,18 @@
 }
 
 .movie-category {
+  display: flex;
+  align-items: center;
   margin-top: 12rpx;
 }
 
 .tag-box {
-  display: inline-block;
   color: #fff;
   border: 0.02rem solid rgba(255, 255, 255, 0.4);
   border-radius: 4rpx;
   box-sizing: border-box;
   font-size: 20rpx;
-  vertical-align: text-top;
-  margin-top: 4rpx;
+  margin-left: 4rpx;
 }
 
 .tag-d {

@@ -20,7 +20,8 @@
           <view class='no-score' wx:else>暂无评分</view>
         </view>
         <view wx:else class='movie-score'>{{detailMovie.wish}}人想看</view>
-        <view class='movie-category line-ellipsis'>{{detailMovie.cat}}
+        <view class='movie-category line-ellipsis'>
+          <view>{{detailMovie.cat}}</view>
           <view class='tag-box' wx:if='{{detailMovie.version}}'>
             <text class='tag-d'>{{detailMovie.version[0]}}</text>
             <text wx:if='{{detailMovie.version[1]}}' class='tag-imax'>{{detailMovie.version[1]}}</text>
@@ -45,7 +46,7 @@
       <view class='section-title'>媒体库</view>
       <scroll-view scroll-x class='scroll-view_H'>
         <view wx:if='{{!detailMovie.videoImg && !detailMovie.photos.length}}'>暂无数据...</view>
-        <view class='videoImg-box' wx:if='{{detailMovie.videoImg}}'>
+        <view class='videoImg-box' wx:if='{{detailMovie.videoImg}}' bindtap='toVideo'>
           <image src='{{detailMovie.videoImg}}' class='videoImg' mode='aspectFill'></image>
           <view class='iconfont icon-zanting'></view>
         </view>

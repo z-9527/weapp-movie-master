@@ -2,6 +2,7 @@
 .search-wrapper {
   background-color: #fff;
   height: 100vh;
+  font-size: 28rpx;
 }
 
 .search-header {
