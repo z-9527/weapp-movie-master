@@ -77,7 +77,7 @@
 .order-list-page .snack-name {
   font-size: 30rpx;
   width: 80%;
-  color: #000;
+  color: #333;
 }
 
 .order-list-page .order-more {

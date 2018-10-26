@@ -44,6 +44,7 @@
   padding: 0 30rpx;
   padding-top: 20rpx;
   font-size: 28rpx;
+  color: #333;
 }
 
 .most-expected {
@@ -58,7 +59,7 @@
   margin-bottom: 20rpx;
 }
 
-.expected-item {
+.expected-item { 
   display: inline-block;
   width: 170rpx;
   overflow: hidden;
@@ -75,6 +76,7 @@
 .name {
   margin-bottom: 3px;
   font-size: 24rpx;
+  color: #333;
 }
 
 .data {

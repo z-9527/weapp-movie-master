@@ -49,6 +49,7 @@
   padding: 30rpx 30rpx 30rpx 0;
   margin: 0 0 0 30rpx;
   border-bottom: 1px solid #e6e6e6;
+  color: #333;
 }
 
 .item:last-child {

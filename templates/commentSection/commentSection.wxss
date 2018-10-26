@@ -1,6 +1,7 @@
 .commentSection {
   display: flex;
   padding: 30rpx 0 0 30rpx;
+  color: #555;
 }
 
 .avatar {

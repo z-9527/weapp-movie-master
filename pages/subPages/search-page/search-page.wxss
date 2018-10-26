@@ -78,7 +78,6 @@
 .movie-name {
   font-size: 34rpx;
   color: #333;
-  font-weight: 700;
   padding-right: 10rpx;
 }
 .version{

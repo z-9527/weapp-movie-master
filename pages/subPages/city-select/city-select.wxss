@@ -1,5 +1,7 @@
 .container {
   background-color: #ebebeb;
+  color: #333;
+  font-size: 28rpx;
 }
 
 /* 搜索区样式 */

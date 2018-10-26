@@ -7,7 +7,7 @@
 
 .name-price {
   font-size: 32rpx;
-  color: #000;
+  color: #333;
 }
 
 .sell-price {
