@@ -7,6 +7,9 @@ qqmapsdk = new QQMapWX({
 
 App({
   onLaunch: function () {
+    this.initPage()
+  },
+  initPage(){
     // 获取用户授权信息信息,防止重复出现授权弹框
     wx.getSetting({
       success: res => {

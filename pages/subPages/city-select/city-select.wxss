@@ -85,7 +85,7 @@
 }
 
 .section-body-inline .section-item {
-  width: 26%;
+  min-width: 26%;
   background: #fff;
   margin-top: 30rpx;
   margin-right: 4%;
@@ -97,6 +97,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 0 30rpx;
 }
 
 /* 城市侧边栏导航样式 */

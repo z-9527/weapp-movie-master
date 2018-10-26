@@ -4984,17 +4984,20 @@ Page({
     }
     list.unshift(hot)
     //创建当前定位城市
-    let current = null;
-    for (let item of citys) {
-      if (item.city_name === app.globalData.userLocation.city) {
-        current = {
-          title: '当前定位城市',
-          index: '定位',
-          style: 'inline',
-          items: [item]
-        }
-        break;
-      }
+    let current = {
+      title: '当前定位城市',
+      index: '定位',
+      style: 'inline',
+      items:[]
+    };
+    //判断是否获得用户定位城市
+    if (app.globalData.userLocation.status===1){
+      let city = citys.find(item => item.city_name === app.globalData.userLocation.cityName) || { city_name: '定位失败，请点击重试'}
+      current.items = [city]
+    } else {
+      current.items = [{
+        city_name:'定位失败，请点击重试'
+      }]
     }
     list.unshift(current)
     this.setData({
@@ -5003,18 +5006,40 @@ Page({
   },
   //点击城市的事件处理程序
   selectCity(e) {
-    wx.showModal({
-      title: '提示',
-      content: '没有获取猫眼城市ID的API，所以暂不支持切换城市',
-      success(res) {
-        if (res.confirm){
-          app.globalData.city = e.currentTarget.dataset.city          
-          wx.switchTab({
-            url: '/pages/tabBar/movie/movie'
-          })
+    const cityName = e.currentTarget.dataset.city.city_name
+    const _this = this
+    if (cityName ==='定位失败，请点击重试'){
+      wx.showModal({
+        title: '',
+        content: '需要先授权定位才可获得您的位置信息',
+        confirmText: "打开定位",
+        success(res){
+          if (res.confirm){
+            wx.openSetting({
+              success(data){
+                if (data.authSetting['scope.userLocation']){
+                  //app的globalData改变不能重新触发页面渲染？
+                  app.initPage()
+                }
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '没有获取猫眼城市ID的API，所以暂不支持切换城市',
+        success(res) {
+          if (res.confirm) {
+            app.globalData.selectCity = { cityName }
+            wx.switchTab({
+              url: '/pages/tabBar/movie/movie'
+            })
+          }
+        }
+      })
+    }
   },
   //侧边栏导航的点击事件处理
   navSelect(e) {
