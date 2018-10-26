@@ -70,6 +70,13 @@ Page({
     }
     this.setCurrent(index)
   },
+  //播放错误时
+  errorHandle() {
+    wx.showToast({
+      title: '播放错误',
+      icon: 'none'
+    })
+  },
   //购票
   goTo() {
     const info = this.data.info;

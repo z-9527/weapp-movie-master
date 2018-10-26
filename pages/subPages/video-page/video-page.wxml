@@ -1,7 +1,7 @@
 <view wx:if='{{info && current !==-1}}'>
   <view class='video-box'>
     <!-- video是原生组件，有很多限制，如不能设置position: fixed；设置其父元素position也不行，所以下面用scroll-view。 -->
-    <video wx:key='{{current}}' id='my-video' src='{{videoList[current].videourl}}' autoplay bindended='endHandle'></video>
+    <video wx:key='{{current}}' id='my-video' src='{{videoList[current].videourl}}' autoplay bindended='endHandle' binderror='errorHandle'></video>
   </view>
   <scroll-view class='my-scroll' scroll-y>
     <view class='movie-intro-desc'>
