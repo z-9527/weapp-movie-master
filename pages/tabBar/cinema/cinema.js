@@ -3,7 +3,7 @@ const util = require('../../../utils/util.js')
 const app = getApp();
 Page({
   data: {
-    city: '',
+    city: '正在定位...',
     params: { //url请求参数对象
       day: util.getToday(),
       offset: 0,
@@ -25,9 +25,17 @@ Page({
     isShow: false, //导航下拉框是否展开
   },
   onLoad() {
-    this.setData({
-      city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
-    })
+    if (app.globalData.userLocation) {
+      this.setData({
+        city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
+      })
+    } else {
+      app.userLocationReadyCallback = () => {
+        this.setData({
+          city: app.globalData.selectCity ? app.globalData.selectCity.cityName : '定位失败'
+        })
+      }
+    }
     this.initPage()
   },
   onShow() {
@@ -47,7 +55,7 @@ Page({
       wx.hideLoading()
     })
     wx.request({
-      url: 'http://m.maoyan.com/ajax/filterCinemas',
+      url: 'https://m.maoyan.com/ajax/filterCinemas',
       success(res) {
         _this.setData({
           cityCinemaInfo: res.data
@@ -60,7 +68,7 @@ Page({
     const _this = this;
     return new Promise((resolve, reject) => {
       wx.request({
-        url: 'http://m.maoyan.com/ajax/cinemaList',
+        url: 'https://m.maoyan.com/ajax/cinemaList',
         data: params,
         success(res) {
           resolve(res.data.cinemas)

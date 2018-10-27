@@ -35,7 +35,7 @@ Page({
     const cmts = this.data.cmts
     const _this = this
     wx.request({
-      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${cmts.length}`,
+      url: `https://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=${cmts.length}`,
       success(res) {
         let comments = { ...res.data }    
         const newCmts = cmts.concat(_this.formatData(comments.cmts)) 

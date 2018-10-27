@@ -29,7 +29,7 @@ Page({
       title: '正在加载...',
     })
     wx.request({
-      url: `http://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
+      url: `https://m.maoyan.com/ajax/cinemaDetail?cinemaId=${cinemaId}&movieId=${movieId}`,
       success(res) {
         wx.hideLoading()
         _this.setData({

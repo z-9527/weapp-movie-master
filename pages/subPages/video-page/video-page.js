@@ -18,17 +18,17 @@ Page({
         ...obj.video
       },
       {
-        videoImg: 'http://p0.meituan.net/movie/bf98c928c915aafe9b44a55c1d6b6d1025670.jpg',
+        videoImg: 'https://p0.meituan.net/movie/bf98c928c915aafe9b44a55c1d6b6d1025670.jpg',
         videoName: '今日爆燃上映 十月最爽解压大片没有之一',
-        videourl: 'http://maoyan.meituan.net/movie/videos/854x4806c4105439189467588ce837ee08bc123.mp4',
+        videourl: 'https://maoyan.meituan.net/movie/videos/854x4806c4105439189467588ce837ee08bc123.mp4',
       }, {
-        videoImg: 'http://p0.meituan.net/movie/f87a64c44eaa0216d541fb6f013eba4123888.jpg',
+        videoImg: 'https://p0.meituan.net/movie/f87a64c44eaa0216d541fb6f013eba4123888.jpg',
         videoName: '小美好”版终极预告片 今年最减龄减压的青春片！',
-        videourl: 'http://maoyan.meituan.net/movie/videos/854x48041256160be8947b182921987f3e9da4c.mp4',
+        videourl: 'https://maoyan.meituan.net/movie/videos/854x48041256160be8947b182921987f3e9da4c.mp4',
       }, {
-        videoImg: 'http://p1.meituan.net/movie/2e0b6243ca72bc212f5288be3d36f41225058.jpg',
+        videoImg: 'https://p1.meituan.net/movie/2e0b6243ca72bc212f5288be3d36f41225058.jpg',
         videoName: '悲伤逆流成河 终极预告片',
-        videourl: 'http://maoyan.meituan.net/movie/videos/854x480ba7b338968d44f90a099254eea294ef0.mp4',
+        videourl: 'https://maoyan.meituan.net/movie/videos/854x480ba7b338968d44f90a099254eea294ef0.mp4',
       }
     ]
     this.setData({

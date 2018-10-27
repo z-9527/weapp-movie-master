@@ -18,7 +18,7 @@ Page({
     })
     this.getComment(movieId)
     wx.request({
-      url: `http://m.maoyan.com/ajax/detailmovie?movieId=${movieId}`,
+      url: `https://m.maoyan.com/ajax/detailmovie?movieId=${movieId}`,
       success(res) {
         wx.hideLoading()
         _this.setData({
@@ -31,7 +31,7 @@ Page({
   getComment(movieId){
     const _this = this
     wx.request({
-      url: `http://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=0`,
+      url: `https://m.maoyan.com/mmdb/comments/movie/${movieId}.json?_v_=yes&offset=0`,
       success(res){
         let comments = {...res.data}
         if (comments.total){

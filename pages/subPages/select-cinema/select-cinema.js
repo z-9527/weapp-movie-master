@@ -48,7 +48,7 @@ Page({
     const _this = this;
     return new Promise((resolve, reject) => {
       wx.request({
-        url: `http://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
+        url: `https://m.maoyan.com/ajax/movie?forceUpdate=${Date.now()}`,
         method: 'POST',
         data: params,
         success(res) {
@@ -67,7 +67,7 @@ Page({
     const _this = this;
     const {params} = this.data
     wx.request({
-      url: `http://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${params.day}`,
+      url: `https://m.maoyan.com/ajax/filterCinemas?movieId=${params.movieId}&day=${params.day}`,
       success(res) {
         _this.setData({
           cityCinemaInfo: res.data

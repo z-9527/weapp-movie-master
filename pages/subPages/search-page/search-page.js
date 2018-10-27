@@ -30,7 +30,7 @@ Page({
       value
     })
     wx.request({
-      url: `http://m.maoyan.com/ajax/search?kw=${value}&cityId=57&stype=${_this.data.stype}`, //没有获取猫眼城市ID的API，所以这里的城市ID只能写死，去掉城市ID会404
+      url: `https://m.maoyan.com/ajax/search?kw=${value}&cityId=57&stype=${_this.data.stype}`, //没有获取猫眼城市ID的API，所以这里的城市ID只能写死，去掉城市ID会404
       success(res) {
         let movies = res.data.movies ? res.data.movies.list : []
         movies = movies.map(item=>{

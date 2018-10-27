@@ -64,7 +64,7 @@ Page({
       title: '正在加载...'
     })
     wx.request({
-      url: 'http://m.maoyan.com/ajax/movieOnInfoList?token=',
+      url: 'https://m.maoyan.com/ajax/movieOnInfoList?token=',
       success(res) {
         const movieList0 = _this.formatImgUrl(res.data.movieList)
         wx.hideLoading()
@@ -92,7 +92,7 @@ Page({
       })
       const _this = this
       wx.request({
-        url: 'http://m.maoyan.com/ajax/mostExpected?limit=10&offset=0&token=',
+        url: 'https://m.maoyan.com/ajax/mostExpected?limit=10&offset=0&token=',
         success(res) {
           wx.hideLoading()
           _this.setData({
@@ -101,7 +101,7 @@ Page({
         }
       })
       wx.request({
-        url: 'http://m.maoyan.com/ajax/comingList?token=&limit=10',
+        url: 'https://m.maoyan.com/ajax/comingList?token=&limit=10',
         success(res) {
           wx.hideLoading()
           _this.setData({
@@ -125,7 +125,7 @@ Page({
       })
     }
     let query = ids.slice(length, length + 10).join('%2C')
-    const url = `http://m.maoyan.com/ajax/moreComingList?token=&movieIds=${query}`
+    const url = `https://m.maoyan.com/ajax/moreComingList?token=&movieIds=${query}`
     wx.request({
       url,
       success(res) {
@@ -148,7 +148,7 @@ Page({
       return
     }
     wx.request({
-      url: `http://m.maoyan.com/ajax/mostExpected?limit=10&offset=${length}&token=`,
+      url: `https://m.maoyan.com/ajax/mostExpected?limit=10&offset=${length}&token=`,
       success(res) {
         _this.setData({
           mostExpectedList: mostExpectedList.concat(_this.formatImgUrl(res.data.coming, true)),
