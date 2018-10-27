@@ -5,7 +5,9 @@
   overflow: hidden;
   white-space: nowrap;
 }
-
+.nav{
+  font-size: 28rpx;
+}
 .tab {
   display: flex;
   align-items: center;
