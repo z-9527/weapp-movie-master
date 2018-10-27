@@ -9,4 +9,5 @@
 .loading-text{
   margin-top: 8rpx;
   color: #666;
+  font-size: 28rpx;
 }
