@@ -4883,7 +4883,7 @@ const citys = [{
 
 let startTime = new Date();
 let curTime = 0;
-let mustRun = 100
+let mustRun = 250
 let timeout = 0
 
 Page({
@@ -4925,6 +4925,10 @@ Page({
         sections
       })
     })
+  },
+  onUnload(){
+    clearTimeout(timeout)
+    wx.hideToast()
   },
   onPageScroll(e) {
     if (this.data.inNavbar || this.data.searchValue) {
