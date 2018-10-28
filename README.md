@@ -4,7 +4,7 @@
 由于没有获得猫眼城市ID的API，所有数据接口没有添加城市ID参数，仅靠IP定位，所以数据可能不准确
 
 
-`github地址`：[基于原生小程序精仿的猫眼电影](https://github.com/zhangZhiHao1996/weapp-movie-master)
+`github地址`：[基于原生小程序精仿的猫眼电影](https://github.com/zhangZhiHao1996/weapp-movie-master)  
 `扫描体验`：（正在制作）
 <br/>
 
