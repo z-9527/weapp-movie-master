@@ -55,11 +55,31 @@ const getRandom = (lowerValue, upperValue,isFormat)=>{
     return num
   }
 }
+//节流函数
+const throttle = (func, interval=250)=> {
+  let timeout;
+  let startTime = new Date();
+  return function (event) {
+    clearTimeout(timeout);
+    let curTime = new Date();
+    if (curTime - startTime <= interval) {
+      //小于规定时间间隔时，用setTimeout在指定时间后再执行
+      timeout = setTimeout(() => {
+        func.call(this,event);
+      }, interval)
+    } else {
+      //重新计时并执行函数
+      startTime = curTime;
+      func.call(this, event);
+    }
+  }
+}
 
 module.exports = {
   formatTime: formatTime,
   formatNumber: formatNumber,
   getToday,
   calcTime,
-  getRandom
+  getRandom,
+  throttle
 }

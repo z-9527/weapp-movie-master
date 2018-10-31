@@ -1,4 +1,6 @@
 const app = getApp();
+const util = require('../../../utils/util.js')
+const throttle = util.throttle
 const citys = [{
     'id': '1',
     'city_name': '上海',
@@ -4881,11 +4883,6 @@ const citys = [{
   }
 ]
 
-let startTime = new Date();
-let curTime = 0;
-let mustRun = 250
-let timeout = 0
-
 Page({
   data: {
     citylist: [],
@@ -4927,33 +4924,25 @@ Page({
     })
   },
   onUnload(){
-    clearTimeout(timeout)
     wx.hideToast()
   },
-  onPageScroll(e) {
+  //页面滚动监听，使用函数节流优化
+  onPageScroll: throttle(function(e){
     if (this.data.inNavbar || this.data.searchValue) {
       return //如果是侧边栏的wx.pageScrollTo触发的滚动则不执行下面的程序
     }
     const sections = this.data.sections
     const scrollTop = e.scrollTop
-    curTime = new Date();
-    clearTimeout(timeout);
-    if (curTime - startTime <= mustRun) {
-      timeout = setTimeout(() => {
-        this.handlePageScroll(sections, scrollTop)
-      }, mustRun);
-      return
-    }
-    startTime = curTime;
     this.handlePageScroll(sections, scrollTop)
-  },
+  }),
   //页面滚动的处理程序
   handlePageScroll(sections, scrollTop) {
     for (let item of sections) {
       if (scrollTop >= item.top && scrollTop < item.top + item.height) {
         wx.showToast({
           title: item.title,
-          icon: 'none'
+          icon: 'none',
+          duration:500
         })
         break;
       }
@@ -5061,9 +5050,8 @@ Page({
       duration: 0
     })
   },
-  //在侧边栏上滑动的事件处理
-  handleTouchmove(e) {
-    //对于频繁触发的事件，如touchmove进行函数节流
+  //在侧边栏上滑动的事件处理,使用函数节流优化
+  handleTouchmove: throttle(function(e){
     const {
       navTop,
       navItemHeight,
@@ -5074,31 +5062,16 @@ Page({
     if (index < 0 || index > citylist.length - 1) {
       return
     }
-    curTime = new Date();
-    clearTimeout(timeout);
-    if (curTime - startTime <= mustRun) {
-      timeout = setTimeout(() => {
-        wx.showToast({
-          icon: 'none',
-          title: citylist[index].title
-        })
-        wx.pageScrollTo({
-          scrollTop: sections[index].top,
-          duration: 0
-        })
-      }, mustRun);
-      return
-    }
-    startTime = curTime;
     wx.showToast({
       icon: 'none',
-      title: citylist[index].title
+      title: citylist[index].title,
+      duration: 500
     })
     wx.pageScrollTo({
       scrollTop: sections[index].top,
       duration: 0
     })
-  },
+  }),
   //input框输入是的查询事件
   search(e) {
     const value = e.detail.value.trim().toUpperCase()
