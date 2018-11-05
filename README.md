@@ -5,7 +5,8 @@
 
 
 `github地址`：[基于原生小程序精仿的猫眼电影](https://github.com/zhangZhiHao1996/weapp-movie-master)  
-`扫描体验`：（正在制作）
+`扫描体验`：  
+<img src='https://img-blog.csdnimg.cn/20181105093504581.jpg'></img>
 <br/>
 
 ### 项目截图
@@ -95,7 +96,15 @@
 <br/>
 
 ### 问题
-正在整理...
+
+- 数据全部是线上抓取的，由于没有获得猫眼城市ID的API，所有数据接口没有添加城市ID参数，仅靠IP定位，所以数据可能不准确。猫眼电影的票价经过加密了，返回的数据为\&#xe4d9;\&#xf2dc;其实这就是电影的票价，不过猫眼通过动态生成@font-face来将数据还原成正常的数字。小程序有wx.loadFontFace来动态添加字体，但是需要字体链接，而猫眼电影只给了字体文件名，缺少具体的链接
+- 城市选择页面需的一些事件进行了事件优化（[函数节流、函数防抖](https://blog.csdn.net/qq_37860930/article/details/83505547)）
+- 滚动穿透问题。参照了[这里](https://www.jianshu.com/p/6022f7346ed2)，并自己编写了watch功能，监听遮罩的状态
+- 对于tabBar的页面onLoad生命周期只会触发一次，切换tab或从非tab进入都不会触发onLoad。只有第一次进入tab页面时才会触发。对于非tabBar页面来说，每次进入页面都会触发onLoad生命周期，每次都可以在此拿到路由参数。
+- 关于template和component的使用。复用样式用template，复用功能用component，外部样式不能作用到组件中，需要externalClasses设置（我设置了也不管用，就在组件中又写了一遍样式）
+
+做的过程中遇到了很多问题，并没有一一记录。总之只用自己写一遍才能更好的发现、理解和解决问题
+
 <br/>
 
 
