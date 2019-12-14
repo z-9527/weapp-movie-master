@@ -47,5 +47,6 @@
         "selectedIconPath": "assets/images/userSelect.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
