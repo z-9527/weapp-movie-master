@@ -4,9 +4,9 @@
 由于没有获得猫眼城市ID的API，所有数据接口没有添加城市ID参数，仅靠IP定位，所以数据可能不准确
 
 <br/>
-2019.12.14更新<br/>
+ **2019.12.14更新**    <br/>
 今天看自己做的小程序时，发现很多页面都显示不了，原因是猫眼电影部分的API限制了，不能访问了，后期如果有时间准备自己搭建一个服务器来代理请求<br/>
-2018.12.26更新<br/>
+ **2018.12.26更新**     <br/>
 有人提供了一个城市列表接口可以获取城市ID：https://maoyan.com/ajax/cities、http://m.maoyan.com/dianying/cities.json（json格式）  <br/>
 
 另外此小程序没有选座功能。选座功能需要页面的缩放、座位的生成、座位的选择、座位的推荐等等，稍微复杂，所以就没有实现。网上有很多例子可以参考(<a href='https://juejin.im/post/5b85516251882542ba1dd12f?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com' target='_blank'>用Vue实现一个美团app的影院推荐选座功能</a>)
