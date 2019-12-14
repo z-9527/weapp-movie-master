@@ -13,7 +13,7 @@
   </view>
   <view class='main-content'>
     <view class='cinema-list'>
-      <template is="cinemaSection" wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='{{cinema.id}}' data='{{cinema,movieId:params.movieId,day:params.day}}' />
+      <template is="cinemaSection" wx:for='{{cinemas}}' wx:for-item='cinema' wx:key='id' data='{{cinema,movieId:params.movieId,day:params.day}}' />
     </view>
     <view wx:if='{{!loadComplete && cinemas.length}}'>
       <template is="loadingMore" />

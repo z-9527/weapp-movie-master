@@ -17,7 +17,7 @@
   </view>
   <view class='switch-content'>
     <view hidden="{{switchItem===1}}">
-      <template is='movieSection' wx:for='{{movieList0}}' wx:for-item='movie' wx:key='{{movie.id}}' data='{{movie:movie}}'/>
+      <template is='movieSection' wx:for='{{movieList0}}' wx:for-item='movie' wx:key='id' data='{{movie:movie}}'/>
       <view wx:if='{{!loadComplete0 && movieList0.length}}'>
         <template is="loadingMore" />
       </view>
@@ -26,7 +26,7 @@
       <view class='most-expected' wx:if='{{mostExpectedList.length}}'>
         <view class='title'>近期最受期待</view>
         <scroll-view class='scroll-view_H' scroll-x bindscrolltolower='lower'>
-          <navigator url='/pages/subPages/movie-detail/movie-detail?movieId={{movie.id}}' wx:for='{{mostExpectedList}}' wx:for-item='movie' wx:key='{{id}}' class='expected-item'>
+          <navigator url='/pages/subPages/movie-detail/movie-detail?movieId={{movie.id}}' wx:for='{{mostExpectedList}}' wx:for-item='movie' wx:key='id' class='expected-item'>
             <image src='{{movie.img}}' class='poster'></image>
             <view class='name line-ellipsis'>{{movie.nm}}</view>
             <view class='data line-ellipsis'>{{movie.wish}}人想看</view>
@@ -34,7 +34,7 @@
           </navigator>
         </scroll-view>
       </view>
-      <block wx:for='{{movieList1}}' wx:for-item='movie' wx:key='{{movie.id}}'>
+      <block wx:for='{{movieList1}}' wx:for-item='movie' wx:key='id'>
         <block wx:if='{{index===0||movieList1[index-1].comingTitle!==movie.comingTitle}}'>
           <view class='title'>{{movie.comingTitle}}</view>
           <template is='movieSection' data='{{movie:movie,rt:true}}' />
