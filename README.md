@@ -13,7 +13,7 @@
  **2018.12.26更新**     <br/>
 有人提供了一个城市列表接口可以获取城市ID：https://maoyan.com/ajax/cities、http://m.maoyan.com/dianying/cities.json（json格式）  <br/>
 
-另外此小程序没有选座功能。选座功能需要页面的缩放、座位的生成、座位的选择、座位的推荐等等，稍微复杂，所以就没有实现。网上有很多例子可以参考(<a href='https://juejin.im/post/5b85516251882542ba1dd12f?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com' target='_blank'>用Vue实现一个美团app的影院推荐选座功能</a>)
+另外此小程序没有选座功能。选座功能需要页面的缩放、座位的生成、座位的选择、座位的推荐等等，稍微复杂，所以就没有实现。网上有很多例子可以参考(<a href='https://juejin.im/post/5b85516251882542ba1dd12f?utm_medium=hao.caibaojian.com&utm_source=hao.caibaojian.com' target='_blank'>用Vue实现一个美团app的影院推荐选座功能</a>、<a href="https://github.com/zenghao0219/seat-select-wechat">小程序智能选座</a>)
 <br/>
 <br/>
 
