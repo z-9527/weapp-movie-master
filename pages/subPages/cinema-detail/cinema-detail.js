@@ -89,7 +89,7 @@ Page({
       cinemaId: cinemaId,//电影院ID
       hall:info.th,//大厅
       movieName: movie.nm,//电影名
-      movieImg:movie.img,//海报
+      // movieImg:movie.img,//海报
       lang: info.lang+info.tp,//语言
       time: `${info.dt} ${info.tm}`,//时间
       price: (info.vipPrice && info.vipPrice * 1 + 10) || 37,//票价
